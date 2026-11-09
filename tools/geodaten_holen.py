@@ -18,7 +18,7 @@ from pathlib import Path
 
 ZIEL = Path(__file__).resolve().parent.parent / "data" / "hamburg"
 GEO = "https://geodienste.hamburg.de"
-UA = {"User-Agent": "Mozilla/5.0 (Familienzukunft; einmalige Datenabfrage)"}
+UA = {"User-Agent": "Mozilla/5.0 (vinifeli; einmalige Datenabfrage)"}
 BBOX = (9.6, 53.35, 10.35, 53.76)  # Hamburg grob
 
 

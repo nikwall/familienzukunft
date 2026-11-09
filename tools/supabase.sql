@@ -1,4 +1,4 @@
--- Likes und Kommentare der App Familienzukunft.
+-- Likes und Kommentare der App vinifeli.
 -- Einmal im SQL-Editor des Supabase-Projekts ausführen. Fasst nur die eigenen fz_-Tabellen an.
 -- Die App hat keinen Zugangsschutz: Jede Person mit dem Link kann lesen und schreiben.
 

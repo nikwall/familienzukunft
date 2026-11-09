@@ -25,7 +25,7 @@ jobs:
         run: python pipeline/aktualisieren.py
       - name: Speichern
         run: |
-          git config user.name "familienzukunft-bot"
+          git config user.name "vinifeli-bot"
           git config user.email "45004142+nikwall@users.noreply.github.com"
           git add data/wohnen.json
           if ! git diff --cached --quiet; then

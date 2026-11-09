@@ -13,7 +13,7 @@ from PIL import Image
 
 WURZEL = Path(__file__).resolve().parent.parent
 HH = WURZEL / "data" / "hamburg"
-UA = {"User-Agent": "Familienzukunft/0.1 (private Wohnungssuche; geringe Abfragemenge)"}
+UA = {"User-Agent": "vinifeli/0.1 (private Wohnungssuche; geringe Abfragemenge)"}
 
 GEHMETER_PRO_MIN = 80
 UMWEG = 1.3  # Luftlinie -> Fußweg

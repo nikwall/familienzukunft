@@ -12,7 +12,7 @@ function rahmen(stand) {
   const ziel = new Date(stand.einstellungen.ziel).toLocaleDateString("de-DE");
   app.innerHTML = `
     <header class="kopf">
-      <span class="marke">Familienzukunft</span>
+      <span class="marke">vinifeli</span>
       <nav class="tabs" aria-label="Bereiche">
         ${BEREICHE.map((b) => `<button class="tab" data-id="${b.id}" aria-current="false">${b.titel}</button>`).join("")}
       </nav>
