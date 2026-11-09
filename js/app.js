@@ -34,7 +34,21 @@ async function start() {
   rahmen(await r.json());
 }
 
+// GitHub Pages lässt Browser Dateien zehn Minuten zwischenspeichern, ein normales Neuladen
+// holt Skripte nicht neu. Der Knopf erzwingt das, die Meldung nennt den tatsächlichen Grund.
+const DATEIEN = ["index.html", "js/app.js", "js/wohnen.js", "js/vergleich.js", "css/style.css"];
+
 start().catch((e) => {
-  app.innerHTML = `<main class="fehlerseite"><p>Die Daten konnten nicht geladen werden.</p></main>`;
   console.error(e);
+  app.innerHTML = `
+    <main class="fehlerseite">
+      <p>Die Daten konnten nicht geladen werden.</p>
+      <p class="klein" id="grund"></p>
+      <p><button id="neu" class="link">Komplett neu laden</button></p>
+    </main>`;
+  document.getElementById("grund").textContent = e.message;
+  document.getElementById("neu").addEventListener("click", async () => {
+    await Promise.all(DATEIEN.map((f) => fetch(f, { cache: "reload" }).catch(() => null)));
+    location.reload();
+  });
 });
