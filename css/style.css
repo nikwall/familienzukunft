@@ -36,7 +36,8 @@ button { cursor: pointer; }
 
 /* Kopf */
 .kopf { height: var(--kopf); display: flex; align-items: center; gap: 12px; padding: 0 14px; background: var(--karte); border-bottom: 1px solid var(--linie); }
-.marke { font: 500 18px/1 var(--serife); color: var(--blau); }
+.marke { display: inline-flex; align-items: center; gap: 7px; font: 500 18px/1 var(--serife); color: var(--blau); }
+.marke img { display: block; flex: none; }
 .tabs { display: flex; gap: 2px; height: 100%; }
 .tab { position: relative; padding: 0 8px; border: 0; background: none; color: var(--leise); font-weight: 600; }
 .tab[aria-current="true"] { color: var(--tinte); }
