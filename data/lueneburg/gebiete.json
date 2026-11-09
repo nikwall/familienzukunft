@@ -1,0 +1,20 @@
+[
+  {
+    "id": "l_kern",
+    "titel": "Altstadt und Umgebung",
+    "kurz": "Altstadt+",
+    "stadtteile": ["Altstadt", "Rotes Feld", "Schützenplatz", "Lüne-Moorfeld", "Goseburg-Zeltberg"]
+  },
+  {
+    "id": "l_gruen",
+    "titel": "Grüner Süden",
+    "kurz": "Grüner Süden",
+    "stadtteile": ["Rotes Feld", "Wilschenbruch", "Bockelsberg", "Häcklingen", "Rettmer", "Oedeme"]
+  },
+  {
+    "id": "l_alle",
+    "titel": "Ganz Lüneburg",
+    "kurz": "Lüneburg",
+    "stadtteile": null
+  }
+]

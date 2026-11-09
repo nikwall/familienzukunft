@@ -1,8 +1,10 @@
 // App-Rahmen: Tabs. Neue Bereiche werden in BEREICHE eingetragen.
 import { zeigeWohnen } from "./wohnen.js";
+import { zeigeVorschule } from "./vorschule.js";
 
 const BEREICHE = [
   { id: "wohnen", titel: "Wohnen", zeigen: zeigeWohnen },
+  { id: "vorschule", titel: "Vorschule", zeigen: zeigeVorschule },
 ];
 
 const app = document.getElementById("app");
@@ -19,13 +21,24 @@ function rahmen(stand) {
       <span class="uhr" title="Einzug zum ${ziel}"><b>${tage}</b> Tage<span class="lang"> bis zum ${ziel}</span></span>
     </header>
     <div id="bereich"></div>`;
-  const offen = (id) => {
+  let abbau = null;
+  let lauf = 0;
+  const offen = async (id) => {
     const b = BEREICHE.find((x) => x.id === id) || BEREICHE[0];
+    const dieser = ++lauf;
+    abbau?.();
+    abbau = null;
     app.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-current", String(t.dataset.id === b.id)));
-    b.zeigen(document.getElementById("bereich"), stand);
+    history.replaceState(null, "", b === BEREICHE[0] ? location.pathname : `#${b.id}`);
+    window.scrollTo(0, 0);
+    // Jeder Bereich bekommt ein frisches Element, damit keine Klick-Empfänger liegen bleiben.
+    const huelle = document.createElement("div");
+    document.getElementById("bereich").replaceChildren(huelle);
+    const r = await b.zeigen(huelle, stand);
+    if (dieser === lauf) abbau = r ?? null; else r?.();
   };
   app.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => offen(t.dataset.id)));
-  offen(BEREICHE[0].id);
+  offen(location.hash.slice(1) || BEREICHE[0].id);
 }
 
 async function start() {
@@ -36,7 +49,7 @@ async function start() {
 
 // GitHub Pages lässt Browser Dateien zehn Minuten zwischenspeichern, ein normales Neuladen
 // holt Skripte nicht neu. Der Knopf erzwingt das, die Meldung nennt den tatsächlichen Grund.
-const DATEIEN = ["index.html", "js/app.js", "js/wohnen.js", "js/vergleich.js", "js/einordnung.js", "js/karte.js", "js/markt.js", "js/reaktionen.js", "js/format.js", "css/style.css"];
+const DATEIEN = ["index.html", "js/app.js", "js/wohnen.js", "js/vorschule.js", "js/vergleich.js", "js/einordnung.js", "js/karte.js", "js/kartenbasis.js", "js/markt.js", "js/reaktionen.js", "js/format.js", "css/style.css"];
 
 start().catch((e) => {
   console.error(e);

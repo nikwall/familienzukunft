@@ -1,0 +1,1 @@
+{"bild":"luft_no2.png","ecken":[[9.84,49.86],[10.03,49.86],[10.03,49.7],[9.84,49.7]],"stationen":[{"name":"Stadtring Süd","lon":9.9477,"lat":49.7905,"typ":"Verkehr","no2":21.0,"pm25":null},{"name":"Kopfklinik","lon":9.9564,"lat":49.8047,"typ":"Hintergrund","no2":null,"pm25":8.2}],"jahr_stationen":2025}

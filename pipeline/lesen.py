@@ -11,6 +11,7 @@ import html
 import re
 from email.header import decode_header, make_header
 from email.message import Message
+from urllib.parse import unquote
 
 from bs4 import BeautifulSoup
 
@@ -18,15 +19,18 @@ LINKS = [
     ("immoscout24", re.compile(r"immobilienscout24\.de/expose/(\d+)")),
     ("immowelt", re.compile(r"immowelt\.de/(?:expose|projekte/expose)/([\w-]+)")),
     ("kleinanzeigen", re.compile(r"kleinanzeigen\.de/s-anzeige/[^/\s\"']+/(\d+)")),
+    ("ohnemakler", re.compile(r"ohne-makler\.net/immobilie/([a-z0-9]+)/")),
 ]
 URL = {
     "immoscout24": "https://www.immobilienscout24.de/expose/{}",
     "immowelt": "https://www.immowelt.de/expose/{}",
     "kleinanzeigen": "https://www.kleinanzeigen.de/s-anzeige/{}",
+    "ohnemakler": "https://www.ohne-makler.net/immobilie/{}/",
 }
 
 ART = {
-    "Reihenhaus": "Reihenhaus", "Doppelhaus": "Doppelhaus", "Stadthaus": "Stadthaus", "Einfamilienhaus": "Haus",
+    "Reihenhaus": "Reihenhaus", "Reihenmittelhaus": "Reihenhaus", "Reihenendhaus": "Reihenhaus",
+    "Doppelhaus": "Doppelhaus", "Stadthaus": "Stadthaus", "Einfamilienhaus": "Haus", "Bungalow": "Haus", "Villa": "Haus",
     "Penthouse": "Penthouse", "Maisonette": "Maisonette", "Terrassenwohnung": "Terrassenwohnung",
     "Dachgeschoss": "Dachgeschoss", "Souterrain": "Souterrain", "Studio": "Studio", "Loft": "Loft",
     "Haus": "Haus", "Wohnung": "Wohnung",
@@ -37,7 +41,10 @@ AUSSCHLUSS = [
     (re.compile(r"wohnberechtigungsschein|\bWBS\b", re.I), "nur mit WBS"),
     (re.compile(r"\bzwangsversteigerung|versteigerung\b", re.I), "Versteigerung"),
     (re.compile(r"wohnen auf zeit|möbliert auf zeit|zwischenmiete|untermiete", re.I), "Zeitwohnen"),
+    (re.compile(r"mehrfamilienhaus|zinshaus", re.I), "Mehrfamilienhaus"),
+    (re.compile(r"massa haus|allkauf|bien[- ]zenker|town ?& ?country|kern-?haus|heinz von heiden|okal\b|fingerhut haus|danwood", re.I), "Katalog-Neubau"),
 ]
+STAEDTE = "Hamburg|Würzburg|Lüneburg"
 
 
 def _zahl(s: str | None) -> float | None:
@@ -68,20 +75,27 @@ def _typ(text: str) -> str | None:
 
 
 def _ort(text: str) -> dict:
-    """Findet „Straße Nr, Stadtteil, Hamburg (PLZ)“ und kürzere Formen."""
-    m = re.search(r"(?:^|\|\s*)([^|]*?)\bHamburg\s*\((\d{5})\)", text)
-    if not m:
-        m2 = re.search(r"\b(2[0-2]\d{3})\s+Hamburg(?:[,\s-]+([A-ZÄÖÜ][\wäöüß. -]{2,30}))?", text)
-        if m2:
-            return {"ort": "Hamburg", "plz": m2[1], "stadtteil_text": (m2[2] or "").strip() or None, "strasse": None}
-        return {"ort": None, "plz": None, "stadtteil_text": None, "strasse": None}
-    teile = [t.strip() for t in m[1].split(",") if t.strip()]
-    stadtteil, strasse = None, None
-    if teile:
-        stadtteil = teile[-1]
-        if len(teile) >= 2:
-            strasse = teile[0]
-    return {"ort": "Hamburg", "plz": m[2], "stadtteil_text": stadtteil, "strasse": strasse}
+    """Findet „Straße Nr, Stadtteil, Stadt (PLZ)“ und die kürzeren Formen der Mails."""
+    leer = {"ort": None, "plz": None, "stadtteil_text": None, "strasse": None}
+    m = re.search(rf"(?:^|\|\s*)([^|]*?)\b({STAEDTE})\s*\((\d{{5}})\)", text)
+    if m:
+        teile = [t.strip() for t in m[1].split(",") if t.strip()]
+        stadtteil, strasse = None, None
+        if teile:
+            stadtteil = teile[-1]
+            if len(teile) >= 2:
+                strasse = teile[0]
+        return {"ort": m[2], "plz": m[3], "stadtteil_text": stadtteil, "strasse": strasse}
+    # „Musterstraße 3, 20253 Hamburg, Eimsbüttel“ oder „20253 Hamburg-Eimsbüttel“
+    m = re.search(rf"\b(\d{{5}})\s+({STAEDTE})(?:[,\s-]+([A-ZÄÖÜ][\wäöüß. -]{{2,30}}?))?(?=\s*(?:\||$|,|·))", text)
+    if m:
+        vorn = re.search(r"([A-ZÄÖÜ][\wäöüß.\- ]{2,40}\s\d+\s?[a-zA-Z]?)\s*,\s*$", text[:m.start()])
+        return {"ort": m[2], "plz": m[1], "stadtteil_text": (m[3] or "").strip() or None, "strasse": vorn[1].strip() if vorn else None}
+    # „Hamburg, Eimsbüttel“ ohne Postleitzahl
+    m = re.search(rf"\b({STAEDTE})\s*[,-]\s*([A-ZÄÖÜ][\wäöüß. -]{{2,30}}?)(?=\s*(?:\||$|,|·))", text)
+    if m:
+        return {**leer, "ort": m[1], "stadtteil_text": m[2].strip()}
+    return leer
 
 
 def lies_text(text: str, quelle: str, ext_id: str, url: str | None = None, typ: str | None = None) -> dict:
@@ -134,6 +148,12 @@ def lies_text(text: str, quelle: str, ext_id: str, url: str | None = None, typ: 
     }
     if qm_preis and flaeche and not preis:
         a["preis"] = qm_preis * flaeche
+    # Ein Haus mit Grundstück hat einen Garten, auch wenn das Wort nicht fällt.
+    m = re.search(Z + r"\s*m²\s*Grundstück", t)
+    if m and (_zahl(m[1]) or 0) >= 150:
+        a["garten"] = True
+    if re.search(r"\bwarmmiete\b", t, re.I) and not re.search(r"\bkaltmiete\b", t, re.I):
+        a["ausschluss"] = a["ausschluss"] or "nur Warmmiete genannt"
     return a
 
 
@@ -178,7 +198,8 @@ def lies_mail(roh: bytes) -> list[dict]:
     suppe = BeautifulSoup(h, "html.parser")
     gesehen: dict[str, dict] = {}
     for a in suppe.find_all("a", href=True):
-        href = html.unescape(a["href"])
+        # Zählpixel-Links tragen das Ziel oft nur URL-kodiert in sich.
+        href = unquote(html.unescape(a["href"]))
         for quelle, muster in LINKS:
             t = muster.search(href)
             if not t:

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "w_kern",
+    "titel": "Stadtkern",
+    "kurz": "Stadtkern",
+    "stadtteile": ["Altstadt", "Sanderau", "Frauenland", "Grombühl"]
+  },
+  {
+    "id": "w_familie",
+    "titel": "Grüne Wohnlagen",
+    "kurz": "Grün",
+    "stadtteile": ["Frauenland", "Sanderau", "Steinbachtal", "Lengfeld", "Versbach"]
+  },
+  {
+    "id": "w_alle",
+    "titel": "Ganz Würzburg",
+    "kurz": "Würzburg",
+    "stadtteile": null
+  }
+]

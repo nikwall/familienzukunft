@@ -6,12 +6,11 @@ import { zeigeMarkt } from "./markt.js";
 import { ladeReaktionen, loescheKommentar, schreibeKommentar, setzeLike } from "./reaktionen.js";
 import { esc, eur, merken, tausend, zahl } from "./format.js";
 
-const HH = "data/hamburg/";
 const LAUT = 65; // ab hier: Niveau einer Hauptverkehrsstraße
 const NEU_TAGE = 3;
-const STANDARD_GEBIET = "eimsbuettel";
 const breit = () => window.matchMedia("(min-width: 900px)").matches;
-const json = (f) => fetch(HH + f).then((r) => { if (!r.ok) throw new Error(`${f}: ${r.status}`); return r.json(); });
+const holeJson = (f) => fetch(f).then((r) => { if (!r.ok) throw new Error(`${f}: ${r.status}`); return r.json(); });
+const LAUFE = "https://api.github.com/repos/nikwall/vinifeli/actions/workflows/aktualisieren.yml/runs?per_page=1&status=success";
 
 const ICON = {
   liste: '<path d="M4 6h16M4 12h16M4 18h16"/>',
@@ -39,38 +38,97 @@ function laermText(a) {
   return a.laerm >= 75 ? "ab 75 dB" : `${a.laerm}–${a.laerm + 4} dB`;
 }
 
+// Wann hat der Abruf zuletzt nach neuen Mails gesehen? Das steht nicht in den Daten,
+// weil sonst jeder Lauf einen Commit erzeugen würde. Fehlt die Antwort, entfällt die Angabe.
+async function letzterLauf() {
+  try {
+    const r = await fetch(LAUFE, { headers: { Accept: "application/vnd.github+json" } });
+    if (!r.ok) return null;
+    const t = (await r.json()).workflow_runs?.[0]?.updated_at;
+    return t ? new Date(t) : null;
+  } catch {
+    return null;
+  }
+}
+
+function wann(d) {
+  const uhr = d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
+  const tag = (x) => x.toLocaleDateString("de-DE");
+  const gestern = new Date(Date.now() - 864e5);
+  if (tag(d) === tag(new Date())) return `heute, ${uhr}`;
+  if (tag(d) === tag(gestern)) return `gestern, ${uhr}`;
+  return `${d.toLocaleDateString("de-DE", { day: "numeric", month: "short" })}, ${uhr}`;
+}
+
+function vor(d) {
+  const min = Math.max(1, Math.round((Date.now() - d) / 6e4));
+  if (min < 60) return `vor ${min} Min`;
+  const std = Math.round(min / 60);
+  return std < 24 ? `vor ${std} Std` : `vor ${Math.round(std / 24)} Tagen`;
+}
+
+function standText(stand, geprueft) {
+  if (!stand.letzte_mail) return { an: false, text: `Stand ${wann(new Date(stand.aktualisiert))} · einmalig erfasst` };
+  const mail = new Date(stand.letzte_mail);
+  const frisch = geprueft && Date.now() - geprueft < 3 * 36e5;
+  return { an: !!frisch, text: `Letzte neue Daten: ${wann(mail)}${geprueft ? ` · geprüft ${vor(geprueft)}` : ""}` };
+}
+
 export async function zeigeWohnen(wurzel, stand) {
   wurzel.innerHTML = `<div class="laden">Wird geladen …</div>`;
+  const staedte = await holeJson("data/staedte.json");
+  const geprueft = letzterLauf();
+  let abbau = null;
+  async function oeffnen(id) {
+    abbau?.();
+    const stadt = staedte.find((s) => s.id === id) ?? staedte[0];
+    merken.schreiben("fz_stadt", stadt.id);
+    const huelle = document.createElement("div");
+    wurzel.replaceChildren(huelle);
+    abbau = await baueStadt(huelle, stand, stadt, staedte, oeffnen, geprueft);
+  }
+  await oeffnen(merken.lesen("fz_stadt", "hamburg"));
+  return () => abbau?.();
+}
+
+async function baueStadt(wurzel, stand, stadt, staedte, stadtWechseln, geprueft) {
+  wurzel.innerHTML = `<div class="laden">Wird geladen …</div>`;
+  const json = (f) => holeJson(`data/${stadt.id}/${f}`);
   const [preise, gebiete] = await Promise.all([json("preise_stadtteile.json"), json("gebiete.json")]);
   const alleNamen = Object.keys(preise.werte);
   const mengeVon = (g) => new Set(g.stadtteile ?? alleNamen);
-  const gespeichert = merken.lesen("fz_gebiet", null);
+  const GEBIET_KEY = stadt.id === "hamburg" ? "fz_gebiet" : `fz_gebiet_${stadt.id}`;
+  const gespeichert = merken.lesen(GEBIET_KEY, null);
 
   const z = {
     typ: "alle", garten: false, ruhig: false, gemerkt: false, sort: "beste", offen: null, blatt: null, ansicht: "liste",
-    aktiv: gespeichert ? new Set(gespeichert) : mengeVon(gebiete.find((g) => g.id === STANDARD_GEBIET)),
+    aktiv: gespeichert ? new Set(gespeichert) : mengeVon(gebiete.find((g) => g.id === stadt.standardGebiet)),
     name: merken.lesen("fz_name", ""),
-    annahmen: { ...STANDARD, ...merken.lesen("fz_annahmen", {}) },
+    annahmen: { ...STANDARD, ...merken.lesen("fz_annahmen", {}), grest: stadt.grest },
   };
   let r = { likes: new Map(), kommentare: new Map(), verfuegbar: false };
   let karte = null;
   let karteLaedt = null;
   const einst = stand.einstellungen;
   const ersterTag = Object.keys(stand.verlauf || {}).sort()[0];
-  const alle = Object.values(stand.angebote).filter((a) => a.aktiv && a.lat != null && a.flaeche >= einst.muss.flaeche && (a.zimmer ?? 99) >= einst.muss.zimmer && !ohneDraussen(a));
+  const alle = Object.values(stand.angebote).filter((a) => a.aktiv && a.ort === stadt.name && a.lat != null && a.flaeche >= einst.muss.flaeche && (a.zimmer ?? 99) >= einst.muss.zimmer && !ohneDraussen(a));
   const eich = eichung(alle, preise.werte);
   let bewertet = [];
 
   function neuBewerten() {
-    bewertet = alle.map((a) => { const b = bewerte(a, preise.werte, z.annahmen, eich); return { a, b, o: einordnen(a, b) }; });
+    bewertet = alle.map((a) => { const b = bewerte(a, preise.werte, z.annahmen, eich); return { a, b, o: einordnen(a, b, preise.ebene) }; });
   }
 
   wurzel.innerHTML = `
     <div class="wohnen" data-ansicht="liste">
+      <div class="stadtwahl" role="group" aria-label="Stadt">
+        ${staedte.map((s) => `<button data-stadt="${s.id}" aria-pressed="${s.id === stadt.id}">${esc(s.name)}</button>`).join("")}
+      </div>
       <div class="gebiete" role="group" aria-label="Gebiet">
         ${gebiete.map((g) => `<button data-gebiet="${g.id}" aria-pressed="false" aria-label="${esc(g.titel)}"><span class="g-kurz">${esc(g.kurz)}</span><span class="g-lang">${esc(g.titel)}</span></button>`).join("")}
       </div>
       <section class="v-liste" aria-label="Angebote">
+        <p id="datenstand" class="datenstand" role="status"></p>
         <div class="filter">
           <div class="seg" role="group" aria-label="Art">
             <button data-typ="alle" aria-pressed="true">Alle</button>
@@ -153,7 +211,7 @@ export async function zeigeWohnen(wurzel, stand) {
     const offen = z.offen === a.id;
     const neu = a.erstmals !== ersterTag && (new Date() - new Date(a.erstmals)) / 864e5 <= NEU_TAGE;
     const dr = draussen(a);
-    const merkmale = [esc(a.stadtteil || "Hamburg"), `${zahl(a.flaeche, a.flaeche % 1 ? 1 : 0)} m²`, `${zahl(a.zimmer, a.zimmer % 1 ? 1 : 0)} Zi.`];
+    const merkmale = [esc(a.stadtteil || stadt.name), `${zahl(a.flaeche, a.flaeche % 1 ? 1 : 0)} m²`, `${zahl(a.zimmer, a.zimmer % 1 ? 1 : 0)} Zi.`];
     if (dr) merkmale.push(dr);
     const g = b.gegen;
     const bezug = g ? `entspricht ${g.art === "kauf" ? `Kauf ${tausend(g.wert)}` : `Miete ${eur(g.wert)}`}` : "";
@@ -237,7 +295,7 @@ export async function zeigeWohnen(wurzel, stand) {
   }
 
   function marktZeichnen() {
-    const g = gebietAktuell() ?? gebiete.find((x) => x.id === "hamburg");
+    const g = gebietAktuell() ?? gebiete.find((x) => x.stadtteile === null);
     zeigeMarkt(el("#markt"), stand.verlauf, g);
   }
 
@@ -260,12 +318,12 @@ export async function zeigeWohnen(wurzel, stand) {
   async function karteSichern() {
     if (karteLaedt) return karteLaedt;
     karteLaedt = (async () => {
-      const [stadtteile, schulen, bahn] = await Promise.all([json("stadtteile.geojson"), json("grundschulen.json"), json("schnellbahn.json")]);
+      const [stadtteile, bahn, luft] = await Promise.all([json("stadtteile.geojson"), json("schnellbahn.json"), json("luft.json")]);
       karte = baueKarte(el("#karte"), {
-        stadtteile, preise, schulen, bahn, heimat: einst.heimat,
+        stadt, stadtteile, preise, bahn, luft, melden: (t) => kurz(t),
         beiStadtteil(n) {
           if (z.aktiv.has(n)) z.aktiv.delete(n); else z.aktiv.add(n);
-          merken.schreiben("fz_gebiet", [...z.aktiv]);
+          merken.schreiben(GEBIET_KEY, [...z.aktiv]);
           karte.aktivSetzen(z.aktiv);
           allesZeichnen();
           const p = preise.werte[n]?.wohnung;
@@ -378,10 +436,12 @@ export async function zeigeWohnen(wurzel, stand) {
 
   wurzel.addEventListener("click", (e) => {
     const ziel = e.target;
+    const wahl = ziel.closest("[data-stadt]");
+    if (wahl) { if (wahl.dataset.stadt !== stadt.id) stadtWechseln(wahl.dataset.stadt); return; }
     const gebiet = ziel.closest("[data-gebiet]");
     if (gebiet) {
       z.aktiv = mengeVon(gebiete.find((g) => g.id === gebiet.dataset.gebiet));
-      merken.schreiben("fz_gebiet", [...z.aktiv]);
+      merken.schreiben(GEBIET_KEY, [...z.aktiv]);
       z.blatt = null;
       allesZeichnen();
       if (karte) { karte.aktivSetzen(z.aktiv); karte.hinpassen(z.aktiv); }
@@ -420,7 +480,17 @@ export async function zeigeWohnen(wurzel, stand) {
   });
   el("#sort").addEventListener("change", (e) => { z.sort = e.target.value; listeZeichnen(); });
 
-  annahmenDialog(el("#annahmen"), z, eich, () => { neuBewerten(); allesZeichnen(); });
+  annahmenDialog(el("#annahmen"), z, eich, stadt, preise, () => { neuBewerten(); allesZeichnen(); });
+
+  const zeigeStand = (g) => {
+    const f = el("#datenstand");
+    if (!f) return;
+    const s = standText(stand, g);
+    f.textContent = s.text;
+    f.classList.toggle("an", s.an);
+  };
+  zeigeStand(null);
+  geprueft.then(zeigeStand);
 
   neuBewerten();
   allesZeichnen();
@@ -430,6 +500,7 @@ export async function zeigeWohnen(wurzel, stand) {
     el('[data-schalter="gemerkt"]').hidden = false;
     allesZeichnen();
   }).catch((e) => console.warn("Likes und Kommentare nicht erreichbar:", e.message));
+  return () => { karte?.entfernen(); karte = null; };
 }
 
 // ------------------------------------------------------------------ Annahmen
@@ -441,7 +512,7 @@ const REGLER = [
 ];
 const stellen = (s) => (s < 1 ? (s < 0.5 ? 2 : 1) : 0);
 
-function annahmenDialog(d, z, eich, nachAenderung) {
+function annahmenDialog(d, z, eich, stadt, preise, nachAenderung) {
   const a = z.annahmen;
   d.innerHTML = `
     <form method="dialog" class="dlg">
@@ -452,10 +523,10 @@ function annahmenDialog(d, z, eich, nachAenderung) {
           <input type="range" data-k="${k}" min="${min}" max="${max}" step="${s}" value="${a[k]}"></label>`).join("")}
       <button type="button" class="link" id="zurueck">Auf Standard zurücksetzen</button>
       <h3>So wird gerechnet</h3>
-      <p>Ein Kaufpreis entspricht einer Miete, wenn beide im Jahr gleich viel kosten. Der Wertzuwachs ist der größte Hebel, deshalb steht bei jedem Inserat die Spanne für einen Punkt mehr oder weniger.</p>
+      <p>Ein Kaufpreis entspricht einer Miete, wenn beide im Jahr gleich viel kosten. Der Wertzuwachs ist der größte Hebel, deshalb steht bei jedem Inserat die Spanne für einen Punkt mehr oder weniger. Grunderwerbsteuer ${esc(stadt.name)}: ${zahl(stadt.grest, 1)} %.</p>
       <h3>Grenzen</h3>
-      <p>Die Stadtteil-Schnitte stammen von immobilienpreise-2026.de (Stand Q3 2026). Die Seite legt ihre Methode nicht offen und mittelt über alle Größen und Baujahre. Ihr Niveau ist deshalb auf die beobachteten Inserate geeicht (Miete × ${zahl(eich.miete, 2)}, Kauf × ${zahl(eich.kauf, 2)}). „Teuer“ und „günstig“ heißen: mehr als 10 % über oder unter diesem Wert.</p>
-      <p class="klein">Lärm: Strategische Lärmkarte 2022, lauteste Klasse im Umkreis von 25 m · Stadtteile, Schulen, HVV: Freie und Hansestadt Hamburg, Datenlizenz Deutschland · Karte: OpenStreetMap, OpenFreeMap · Bauzins: Dr. Klein (9.10.2026), Interhyp (10.9.2026).</p>
+      <p>${preise.ebene === "stadt" ? `Für ${esc(stadt.name)} nennt die Quelle nur einen Wert für die ganze Stadt, „teuer“ und „günstig“ beziehen sich hier also auf den Stadtschnitt. ` : ""}Die Vergleichswerte stammen von immobilienpreise-2026.de (2026). Die Seite legt ihre Methode nicht offen und mittelt über alle Größen und Baujahre. Ihr Niveau ist deshalb auf die beobachteten Inserate geeicht (Miete × ${zahl(eich.miete, 2)}, Kauf × ${zahl(eich.kauf, 2)}). „Teuer“ und „günstig“ heißen: mehr als 10 % über oder unter diesem Wert.</p>
+      <p class="klein">${stadt.laerm === "hamburg" ? "Lärm: Strategische Lärmkarte 2022, lauteste Klasse im Umkreis von 25 m" : "Lärm: Europäische Umweltagentur, nur kartierte Hauptstraßen"} · Luft: NO₂-Modell 2024 des Umweltbundesamts (1 km), Messstationen 2025 · Karte: OpenStreetMap, OpenFreeMap · Bauzins: Dr. Klein (9.10.2026), Interhyp (10.9.2026).</p>
     </form>`;
   const satz = () => { d.querySelector("#satz").textContent = `${zahl(kostensatz(z.annahmen) * 100, 2)} %`; };
   satz();
@@ -469,7 +540,7 @@ function annahmenDialog(d, z, eich, nachAenderung) {
     nachAenderung();
   }));
   d.querySelector("#zurueck").addEventListener("click", () => {
-    Object.assign(z.annahmen, STANDARD);
+    Object.assign(z.annahmen, STANDARD, { grest: stadt.grest });
     d.querySelectorAll("input[type=range]").forEach((r) => { r.value = z.annahmen[r.dataset.k]; r.dispatchEvent(new Event("input")); });
   });
 }

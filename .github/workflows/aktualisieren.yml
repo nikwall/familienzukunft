@@ -2,11 +2,16 @@ name: Angebote aktualisieren
 
 on:
   schedule:
-    - cron: "23 5,9,13,17 * * *"
+    # Alle 30 Minuten von früh bis spät. Volle Stunden meidet GitHub oft, darum Minute 7 und 37.
+    - cron: "7,37 5-22 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: aktualisieren
+  cancel-in-progress: false
 
 jobs:
   aktualisieren:
@@ -30,5 +35,6 @@ jobs:
           git add data/wohnen.json
           if ! git diff --cached --quiet; then
             git commit -m "Angebote aktualisiert"
+            git pull --rebase
             git push
           fi

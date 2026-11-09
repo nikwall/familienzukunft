@@ -15,6 +15,7 @@
   --serife: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --kopf: 46px;
   --gebiet: 50px;
+  --stadt: 42px;
   --nav: 60px;
   --unten: calc(var(--nav) + env(safe-area-inset-bottom));
 }
@@ -46,6 +47,14 @@ button { cursor: pointer; }
 .uhr b { color: var(--tinte); font-variant-numeric: tabular-nums; }
 .uhr .lang { display: none; }
 
+/* Stadt und Datenstand */
+.stadtwahl { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 2px; height: var(--stadt); padding: 5px 12px 0; background: var(--flaeche); }
+.stadtwahl button { border: 0; border-radius: 8px; background: none; color: var(--leise); font-size: 14px; font-weight: 600; }
+.stadtwahl button[aria-pressed="true"] { background: #e8edf3; color: var(--blau); }
+.datenstand { display: flex; align-items: baseline; gap: 6px; margin: 8px 12px 0; padding: 5px 9px; border-radius: 8px; background: #f0ede5; color: var(--leise); font-size: 12.5px; line-height: 1.3; }
+.datenstand::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: #a8a397; transform: translateY(-1px); }
+.datenstand.an::before { background: #2e8b57; }
+
 /* Gebiete */
 .gebiete { position: sticky; top: 0; z-index: 20; display: flex; gap: 6px; height: var(--gebiet); align-items: center; padding: 0 12px; overflow-x: auto; scrollbar-width: none; background: var(--flaeche); border-bottom: 1px solid var(--linie); }
 .gebiete::-webkit-scrollbar, .filter::-webkit-scrollbar { display: none; }
@@ -57,7 +66,7 @@ button { cursor: pointer; }
 /* Ansichten */
 .v-liste, .v-markt, .v-karte { display: none; }
 [data-ansicht="liste"] .v-liste, [data-ansicht="markt"] .v-markt, [data-ansicht="karte"] .v-karte { display: block; }
-.v-karte { position: relative; height: calc(100dvh - var(--kopf) - var(--gebiet) - var(--unten)); }
+.v-karte { position: relative; height: calc(100dvh - var(--kopf) - var(--stadt) - var(--gebiet) - var(--unten)); }
 #karte { position: absolute; inset: 0; }
 
 .unten { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: grid; grid-template-columns: repeat(3, 1fr); height: var(--unten); padding-bottom: env(safe-area-inset-bottom); background: var(--karte); border-top: 1px solid var(--linie); }
@@ -121,13 +130,10 @@ button { cursor: pointer; }
 .k-form input { flex: 1; min-width: 0; height: 44px; padding: 0 10px; border: 1px solid var(--linie); border-radius: 10px; background: #fff; font-size: 16px; }
 
 /* Karte */
-.ebenen { position: absolute; z-index: 3; top: 8px; right: 8px; max-width: 220px; padding: 7px 11px; background: rgba(255,255,255,.96); border: 1px solid var(--linie); border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,.08); font-size: 13.5px; }
-.ebenen summary { cursor: pointer; font-weight: 600; }
-.ebenen-inhalt { display: grid; gap: 6px; margin-top: 8px; }
-.ebenen .sel { display: grid; gap: 2px; font-size: 12px; color: var(--leise); }
-.ebenen select { width: 100%; padding: 5px; border: 1px solid var(--linie); border-radius: 6px; background: #fff; color: var(--tinte); font-size: 16px; }
-.ebenen label:not(.sel) { display: flex; align-items: center; gap: 7px; min-height: 28px; }
-.legende { display: grid; gap: 7px; padding-top: 7px; border-top: 1px solid var(--linie); font-size: 12px; }
+.ebenen { position: absolute; z-index: 3; top: 8px; left: 8px; display: flex; gap: 4px; }
+.ebenen button { height: 32px; padding: 0 10px; border: 1px solid var(--linie); border-radius: 999px; background: rgba(255,255,255,.96); color: var(--leise); font-size: 12.5px; font-weight: 600; white-space: nowrap; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+.ebenen button[aria-pressed="true"] { background: var(--blau); border-color: var(--blau); color: #fff; }
+.legende { position: absolute; z-index: 2; left: 8px; bottom: 34px; max-width: calc(100% - 56px); display: grid; gap: 4px; padding: 5px 7px; border-radius: 8px; background: rgba(255,255,255,.93); box-shadow: 0 1px 4px rgba(0,0,0,.1); font-size: 11px; pointer-events: none; }
 .lg b { font-weight: 600; }
 .lg > span { color: var(--leise); }
 .skala { display: flex; gap: 1px; margin-top: 3px; }
@@ -141,7 +147,7 @@ button { cursor: pointer; }
 .zeilen i.voll { background: var(--tinte); }
 .zeilen i.hohl { background: #fff; box-shadow: inset 0 0 0 2px var(--tinte); }
 
-.kurz { position: absolute; z-index: 4; left: 50%; top: 10px; transform: translateX(-50%); max-width: calc(100% - 150px); padding: 6px 11px; border-radius: 8px; background: var(--tinte); color: #fff; font-size: 13px; text-align: center; pointer-events: none; }
+.kurz { position: absolute; z-index: 4; left: 50%; top: 48px; transform: translateX(-50%); max-width: calc(100% - 32px); padding: 6px 11px; border-radius: 8px; background: var(--tinte); color: #fff; font-size: 13px; text-align: center; pointer-events: none; }
 .blatt { position: absolute; z-index: 5; left: 8px; right: 8px; bottom: 8px; max-height: 66%; overflow-y: auto; padding-top: 26px; border-radius: var(--rund); background: var(--flaeche); box-shadow: 0 4px 22px rgba(0,0,0,.25); }
 .blatt .kachel { border-radius: 0 0 var(--rund) var(--rund); border-right: 0; border-bottom: 0; }
 .blatt-zu { position: absolute; top: 0; right: 4px; width: 40px; height: 28px; border: 0; background: none; color: var(--leise); font-size: 20px; line-height: 1; }
@@ -187,6 +193,34 @@ button { cursor: pointer; }
 .m-tabelle tbody th { text-align: left; padding-left: 0; }
 .m-grenzen { margin: 10px 2px 0; font-size: 12.5px; color: var(--leise); }
 
+/* Vorschule */
+.vs .v-karte { height: calc(100dvh - var(--kopf) - var(--unten)); }
+#vs-karte { position: absolute; inset: 0; }
+.vs .unten { grid-template-columns: 1fr 1fr; }
+.frist { margin: 10px 12px 0; padding: 8px 11px; border-radius: 10px; background: #eaf0f7; color: var(--blau); font-size: 14px; line-height: 1.35; }
+.frist b { font-weight: 700; }
+.frist.dringend { background: #fbe9e6; color: var(--teuer); }
+.vergleich { margin: 8px 12px 0; padding: 8px 11px; border: 1px solid var(--linie); border-radius: 10px; background: var(--karte); font-size: 13.5px; }
+.vergleich summary { cursor: pointer; font-weight: 600; min-height: 26px; }
+.vergleich table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 13px; }
+.vergleich th, .vergleich td { padding: 5px 6px 5px 0; vertical-align: top; text-align: left; border-top: 1px solid var(--linie); }
+.vergleich thead th, .vergleich thead td { border-top: 0; font-size: 12px; color: var(--leise); }
+.vergleich tbody th { font-weight: 600; white-space: nowrap; }
+.kand { position: relative; flex: none; background: var(--karte); border: 1px solid var(--linie); border-left: 4px solid #2f7d5b; border-radius: var(--rund); }
+.kand.schule { border-left-color: var(--blau); }
+.kand-kopf { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; width: 100%; padding: 10px 12px; border: 0; background: none; text-align: left; }
+.kand-name { font-size: 15.5px; font-weight: 650; line-height: 1.25; }
+.s-marke { display: inline-grid; place-items: center; width: 16px; height: 16px; margin-right: 5px; border-radius: 50%; background: var(--blau); color: #fff; font: 700 10px/1 var(--schrift); vertical-align: 1px; }
+.kand-weg { font-size: 13.5px; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--blau); white-space: nowrap; }
+.kand-z2 { grid-column: 1 / -1; font-size: 13.5px; color: var(--leise); }
+.kand-z3 { grid-column: 1 / -1; font-size: 13.5px; font-weight: 550; }
+.kand-detail { display: grid; gap: 6px; margin: 0; padding: 9px 12px 2px; border-top: 1px dashed var(--linie); font-size: 14px; }
+.kand-detail dt { font-size: 12px; font-weight: 650; color: var(--leise); }
+.kand-detail dd { margin: -5px 0 0; }
+.kand-links { display: flex; gap: 8px; padding: 0 12px 12px; }
+.blatt .kand { border-radius: 0 0 var(--rund) var(--rund); border-right: 0; border-bottom: 0; }
+.vergleich a { color: var(--guenstig); }
+
 /* Dialoge */
 .dialog { border: 0; border-radius: 14px; padding: 0; width: min(480px, 94vw); max-height: 88dvh; box-shadow: 0 12px 44px rgba(0,0,0,.25); color: var(--tinte); }
 .dialog.klein { width: min(340px, 92vw); }
@@ -211,13 +245,18 @@ button { cursor: pointer; }
   .kopf { gap: 22px; padding: 0 18px; height: 54px; }
   .marke { font-size: 20px; }
   .uhr .lang { display: inline; }
-  .wohnen { display: grid; grid-template-columns: minmax(380px, 440px) 1fr; grid-template-rows: auto 1fr auto; height: calc(100dvh - 54px); }
-  .gebiete { grid-column: 1; grid-row: 1; position: static; height: auto; flex-wrap: wrap; justify-content: flex-start; padding: 8px 12px; }
+  .wohnen { display: grid; grid-template-columns: minmax(380px, 440px) 1fr; grid-template-rows: auto auto 1fr auto; height: calc(100dvh - 54px); }
+  .stadtwahl { grid-column: 1; grid-row: 1; }
+  .gebiete { grid-column: 1; grid-row: 2; position: static; height: auto; flex-wrap: wrap; justify-content: flex-start; padding: 8px 12px; }
   .gebiete button { padding: 0 12px; }
   .g-kurz { display: none; }
   .g-lang { display: inline; }
-  .v-liste, .v-markt { grid-column: 1; grid-row: 2; overflow-y: auto; min-height: 0; }
+  .v-liste, .v-markt { grid-column: 1; grid-row: 3; overflow-y: auto; min-height: 0; }
   .v-karte, [data-ansicht] .v-karte { display: block; grid-column: 2; grid-row: 1 / -1; height: auto; border-left: 1px solid var(--linie); }
-  .unten { position: static; grid-column: 1; grid-row: 3; height: 54px; padding: 0; grid-template-columns: 1fr 1fr; }
+  .unten { position: static; grid-column: 1; grid-row: 4; height: 54px; padding: 0; grid-template-columns: 1fr 1fr; }
   .unten [data-ansicht="karte"] { display: none; }
+  .vs { display: grid; grid-template-columns: minmax(380px, 440px) 1fr; height: calc(100dvh - 54px); }
+  .vs .v-liste { grid-row: 1; }
+  .vs .v-karte { grid-row: 1; height: auto; }
+  .vs .unten { display: none; }
 }

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "hamburg",
+    "name": "Hamburg",
+    "mitte": [9.97, 53.585],
+    "zoom": 11,
+    "rahmen": [9.72, 53.39, 10.33, 53.74],
+    "grest": 5.5,
+    "standardGebiet": "eimsbuettel",
+    "heimat": "Hoheluft-West",
+    "laerm": "hamburg",
+    "bahnKurz": "Bahn",
+    "alias": {}
+  },
+  {
+    "id": "wuerzburg",
+    "name": "Würzburg",
+    "mitte": [9.945, 49.79],
+    "zoom": 11.3,
+    "grest": 3.5,
+    "standardGebiet": "w_alle",
+    "heimat": null,
+    "laerm": "eea",
+    "bahnKurz": "Tram",
+    "alias": {
+      "Oberdürrbach": "Dürrbachtal", "Unterdürrbach": "Dürrbachtal", "Dürrbachau": "Dürrbachtal",
+      "Mönchberg": "Frauenland", "Keesburg": "Frauenland", "Hubland": "Frauenland", "Pilziggrund": "Grombühl"
+    }
+  },
+  {
+    "id": "lueneburg",
+    "name": "Lüneburg",
+    "mitte": [10.41, 53.25],
+    "zoom": 11.8,
+    "grest": 5.0,
+    "standardGebiet": "l_alle",
+    "heimat": null,
+    "laerm": "eea",
+    "bahnKurz": "Bus",
+    "alias": {
+      "Hagen": "Neu Hagen", "Zeltberg": "Goseburg-Zeltberg", "Goseburg": "Goseburg-Zeltberg",
+      "Lüne": "Lüne-Moorfeld", "Moorfeld": "Lüne-Moorfeld"
+    }
+  }
+]

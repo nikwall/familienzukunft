@@ -6,7 +6,10 @@ import { eur, zahl } from "./format.js";
 const proz = (x) => Math.round(Math.abs(x) * 100);
 const LINIE = (a) => a.bahn?.linien?.slice(0, 2).join("/") || "Bahn";
 
-export function einordnen(a, b) {
+export function einordnen(a, b, ebene = "stadtteil") {
+  const bezug = ebene === "stadt" ? "zum Stadtschnitt" : "zum Stadtteil";
+  const halt = a.bahn?.art === "bus" ? "Haltestelle" : "Bahn";
+  const ohneKarte = a.ort && a.ort !== "Hamburg"; // außerhalb Hamburgs nennt die Lärmkarte nur Hauptstraßen
   const plus = [];
   const minus = [];
   const genau = a.lage === "adresse" || a.lage === "strasse";
@@ -16,9 +19,9 @@ export function einordnen(a, b) {
   if (b.abw != null) {
     const g = Math.min(100, Math.abs(b.abw) * 250);
     if (b.abw <= -0.25) plus.push({ t: `Ungewöhnlich günstig (−${proz(b.abw)} %)`, g });
-    else if (b.abw <= -0.1) plus.push({ t: `Günstig (−${proz(b.abw)} % zum Stadtteil)`, g });
+    else if (b.abw <= -0.1) plus.push({ t: `Günstig (−${proz(b.abw)} % ${bezug})`, g });
     else if (b.abw >= 0.25) minus.push({ t: `Ungewöhnlich teuer (+${proz(b.abw)} %)`, g });
-    else if (b.abw >= 0.1) minus.push({ t: `Teuer (+${proz(b.abw)} % zum Stadtteil)`, g });
+    else if (b.abw >= 0.1) minus.push({ t: `Teuer (+${proz(b.abw)} % ${bezug})`, g });
     else plus.push({ t: "Marktüblicher Preis", g: 6 });
   }
 
@@ -38,7 +41,7 @@ export function einordnen(a, b) {
   else minus.push({ t: "Balkon nicht bestätigt", g: 18 });
 
   // Lärm, nur bei bekannter Straße
-  if (a.laerm === 0) plus.push({ t: "Sehr ruhige Lage", g: 55 });
+  if (a.laerm === 0) plus.push({ t: ohneKarte ? "Abseits der Hauptstraßen" : "Sehr ruhige Lage", g: ohneKarte ? 40 : 55 });
   else if (a.laerm === 55) plus.push({ t: "Ruhige Lage", g: 30 });
   else if (a.laerm === 60) minus.push({ t: "Etwas Straßenlärm (60–64 dB)", g: 25 });
   else if (a.laerm === 65) minus.push({ t: "Laute Straße (65–69 dB)", g: 60 });
@@ -47,8 +50,8 @@ export function einordnen(a, b) {
   // Wege
   if (a.bahn) {
     if (a.bahn.min <= 5) plus.push({ t: `${LINIE(a)} in ${a.bahn.min} Min zu Fuß`, g: 45 * weg });
-    else if (a.bahn.min >= 15) minus.push({ t: `Weit zur Bahn (${a.bahn.min} Min)`, g: 60 * weg });
-    else if (a.bahn.min >= 11) minus.push({ t: `Bahn erst in ${a.bahn.min} Min`, g: 28 * weg });
+    else if (a.bahn.min >= 15) minus.push({ t: `Weit zur ${halt} (${a.bahn.min} Min)`, g: 60 * weg });
+    else if (a.bahn.min >= 11) minus.push({ t: `${halt} erst in ${a.bahn.min} Min`, g: 28 * weg });
     else plus.push({ t: `${LINIE(a)} in ${a.bahn.min} Min zu Fuß`, g: 12 * weg });
   }
   if (a.schule) {

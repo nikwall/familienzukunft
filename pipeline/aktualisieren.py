@@ -10,15 +10,17 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import email
 import imaplib
 import json
 import os
+import re
 import sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).parent))
-from anreichern import anreichern  # noqa: E402
+from anreichern import ORTE, anreichern  # noqa: E402
 from lesen import lies_mail  # noqa: E402
 from verlauf import tagesstand  # noqa: E402
 
@@ -27,6 +29,7 @@ STAND = WURZEL / "data" / "wohnen.json"
 START = WURZEL / ".geheim" / "einstellungen.json"
 PFLICHT = ("typ", "preis", "flaeche")
 INSERAT_GILT_TAGE = 45  # ohne neuen Hinweis gilt ein Inserat danach als weg
+ZIMMER_HOECHSTENS = 12  # darüber sind es praktisch nur Zinshäuser
 
 
 def heute_datum() -> dt.date:
@@ -57,20 +60,37 @@ def stand_sichern(stand: dict, vorher: str) -> None:
     STAND.write_text(json.dumps(stand, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def mails_abholen() -> list[bytes]:
+def absender_domain(roh: bytes) -> str:
+    m = re.search(r"@([\w.-]+)", email.message_from_bytes(roh).get("From", ""))
+    return m[1].lower() if m else "unbekannt"
+
+
+def mails_abholen(stand: dict) -> list[dict]:
+    """Holt ungelesene Mails. Als gelesen gilt nur, was ein Angebot enthielt.
+
+    Mails ohne erkanntes Angebot (Bestätigungen, geändertes Portal-Layout) bleiben ungelesen,
+    bis jemand sie ansieht. Das Protokoll ist öffentlich, es nennt nur Absender-Domain und Zahlen.
+    """
     host, nutzer, pw = (os.environ.get(k, "") for k in ("FZ_IMAP_HOST", "FZ_IMAP_USER", "FZ_IMAP_PASSWORT"))
     if not (host and nutzer and pw):
         print("Kein Postfach eingerichtet, überspringe Mails.")
         return []
-    aus = []
+    aus: list[dict] = []
+    seit = (heute_datum() - dt.timedelta(days=14)).strftime("%d-%b-%Y")
     with imaplib.IMAP4_SSL(host) as imap:
         imap.login(nutzer, pw)
         imap.select("INBOX")
-        _, ids = imap.search(None, "UNSEEN")
+        _, ids = imap.search(None, f'(UNSEEN SINCE "{seit}")')
         for i in ids[0].split():
-            _, teile = imap.fetch(i, "(RFC822)")  # setzt die Mail auf gelesen
-            aus.append(teile[0][1])
-    print(f"{len(aus)} neue Mail(s).")
+            _, teile = imap.fetch(i, "(BODY.PEEK[])")
+            roh = teile[0][1]
+            angebote = lies_mail(roh)
+            print(f"Mail von {absender_domain(roh)}: {len(angebote)} Angebot(e)")
+            if angebote:
+                imap.store(i, "+FLAGS", "\\Seen")
+                aus += angebote
+    if aus:
+        stand["letzte_mail"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")
     return aus
 
 
@@ -79,10 +99,12 @@ def einordnen(stand: dict, neu: list[dict], quelle: str) -> tuple[int, dict]:
     tag, zaehler, neu_n = heute(), {}, 0
     for a in neu:
         grund = a.get("ausschluss")
-        if not grund and a.get("ort") != "Hamburg":
-            grund = "außerhalb Hamburgs"
+        if not grund and a.get("ort") not in ORTE:
+            grund = "außerhalb der Suchgebiete"
         if not grund and not all(a.get(k) for k in PFLICHT):
             grund = "unvollständig"
+        if not grund and (a.get("zimmer") or 0) >= ZIMMER_HOECHSTENS:
+            grund = "zu groß"
         if grund:
             zaehler[grund] = zaehler.get(grund, 0) + 1
             stand["verworfen"][a["id"]] = {"grund": grund, "tag": tag, "url": a["url"]}
@@ -128,8 +150,7 @@ def main() -> None:
     if args.seed:
         einordnen(stand, json.loads(Path(args.seed).read_text(encoding="utf-8")), "Datei")
     else:
-        neu = [a for m in mails_abholen() for a in lies_mail(m)]
-        einordnen(stand, neu, "Mails")
+        einordnen(stand, mails_abholen(stand), "Mails")
     ablauf(stand)
     stand.setdefault("verlauf", {})[heute()] = tagesstand(stand["angebote"], heute(), stand["einstellungen"]["muss"])
     stand_sichern(stand, vorher)
