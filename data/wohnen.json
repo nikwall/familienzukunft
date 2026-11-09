@@ -2929,5 +2929,81 @@
    "url": "https://www.immowelt.de/expose/86851c71-c7a6-40c4-b811-6269ebbc5c91"
   }
  },
- "aktualisiert": "2026-11-09T04:12+00:00"
+ "aktualisiert": "2026-11-09T05:19+00:00",
+ "verlauf": {
+  "2026-11-09": {
+   "scheideweg": {
+    "miete": {
+     "aktiv": 2,
+     "qm": 24.35,
+     "neu": 2,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 1,
+     "qm": 6945.65,
+     "neu": 1,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "eimsbuettel": {
+    "miete": {
+     "aktiv": 4,
+     "qm": 24.35,
+     "neu": 4,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 5,
+     "qm": 8500.0,
+     "neu": 5,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "alster": {
+    "miete": {
+     "aktiv": 9,
+     "qm": 22.95,
+     "neu": 9,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 4,
+     "qm": 8548.6,
+     "neu": 4,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "hamburg": {
+    "miete": {
+     "aktiv": 35,
+     "qm": 19.11,
+     "neu": 35,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 25,
+     "qm": 6945.65,
+     "neu": 25,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   }
+  }
+ }
 }

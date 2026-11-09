@@ -15,10 +15,12 @@ import json
 import os
 import sys
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).parent))
 from anreichern import anreichern  # noqa: E402
 from lesen import lies_mail  # noqa: E402
+from verlauf import tagesstand  # noqa: E402
 
 WURZEL = Path(__file__).resolve().parent.parent
 STAND = WURZEL / "data" / "wohnen.json"
@@ -27,8 +29,12 @@ PFLICHT = ("typ", "preis", "flaeche")
 INSERAT_GILT_TAGE = 45  # ohne neuen Hinweis gilt ein Inserat danach als weg
 
 
+def heute_datum() -> dt.date:
+    return dt.datetime.now(ZoneInfo("Europe/Berlin")).date()
+
+
 def heute() -> str:
-    return dt.date.today().isoformat()
+    return heute_datum().isoformat()
 
 
 def stand_laden() -> dict:
@@ -101,9 +107,15 @@ def einordnen(stand: dict, neu: list[dict], quelle: str) -> tuple[int, dict]:
 
 
 def ablauf(stand: dict) -> None:
-    grenze = (dt.date.today() - dt.timedelta(days=INSERAT_GILT_TAGE)).isoformat()
+    tag = heute_datum()
+    grenze = (tag - dt.timedelta(days=INSERAT_GILT_TAGE)).isoformat()
     for a in stand["angebote"].values():
+        war_aktiv = a.get("aktiv", True)
         a["aktiv"] = a["zuletzt"] >= grenze
+        if war_aktiv and not a["aktiv"]:
+            a["weg_am"] = tag.isoformat()
+        elif a["aktiv"]:
+            a.pop("weg_am", None)
 
 
 def main() -> None:
@@ -119,6 +131,7 @@ def main() -> None:
         neu = [a for m in mails_abholen() for a in lies_mail(m)]
         einordnen(stand, neu, "Mails")
     ablauf(stand)
+    stand.setdefault("verlauf", {})[heute()] = tagesstand(stand["angebote"], heute(), stand["einstellungen"]["muss"])
     stand_sichern(stand, vorher)
     print(f"Stand: {sum(1 for a in stand['angebote'].values() if a['aktiv'])} aktive Angebote.")
 

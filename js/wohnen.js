@@ -1,32 +1,36 @@
-// Bereich „Wohnen“: Angebote, Karte, Vergleich von Miete und Kauf.
-import { STANDARD, bewerte, kostensatz } from "./vergleich.js";
+// Bereich „Wohnen“, vom Handy her gedacht: Angebote, Karte, Markt.
+import { STANDARD, bewerte, eichung, kostensatz } from "./vergleich.js";
+import { einordnen } from "./einordnung.js";
+import { baueKarte } from "./karte.js";
+import { zeigeMarkt } from "./markt.js";
+import { ladeReaktionen, loescheKommentar, schreibeKommentar, setzeLike } from "./reaktionen.js";
+import { esc, eur, merken, tausend, zahl } from "./format.js";
 
 const HH = "data/hamburg/";
-const LAERM_WMS = "https://geodienste.hamburg.de/wms_strategische_laermkarten?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=strasse_tag&STYLES=&FORMAT=image/png&TRANSPARENT=true&CRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX={bbox-epsg-3857}";
-const LAERM_LEGENDE = [["#E9F4D0", "55–59"], ["#F4D5A7", "60–64"], ["#DA7C77", "65–69"], ["#9D518B", "70–74"], ["#7A527F", "ab 75"]];
-const BLAU = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95"];
 const LAUT = 65; // ab hier: Niveau einer Hauptverkehrsstraße
-const SPEICHER = "fz_annahmen";
+const NEU_TAGE = 3;
+const STANDARD_GEBIET = "eimsbuettel";
+const breit = () => window.matchMedia("(min-width: 900px)").matches;
+const json = (f) => fetch(HH + f).then((r) => { if (!r.ok) throw new Error(`${f}: ${r.status}`); return r.json(); });
 
-const zahl = (n, d = 0) => (n == null || !isFinite(n) ? "–" : n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d }));
-const eur = (n) => `${zahl(Math.round(n))} €`;
-const tausend = (n) => (n == null || !isFinite(n) ? "–" : `${zahl(Math.round(n / 1000) * 1000)} €`);
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const median = (w) => { const s = w.filter((x) => x != null && isFinite(x)).sort((a, b) => a - b); if (!s.length) return null; const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
-
-const URTEIL = { guenstig: "günstig", fair: "marktüblich", teuer: "teuer" };
-
-function preisKurz(a) {
-  if (a.typ === "miete") return eur(a.preis);
-  return a.preis >= 1e6 ? `${zahl(a.preis / 1e6, 2)} Mio` : `${zahl(Math.round(a.preis / 1000))} T€`;
-}
+const ICON = {
+  liste: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+  karte: '<path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.300"/>',
+  markt: '<path d="M4 18l5.500-6 4 3.500L20 8"/><path d="M15 8h5v5"/>',
+};
+const icon = (n) => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[n]}</svg>`;
+const HERZ = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 20.500s-7.500-4.700-9.300-9.300C1.500 8 3.400 4.700 6.800 4.700c2.100 0 3.700 1.100 5.200 3 1.500-1.900 3.100-3 5.200-3 3.400 0 5.300 3.300 4.100 6.500-1.800 4.600-9.300 9.300-9.300 9.300z"/></svg>';
 
 function draussen(a) {
-  if (a.garten) return { text: "Garten", ok: true };
-  if (a.terrasse) return { text: "Terrasse", ok: true };
-  if (a.balkon) return { text: "Balkon", ok: true };
-  if (a.balkon === false && a.terrasse === false && a.garten === false) return { text: "kein Balkon im Inserat", ok: false };
-  return { text: "Balkon offen", ok: null };
+  if (a.garten) return "Garten";
+  if (a.terrasse) return "Terrasse";
+  if (a.balkon) return "Balkon";
+  if (a.balkon === false && a.terrasse === false && a.garten === false) return null;
+  return "Balkon?";
+}
+
+function ohneDraussen(a) {
+  return a.balkon === false && a.terrasse === false && a.garten === false;
 }
 
 function laermText(a) {
@@ -35,420 +39,437 @@ function laermText(a) {
   return a.laerm >= 75 ? "ab 75 dB" : `${a.laerm}–${a.laerm + 4} dB`;
 }
 
-function linie(a) {
-  return a.bahn.linien.slice(0, 2).join("/") || "Bahn";
-}
-
-function versatz(id) {
-  let h = 0;
-  for (const c of id) h = (h * 31 + c.charCodeAt(0)) >>> 0;
-  return [((h & 255) / 255 - 0.5) * 0.003, (((h >> 8) & 255) / 255 - 0.5) * 0.002];
-}
-
-// ------------------------------------------------------------------ Einstieg
-
 export async function zeigeWohnen(wurzel, stand) {
-  wurzel.innerHTML = `<div class="laden">Karte wird geladen …</div>`;
-  const [stadtteile, profil, preise, schulen, bahn] = await Promise.all(
-    ["stadtteile.geojson", "stadtteile_profil.json", "preise_stadtteile.json", "grundschulen.json", "schnellbahn.json"]
-      .map((f) => fetch(HH + f).then((r) => r.json())),
-  );
+  wurzel.innerHTML = `<div class="laden">Wird geladen …</div>`;
+  const [preise, gebiete] = await Promise.all([json("preise_stadtteile.json"), json("gebiete.json")]);
+  const alleNamen = Object.keys(preise.werte);
+  const mengeVon = (g) => new Set(g.stadtteile ?? alleNamen);
+  const gespeichert = merken.lesen("fz_gebiet", null);
 
+  const z = {
+    typ: "alle", garten: false, ruhig: false, gemerkt: false, sort: "beste", offen: null, blatt: null, ansicht: "liste",
+    aktiv: gespeichert ? new Set(gespeichert) : mengeVon(gebiete.find((g) => g.id === STANDARD_GEBIET)),
+    name: merken.lesen("fz_name", ""),
+    annahmen: { ...STANDARD, ...merken.lesen("fz_annahmen", {}) },
+  };
+  let r = { likes: new Map(), kommentare: new Map(), verfuegbar: false };
+  let karte = null;
+  let karteLaedt = null;
   const einst = stand.einstellungen;
-  const zustand = { typ: "alle", draussen: true, garten: false, ruhig: false, sort: "neu", gewaehlt: null, faerbung: "faktor", annahmen: annahmenLaden() };
-  const alle = Object.values(stand.angebote).filter((a) => a.aktiv && a.lat != null);
+  const ersterTag = Object.keys(stand.verlauf || {}).sort()[0];
+  const alle = Object.values(stand.angebote).filter((a) => a.aktiv && a.lat != null && a.flaeche >= einst.muss.flaeche && (a.zimmer ?? 99) >= einst.muss.zimmer && !ohneDraussen(a));
+  const eich = eichung(alle, preise.werte);
+  let bewertet = [];
 
-  wurzel.innerHTML = gerippe(stand, preise, profil);
+  function neuBewerten() {
+    bewertet = alle.map((a) => { const b = bewerte(a, preise.werte, z.annahmen, eich); return { a, b, o: einordnen(a, b) }; });
+  }
+
+  wurzel.innerHTML = `
+    <div class="wohnen" data-ansicht="liste">
+      <div class="gebiete" role="group" aria-label="Gebiet">
+        ${gebiete.map((g) => `<button data-gebiet="${g.id}" aria-pressed="false" aria-label="${esc(g.titel)}"><span class="g-kurz">${esc(g.kurz)}</span><span class="g-lang">${esc(g.titel)}</span></button>`).join("")}
+      </div>
+      <section class="v-liste" aria-label="Angebote">
+        <div class="filter">
+          <div class="seg" role="group" aria-label="Art">
+            <button data-typ="alle" aria-pressed="true">Alle</button>
+            <button data-typ="miete" aria-pressed="false">Miete</button>
+            <button data-typ="kauf" aria-pressed="false">Kauf</button>
+          </div>
+          <button class="chip" data-schalter="gemerkt" aria-pressed="false" hidden>Gemerkt</button>
+          <button class="chip" data-schalter="garten" aria-pressed="false">Garten</button>
+          <button class="chip" data-schalter="ruhig" aria-pressed="false">Ruhig</button>
+        </div>
+        <div class="unterfilter">
+          <span id="anzahl"></span>
+          <select id="sort" aria-label="Sortierung">
+            <option value="beste">Beste zuerst</option>
+            <option value="neu">Neueste zuerst</option>
+            <option value="preis">Preis aufsteigend</option>
+          </select>
+        </div>
+        <div id="liste" class="liste"></div>
+      </section>
+      <section class="v-markt" aria-label="Markt"><div id="markt" class="markt"></div></section>
+      <section class="v-karte" aria-label="Karte">
+        <div id="karte"></div>
+        <div id="kurz" class="kurz" role="status" hidden></div>
+        <div id="blatt" class="blatt" hidden></div>
+      </section>
+      <nav class="unten" aria-label="Ansicht">
+        <button data-ansicht="liste" aria-current="true">${icon("liste")}<span>Angebote</span></button>
+        <button data-ansicht="karte" aria-current="false">${icon("karte")}<span>Karte</span></button>
+        <button data-ansicht="markt" aria-current="false">${icon("markt")}<span>Markt</span></button>
+      </nav>
+    </div>
+    <dialog id="annahmen" class="dialog"></dialog>
+    <dialog id="namen" class="dialog klein">
+      <form method="dialog" class="dlg">
+        <h2>Wer bist du?</h2>
+        <p class="satz">Der Name steht bei deinen Likes und Kommentaren. Dieses Gerät merkt ihn sich.</p>
+        <input id="name-feld" maxlength="40" autocomplete="given-name" placeholder="Vorname">
+        <div class="dlg-knoepfe"><button value="ab" class="link">Abbrechen</button><button value="ok" class="primaer">Speichern</button></div>
+      </form>
+    </dialog>`;
+
   const el = (s) => wurzel.querySelector(s);
-  const karte = baueKarte(el("#karte"), { stadtteile, profil, preise, schulen, bahn, einst, zustand, wurzel });
+  const root = el(".wohnen");
+
+  // ---------------------------------------------------------------- Auswahl
+
+  function gebietAktuell() {
+    return gebiete.find((g) => { const m = mengeVon(g); return m.size === z.aktiv.size && [...m].every((n) => z.aktiv.has(n)); }) ?? null;
+  }
 
   function sichtbar() {
-    const { typ, draussen: d, garten, ruhig } = zustand;
-    return alle.filter((a) => {
-      if (a.flaeche < einst.muss.flaeche || (a.zimmer ?? 99) < einst.muss.zimmer) return false;
-      if (typ !== "alle" && a.typ !== typ) return false;
-      const dr = draussen(a);
-      if (d && dr.ok === false) return false;
-      if (garten && !a.garten) return false;
-      if (ruhig && (a.laerm ?? 0) >= LAUT) return false;
+    return bewertet.filter(({ a }) => {
+      if (!z.aktiv.has(a.stadtteil)) return false;
+      if (z.typ !== "alle" && a.typ !== z.typ) return false;
+      if (z.garten && !a.garten) return false;
+      if (z.ruhig && (a.laerm ?? 0) >= LAUT) return false;
+      if (z.gemerkt && !r.likes.get(a.id)?.size) return false;
       return true;
     });
   }
 
-  function zeichne() {
-    const liste = sichtbar().map((a) => ({ a, b: bewerte(a, preise.werte, zustand.annahmen) }));
-    const sortierer = {
-      neu: (x, y) => (y.a.erstmals || "").localeCompare(x.a.erstmals || "") || x.b.qm - y.b.qm,
+  function sortiert() {
+    const s = {
+      beste: (x, y) => y.o.punkte - x.o.punkte,
+      neu: (x, y) => (y.a.erstmals || "").localeCompare(x.a.erstmals || "") || y.o.punkte - x.o.punkte,
       preis: (x, y) => x.a.preis - y.a.preis,
-      guenstig: (x, y) => (x.b.abw ?? 9) - (y.b.abw ?? 9),
     };
-    liste.sort(sortierer[zustand.sort]);
-    el("#anzahl").textContent = `${liste.length} von ${alle.length} Angeboten passen`;
-    marktleiste(el("#markt"), liste);
-    el("#liste").innerHTML = liste.length ? liste.map(({ a, b }) => kachel(a, b, zustand)).join("") : `<p class="leer">Keine Angebote mit diesen Filtern.</p>`;
-    karte.setzePins(liste, (id) => waehle(id, true));
+    return sichtbar().sort(s[z.sort]);
   }
 
-  function waehle(id, vonKarte) {
-    zustand.gewaehlt = zustand.gewaehlt === id ? null : id;
-    wurzel.querySelectorAll(".kachel").forEach((k) => {
-      const offen = k.dataset.id === zustand.gewaehlt;
-      k.classList.toggle("offen", offen);
-      k.querySelector(".kachel-kopf").setAttribute("aria-expanded", String(offen));
-      k.querySelector(".kachel-detail").hidden = !offen;
-      if (offen && vonKarte) k.scrollIntoView({ behavior: "smooth", block: "center" });
+  // ---------------------------------------------------------------- Kacheln
+
+  function kachel(x) {
+    const { a, b, o } = x;
+    const liked = r.likes.get(a.id);
+    const n = liked?.size ?? 0;
+    const ich = !!(z.name && liked?.has(z.name));
+    const nk = r.kommentare.get(a.id)?.length ?? 0;
+    const offen = z.offen === a.id;
+    const neu = a.erstmals !== ersterTag && (new Date() - new Date(a.erstmals)) / 864e5 <= NEU_TAGE;
+    const dr = draussen(a);
+    const merkmale = [esc(a.stadtteil || "Hamburg"), `${zahl(a.flaeche, a.flaeche % 1 ? 1 : 0)} m²`, `${zahl(a.zimmer, a.zimmer % 1 ? 1 : 0)} Zi.`];
+    if (dr) merkmale.push(dr);
+    const g = b.gegen;
+    const bezug = g ? `entspricht ${g.art === "kauf" ? `Kauf ${tausend(g.wert)}` : `Miete ${eur(g.wert)}`}` : "";
+    const abwRund = b.abw == null ? null : Math.round(b.abw * 100);
+    const abw = abwRund == null ? "" : `<span class="abw ${b.urteil}">${abwRund > 0 ? "+" : abwRund < 0 ? "−" : "±"}${Math.abs(abwRund)} %</span>`;
+    return `
+    <article class="kachel ${b.urteil || ""} ${offen ? "offen" : ""}" data-id="${esc(a.id)}">
+      <button class="kachel-kopf" aria-expanded="${offen}">
+        <div class="z1"><b>${eur(a.preis)}</b><small>${a.typ === "miete" ? "kalt · " : ""}${zahl(b.qm, a.typ === "miete" ? 2 : 0)} €/m²</small>${abw}${neu ? '<span class="neu">Neu</span>' : ""}</div>
+        <div class="z2">${merkmale.join(" · ")}</div>
+        <div class="pro"><i aria-hidden="true">▲</i><span>${esc(o.staerke)}</span></div>
+        <div class="contra"><i aria-hidden="true">▼</i><span>${esc(o.schwaeche)}</span></div>
+        <div class="z5"><span>${bezug}</span>${nk ? `<span class="nk">${nk} ${nk === 1 ? "Kommentar" : "Kommentare"}</span>` : ""}</div>
+      </button>
+      ${r.verfuegbar ? `<button class="herz ${ich ? "an" : ""}" aria-pressed="${ich}" aria-label="Gefällt mir">${HERZ}<span>${n || ""}</span></button>` : ""}
+      ${offen ? `<div class="kachel-detail">${detail(x)}</div>` : ""}
+    </article>`;
+  }
+
+  function detail({ a, b, o }) {
+    const g = b.gegen;
+    const zeilen = [];
+    if (g) {
+      const f = g.art === "kauf" ? tausend : eur;
+      const m = g.art === "kauf" ? "Kaufpreis" : "Miete";
+      const [u, h] = g.spanne;
+      zeilen.push(`<dt>Entsprechende${g.art === "kauf" ? "r" : ""} ${m}</dt><dd><b>${f(g.wert)}</b><small>${f(u)} bis ${h == null ? "offen" : f(h)}</small></dd>`);
+      zeilen.push(`<dt>${m} am Markt, gleiche Größe</dt><dd>${f(g.markt)}</dd>`);
+    }
+    if (b.rate) zeilen.push(`<dt>Monatsrate</dt><dd>${eur(b.rate)}</dd>`);
+    const fazit = !g ? "" : g.besser === "mieten" ? "Mieten ist hier günstiger als Kaufen." : g.besser === "kaufen" ? "Kaufen ist hier günstiger als Mieten." : "Kaufen und Mieten liegen gleichauf.";
+    const weitere = [...o.plus.slice(1, 4).map((p) => `<li class="p">${esc(p.t)}</li>`), ...o.minus.slice(1, 3).map((p) => `<li class="m">${esc(p.t)}</li>`)];
+    const fakten = [];
+    if (a.bahn) fakten.push(`${esc(a.bahn.linien.slice(0, 2).join("/"))} ${esc(a.bahn.name)} ${a.bahn.min} Min`);
+    if (a.schule) fakten.push(`${esc(a.schule.name)} ${a.schule.min} Min`);
+    if (laermText(a)) fakten.push(laermText(a));
+    if (a.etage) fakten.push(`Etage ${esc(a.etage)}`);
+    if (a.baujahr) fakten.push(`Bj. ${esc(a.baujahr)}`);
+    if (a.energie) fakten.push(`Energie ${esc(a.energie)}`);
+    if (a.frei_ab) fakten.push(`frei ab ${esc(a.frei_ab)}`);
+    return `
+      ${fazit ? `<p class="fazit">${fazit}</p>` : ""}
+      <dl>${zeilen.join("")}</dl>
+      ${weitere.length ? `<ul class="weitere">${weitere.join("")}</ul>` : ""}
+      <p class="klein">${fakten.join(" · ")}</p>
+      <a class="zum-inserat" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">Zum Inserat</a>
+      ${kommentare(a)}`;
+  }
+
+  function kommentare(a) {
+    if (!r.verfuegbar) return `<p class="klein">Likes und Kommentare sind gerade nicht erreichbar.</p>`;
+    const liste = r.kommentare.get(a.id) ?? [];
+    const namen = [...(r.likes.get(a.id) ?? [])];
+    return `
+      <div class="kommentare">
+        ${namen.length ? `<p class="klein">Gefällt ${namen.map(esc).join(" und ")}</p>` : ""}
+        <ul>${liste.map((k) => `<li><b>${esc(k.name)}</b> ${esc(k.text)}<button class="k-weg" data-k="${Number(k.id)}" aria-label="Kommentar löschen">×</button></li>`).join("")}</ul>
+        <form class="k-form"><input name="text" maxlength="1000" placeholder="Kommentar" autocomplete="off" enterkeyhint="send" aria-label="Kommentar"><button class="primaer">Senden</button></form>
+      </div>`;
+  }
+
+  // ---------------------------------------------------------------- Zeichnen
+
+  function gebieteZeichnen() {
+    const g = gebietAktuell();
+    wurzel.querySelectorAll("[data-gebiet]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.gebiet === g?.id)));
+  }
+
+  function listeZeichnen() {
+    const liste = sortiert();
+    el("#anzahl").textContent = `${liste.length} ${liste.length === 1 ? "Angebot" : "Angebote"}`;
+    el("#liste").innerHTML = liste.length ? liste.map(kachel).join("") : `<p class="leer">Keine Angebote mit dieser Auswahl.</p>`;
+    karte?.setzePins(liste, z.blatt ?? z.offen);
+  }
+
+  function blattZeichnen() {
+    const b = el("#blatt");
+    const x = z.blatt && bewertet.find((e) => e.a.id === z.blatt);
+    b.hidden = !x;
+    b.innerHTML = x ? `<button class="blatt-zu" aria-label="Schließen">×</button>${kachel(x)}` : "";
+  }
+
+  function marktZeichnen() {
+    const g = gebietAktuell() ?? gebiete.find((x) => x.id === "hamburg");
+    zeigeMarkt(el("#markt"), stand.verlauf, g);
+  }
+
+  function allesZeichnen() {
+    gebieteZeichnen();
+    listeZeichnen();
+    blattZeichnen();
+    if (z.ansicht === "markt" || breit()) marktZeichnen();
+  }
+
+  let kurzUhr;
+  function kurz(text) {
+    const k = el("#kurz");
+    k.textContent = text;
+    k.hidden = false;
+    clearTimeout(kurzUhr);
+    kurzUhr = setTimeout(() => { k.hidden = true; }, 2400);
+  }
+
+  async function karteSichern() {
+    if (karteLaedt) return karteLaedt;
+    karteLaedt = (async () => {
+      const [stadtteile, schulen, bahn] = await Promise.all([json("stadtteile.geojson"), json("grundschulen.json"), json("schnellbahn.json")]);
+      karte = baueKarte(el("#karte"), {
+        stadtteile, preise, schulen, bahn, heimat: einst.heimat,
+        beiStadtteil(n) {
+          if (z.aktiv.has(n)) z.aktiv.delete(n); else z.aktiv.add(n);
+          merken.schreiben("fz_gebiet", [...z.aktiv]);
+          karte.aktivSetzen(z.aktiv);
+          allesZeichnen();
+          const p = preise.werte[n]?.wohnung;
+          kurz(`${n} ${z.aktiv.has(n) ? "an" : "aus"}${p ? ` · Kauf ${zahl(p.kauf)} · Miete ${zahl(p.miete, 2)} €/m²` : ""}`);
+        },
+        beiPin(id) {
+          if (breit()) { offenSetzen(id, true); return; }
+          z.blatt = z.blatt === id ? null : id;
+          z.offen = null;
+          blattZeichnen();
+          karte.markiere(z.blatt);
+        },
+      });
+      karte.aktivSetzen(z.aktiv);
+      karte.hinpassen(z.aktiv);
+      karte.setzePins(sortiert(), z.blatt ?? z.offen);
+      kurz("Stadtteil antippen: an oder aus");
+    })();
+    return karteLaedt;
+  }
+
+  function ansichtWechseln(v) {
+    z.ansicht = v;
+    root.dataset.ansicht = v;
+    wurzel.querySelectorAll(".unten [data-ansicht]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.ansicht === v)));
+    if (v === "karte") karteSichern().then(() => karte?.groesse());
+    if (v === "markt") marktZeichnen();
+    if (v !== "karte") z.blatt = null, blattZeichnen();
+    window.scrollTo(0, 0);
+  }
+
+  function offenSetzen(id, vonKarte) {
+    z.offen = z.offen === id ? null : id;
+    listeZeichnen();
+    blattZeichnen();
+    karte?.markiere(z.offen, !!vonKarte);
+    const k = [...wurzel.querySelectorAll(`.kachel`)].find((e) => e.dataset.id === z.offen && !e.closest(".blatt"));
+    if (k && z.ansicht !== "karte" || (k && breit())) k.scrollIntoView({ behavior: "smooth", block: vonKarte ? "center" : "nearest" });
+  }
+
+  // ---------------------------------------------------------------- Likes und Kommentare
+
+  function nameSichern() {
+    if (z.name) return Promise.resolve(z.name);
+    const d = el("#namen");
+    const feld = el("#name-feld");
+    feld.value = "";
+    d.showModal();
+    return new Promise((fertig) => {
+      d.addEventListener("close", () => {
+        const name = d.returnValue === "ok" ? feld.value.trim().slice(0, 40) : "";
+        if (name) { z.name = name; merken.schreiben("fz_name", name); }
+        fertig(name || null);
+      }, { once: true });
     });
-    karte.markiere(zustand.gewaehlt);
   }
 
-  // Bedienung
-  el("#liste").addEventListener("click", (e) => {
-    const kopf = e.target.closest(".kachel-kopf");
-    if (kopf) waehle(kopf.closest(".kachel").dataset.id, false);
+  async function herz(id) {
+    const name = await nameSichern();
+    if (!name) return;
+    const menge = r.likes.get(id) ?? new Set();
+    const an = !menge.has(name);
+    if (an) menge.add(name); else menge.delete(name);
+    r.likes.set(id, menge);
+    allesZeichnen();
+    try {
+      await setzeLike(id, name, an);
+    } catch (e) {
+      console.error(e);
+      if (an) menge.delete(name); else menge.add(name);
+      allesZeichnen();
+      kurz("Konnte nicht gespeichert werden");
+    }
+  }
+
+  async function kommentieren(form) {
+    const id = form.closest(".kachel").dataset.id;
+    const feld = form.elements.text;
+    const text = feld.value.trim();
+    if (!text) return;
+    const name = await nameSichern();
+    if (!name) return;
+    feld.disabled = true;
+    try {
+      const neu = await schreibeKommentar(id, name, text);
+      r.kommentare.set(id, [...(r.kommentare.get(id) ?? []), neu]);
+      allesZeichnen();
+    } catch (e) {
+      console.error(e);
+      feld.disabled = false;
+      kurz("Konnte nicht gespeichert werden");
+    }
+  }
+
+  async function kommentarWeg(id, kid) {
+    const vorher = r.kommentare.get(id) ?? [];
+    r.kommentare.set(id, vorher.filter((k) => k.id !== kid));
+    allesZeichnen();
+    try {
+      await loescheKommentar(kid);
+    } catch (e) {
+      console.error(e);
+      r.kommentare.set(id, vorher);
+      allesZeichnen();
+      kurz("Konnte nicht gelöscht werden");
+    }
+  }
+
+  // ---------------------------------------------------------------- Bedienung
+
+  wurzel.addEventListener("click", (e) => {
+    const ziel = e.target;
+    const gebiet = ziel.closest("[data-gebiet]");
+    if (gebiet) {
+      z.aktiv = mengeVon(gebiete.find((g) => g.id === gebiet.dataset.gebiet));
+      merken.schreiben("fz_gebiet", [...z.aktiv]);
+      z.blatt = null;
+      allesZeichnen();
+      if (karte) { karte.aktivSetzen(z.aktiv); karte.hinpassen(z.aktiv); }
+      return;
+    }
+    const typ = ziel.closest("[data-typ]");
+    if (typ) {
+      z.typ = typ.dataset.typ;
+      wurzel.querySelectorAll("[data-typ]").forEach((x) => x.setAttribute("aria-pressed", String(x === typ)));
+      listeZeichnen();
+      return;
+    }
+    const schalter = ziel.closest("[data-schalter]");
+    if (schalter) {
+      const k = schalter.dataset.schalter;
+      z[k] = !z[k];
+      schalter.setAttribute("aria-pressed", String(z[k]));
+      listeZeichnen();
+      return;
+    }
+    const ansicht = ziel.closest(".unten [data-ansicht]");
+    if (ansicht) { ansichtWechseln(ansicht.dataset.ansicht); return; }
+    if (ziel.closest(".blatt-zu")) { z.blatt = null; blattZeichnen(); karte?.markiere(null, false); return; }
+    if (ziel.closest("#annahmen-oeffnen")) { el("#annahmen").showModal(); return; }
+    const karteEl = ziel.closest(".kachel");
+    if (!karteEl) return;
+    const id = karteEl.dataset.id;
+    const weg = ziel.closest(".k-weg");
+    if (weg) { kommentarWeg(id, Number(weg.dataset.k)); return; }
+    if (ziel.closest(".herz")) { herz(id); return; }
+    if (ziel.closest(".kachel-kopf")) offenSetzen(id, false);
   });
-  wurzel.querySelectorAll("[data-typ]").forEach((b) => b.addEventListener("click", () => {
-    zustand.typ = b.dataset.typ;
-    wurzel.querySelectorAll("[data-typ]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-    zeichne();
-  }));
-  wurzel.querySelectorAll("[data-schalter]").forEach((b) => b.addEventListener("click", () => {
-    const k = b.dataset.schalter;
-    zustand[k] = !zustand[k];
-    b.setAttribute("aria-pressed", String(zustand[k]));
-    zeichne();
-  }));
-  el("#sort").addEventListener("change", (e) => { zustand.sort = e.target.value; zeichne(); });
+  wurzel.addEventListener("submit", (e) => {
+    const f = e.target.closest(".k-form");
+    if (f) { e.preventDefault(); kommentieren(f); }
+  });
+  el("#sort").addEventListener("change", (e) => { z.sort = e.target.value; listeZeichnen(); });
 
-  annahmenDialog(el("#annahmen"), el("#annahmen-oeffnen"), zustand, () => { zeichne(); });
-  zeichne();
-}
+  annahmenDialog(el("#annahmen"), z, eich, () => { neuBewerten(); allesZeichnen(); });
 
-// ------------------------------------------------------------------ Gerüst
-
-function gerippe(stand, preise, profil) {
-  const m = stand.einstellungen.muss;
-  const stand_ = new Date(stand.aktualisiert).toLocaleDateString("de-DE");
-  return `
-  <div class="wohnen">
-    <section class="spalte" aria-label="Angebote">
-      <div class="markt" id="markt"></div>
-      <div class="filter">
-        <div class="seg" role="group" aria-label="Art des Angebots">
-          <button data-typ="alle" aria-pressed="true">Alle</button>
-          <button data-typ="miete" aria-pressed="false">Miete</button>
-          <button data-typ="kauf" aria-pressed="false">Kauf</button>
-        </div>
-        <button class="chip" data-schalter="draussen" aria-pressed="true">Balkon oder Garten</button>
-        <button class="chip" data-schalter="garten" aria-pressed="false">Nur Garten</button>
-        <button class="chip" data-schalter="ruhig" aria-pressed="false">Keine Hauptstraße</button>
-      </div>
-      <div class="unterfilter">
-        <span id="anzahl"></span>
-        <label>Sortieren
-          <select id="sort">
-            <option value="neu">Neueste zuerst</option>
-            <option value="guenstig">Günstig zum Stadtteil</option>
-            <option value="preis">Preis aufsteigend</option>
-          </select>
-        </label>
-      </div>
-      <div class="hinweis">Ab ${m.flaeche} m² und ${m.zimmer} Zimmern · Stand ${stand_} · <button class="link" id="annahmen-oeffnen">Annahmen und Quellen</button></div>
-      <div id="liste" class="liste"></div>
-    </section>
-    <section class="kartenfeld" aria-label="Karte">
-      <div id="karte"></div>
-    </section>
-  </div>
-  <dialog id="annahmen" class="dialog"></dialog>`;
-}
-
-function marktleiste(ziel, liste) {
-  const m = (typ) => median(liste.filter((x) => x.a.typ === typ).map((x) => x.b.qm));
-  const miete = m("miete"), kauf = m("kauf");
-  const faktor = miete && kauf ? kauf / (miete * 12) : null;
-  ziel.innerHTML = `
-    <div class="wert"><span>Miete, Median</span><b>${zahl(miete, 2)} €</b><small>je m², kalt</small></div>
-    <div class="wert"><span>Kauf, Median</span><b>${zahl(kauf)} €</b><small>je m²</small></div>
-    <div class="wert"><span>Kaufpreisfaktor</span><b>${zahl(faktor, 1)}</b><small>Jahresmieten</small></div>`;
-}
-
-function kachel(a, b, z) {
-  const dr = draussen(a);
-  const titel = esc(a.strasse ? `${a.strasse.replace(/\s+\d.*$/, "")}` : a.art || "Angebot");
-  const urteil = b.urteil
-    ? `<span class="urteil ${b.urteil}">${b.abw > 0 ? "+" : "−"}${zahl(Math.abs(b.abw) * 100)} % · ${URTEIL[b.urteil]}</span>`
-    : "";
-  const lt = laermText(a);
-  const merk = [`${zahl(a.flaeche, a.flaeche % 1 ? 1 : 0)} m²`, `${zahl(a.zimmer, a.zimmer % 1 ? 1 : 0)} Zi.`, `<span class="dr ${dr.ok === null ? "offen" : dr.ok ? "ja" : "nein"}">${dr.text}</span>`];
-  if (a.baujahr) merk.push(`Bj. ${a.baujahr}`);
-  const lage = [`${esc(linie(a))} ${esc(a.bahn.name)} ${a.bahn.min} Min`, `Grundschule ${a.schule.min} Min`];
-  if (lt) lage.push(`<span class="${a.laerm >= LAUT ? "laut" : ""}">${lt}</span>`);
-  const offen = z.gewaehlt === a.id;
-  return `
-  <article class="kachel ${offen ? "offen" : ""}" data-id="${esc(a.id)}">
-    <button class="kachel-kopf" aria-expanded="${offen}">
-      <div class="z1"><span class="art ${a.typ}">${a.typ === "miete" ? "Miete" : "Kauf"}</span><span class="ort">${esc(a.stadtteil || "Hamburg")}</span>${urteil}</div>
-      <div class="z2"><b>${eur(a.preis)}</b><small>${a.typ === "miete" ? "kalt · " : ""}${zahl(b.qm, a.typ === "miete" ? 2 : 0)} €/m²</small></div>
-      <div class="z3">${merk.join(" · ")}</div>
-      <div class="z4">${lage.join(" · ")}</div>
-      ${b.gegen ? `<div class="z5">${a.typ === "miete" ? "Entspricht Kaufpreis" : "Entspricht Miete"} <b>${b.gegen.art === "kauf" ? tausend(b.gegen.wert) : eur(b.gegen.wert)}</b></div>` : ""}
-    </button>
-    <div class="kachel-detail" ${offen ? "" : "hidden"}>${detail(a, b, titel)}</div>
-  </article>`;
-}
-
-function detail(a, b, titel) {
-  const g = b.gegen;
-  const zeilen = [];
-  if (g) {
-    const f = g.art === "kauf" ? tausend : eur;
-    const marke = g.art === "kauf" ? "Kaufpreis" : "Miete";
-    zeilen.push(`<dt>${g.art === "kauf" ? "Entsprechender" : "Entsprechende"} ${marke}</dt><dd><b>${f(g.wert)}</b>${g.art === "miete" ? " kalt" : ""}</dd>`);
-    zeilen.push(`<dt>Spanne (Wertzuwachs ±1 Punkt)</dt><dd>${f(g.spanne[0])} bis ${g.spanne[1] == null || !isFinite(g.spanne[1]) ? "offen" : f(g.spanne[1])}</dd>`);
-    zeilen.push(`<dt>${marke} am Markt, gleiche Größe</dt><dd>${f(g.markt)}</dd>`);
-  }
-  if (b.rate) zeilen.push(`<dt>Monatsrate (Zins + 2 % Tilgung)</dt><dd>${eur(b.rate)}</dd>`);
-  if (b.ref) zeilen.push(`<dt>Stadtteil-Schnitt ${esc(a.stadtteil)}</dt><dd>${zahl(a.typ === "miete" ? b.ref.miete : b.ref.kauf, a.typ === "miete" ? 2 : 0)} €/m²</dd>`);
-  const fazit = !g ? "" : g.besser === "mieten" ? "Mieten ist hier günstiger als Kaufen." : g.besser === "kaufen" ? "Kaufen ist hier günstiger als Mieten." : "Kaufen und Mieten liegen hier gleichauf.";
-
-  const fakten = [];
-  if (a.etage) fakten.push(`Etage ${esc(a.etage)}`);
-  if (a.frei_ab) fakten.push(`frei ab ${esc(a.frei_ab)}`);
-  if (a.energie) fakten.push(`Energie ${esc(a.energie)}`);
-  if (a.neubau) fakten.push("Neubau/Erstbezug");
-  if (a.privat) fakten.push("privat");
-  if (a.provisionsfrei) fakten.push("provisionsfrei");
-  if (a.kapitalanlage) fakten.push("als Kapitalanlage inseriert, evtl. vermietet");
-  const ungefaehr = a.lage === "adresse" || a.lage === "strasse" ? "" : `<p class="klein">Lage nur ungefähr bekannt (${a.lage === "plz" ? "PLZ" : "Stadtteil"}), Wege und Lärm entsprechend unsicher.</p>`;
-  return `
-    ${fazit ? `<p class="fazit">${fazit}</p>` : ""}
-    <dl>${zeilen.join("")}</dl>
-    ${ungefaehr}
-    <p class="klein">${esc(titel)}${fakten.length ? " · " + fakten.join(" · ") : ""} · Grundschule: ${esc(a.schule.name)}</p>
-    <a class="zum-inserat" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">Zum Inserat bei ${esc(a.quelle)}</a>`;
+  neuBewerten();
+  allesZeichnen();
+  if (breit()) karteSichern();
+  ladeReaktionen().then((x) => {
+    r = x;
+    el('[data-schalter="gemerkt"]').hidden = false;
+    allesZeichnen();
+  }).catch((e) => console.warn("Likes und Kommentare nicht erreichbar:", e.message));
 }
 
 // ------------------------------------------------------------------ Annahmen
-
-function annahmenLaden() {
-  try { return { ...STANDARD, ...JSON.parse(localStorage.getItem(SPEICHER) || "{}") }; } catch { return { ...STANDARD }; }
-}
 
 const REGLER = [
   ["zins", "Bauzins", 2, 7, 0.1, "%"], ["ek", "Eigenkapitalanteil", 0, 60, 5, "%"],
   ["ekRendite", "Rendite auf Eigenkapital (nach Steuer)", 0, 8, 0.5, "%"], ["wert", "Wertzuwachs pro Jahr", -1, 5, 0.25, "%"],
   ["halten", "Haltedauer", 5, 30, 1, "Jahre"], ["kosten", "Eigentümerkosten je m²/Jahr", 10, 60, 1, "€"],
 ];
+const stellen = (s) => (s < 1 ? (s < 0.5 ? 2 : 1) : 0);
 
-function annahmenDialog(d, oeffner, zustand, nachAenderung) {
-  const a = zustand.annahmen;
-  const zeilen = REGLER.map(([k, t, min, max, s, e]) => `
-    <label class="regler"><span>${t}</span><output data-v="${k}">${zahl(a[k], s < 1 ? (s < 0.5 ? 2 : 1) : 0)} ${e}</output>
-      <input type="range" data-k="${k}" min="${min}" max="${max}" step="${s}" value="${a[k]}"></label>`).join("");
+function annahmenDialog(d, z, eich, nachAenderung) {
+  const a = z.annahmen;
   d.innerHTML = `
     <form method="dialog" class="dlg">
       <div class="dlg-kopf"><h2>Annahmen und Quellen</h2><button class="x" aria-label="Schließen">×</button></div>
-      <p class="satz">Jährlicher Kostensatz: <b id="satz"></b> des Kaufpreises, zuzüglich Eigentümerkosten. Kaufnebenkosten ${zahl(a.grest + a.notar + a.makler, 2)} % (Steuer ${zahl(a.grest, 1)}, Notar ${zahl(a.notar, 1)}, Makler ${zahl(a.makler, 2)}).</p>
-      ${zeilen}
+      <p class="satz">Jährlicher Kostensatz: <b id="satz"></b> des Kaufpreises, dazu Eigentümerkosten.</p>
+      ${REGLER.map(([k, t, min, max, s, e]) => `
+        <label class="regler"><span>${t}</span><output data-v="${k}">${zahl(a[k], stellen(s))} ${e}</output>
+          <input type="range" data-k="${k}" min="${min}" max="${max}" step="${s}" value="${a[k]}"></label>`).join("")}
       <button type="button" class="link" id="zurueck">Auf Standard zurücksetzen</button>
       <h3>So wird gerechnet</h3>
-      <p>Ein Kaufpreis „entspricht“ einer Miete, wenn beide im Jahr gleich viel kosten. Der Wertzuwachs ist der größte Hebel, deshalb steht bei jedem Angebot die Spanne für ±1 Prozentpunkt.</p>
-      <p>„Teuer“ und „günstig“ heißen: mehr als 10 % über oder unter dem Stadtteil-Schnitt.</p>
-      <h3>Grenzen der Vergleichswerte</h3>
-      <p>Die Stadtteil-Schnitte stammen von immobilienpreise-2026.de (Stand Q3 2026). Die Seite legt ihre Methode nicht offen, und sie mittelt alle Größen und Baujahre, Neubau wirkt also rasch „teuer“. Mit jedem Monat Inseraten ersetzen wir sie schrittweise durch eigene Mediane.</p>
-      <p class="klein">Lärm: Strategische Lärmkarte 2022, lauteste Klasse im Umkreis von 25 m · Stadtteile, Schulen, HVV, Statistik: Freie und Hansestadt Hamburg, Datenlizenz Deutschland · Karte: OpenStreetMap, OpenFreeMap · Bauzins: Dr. Klein (9.10.2026), Interhyp (10.9.2026).</p>
+      <p>Ein Kaufpreis entspricht einer Miete, wenn beide im Jahr gleich viel kosten. Der Wertzuwachs ist der größte Hebel, deshalb steht bei jedem Inserat die Spanne für einen Punkt mehr oder weniger.</p>
+      <h3>Grenzen</h3>
+      <p>Die Stadtteil-Schnitte stammen von immobilienpreise-2026.de (Stand Q3 2026). Die Seite legt ihre Methode nicht offen und mittelt über alle Größen und Baujahre. Ihr Niveau ist deshalb auf die beobachteten Inserate geeicht (Miete × ${zahl(eich.miete, 2)}, Kauf × ${zahl(eich.kauf, 2)}). „Teuer“ und „günstig“ heißen: mehr als 10 % über oder unter diesem Wert.</p>
+      <p class="klein">Lärm: Strategische Lärmkarte 2022, lauteste Klasse im Umkreis von 25 m · Stadtteile, Schulen, HVV: Freie und Hansestadt Hamburg, Datenlizenz Deutschland · Karte: OpenStreetMap, OpenFreeMap · Bauzins: Dr. Klein (9.10.2026), Interhyp (10.9.2026).</p>
     </form>`;
-  const satz = () => { d.querySelector("#satz").textContent = `${zahl(kostensatz(zustand.annahmen) * 100, 2)} %`; };
+  const satz = () => { d.querySelector("#satz").textContent = `${zahl(kostensatz(z.annahmen) * 100, 2)} %`; };
   satz();
   d.querySelectorAll("input[type=range]").forEach((r) => r.addEventListener("input", () => {
     const k = r.dataset.k;
-    zustand.annahmen[k] = Number(r.value);
+    z.annahmen[k] = Number(r.value);
     const [, , , , s, e] = REGLER.find((x) => x[0] === k);
-    d.querySelector(`[data-v=${k}]`).textContent = `${zahl(zustand.annahmen[k], s < 1 ? (s < 0.5 ? 2 : 1) : 0)} ${e}`;
-    try { localStorage.setItem(SPEICHER, JSON.stringify(zustand.annahmen)); } catch { /* nur für diese Sitzung */ }
+    d.querySelector(`[data-v=${k}]`).textContent = `${zahl(z.annahmen[k], stellen(s))} ${e}`;
+    merken.schreiben("fz_annahmen", z.annahmen);
     satz();
     nachAenderung();
   }));
   d.querySelector("#zurueck").addEventListener("click", () => {
-    Object.assign(zustand.annahmen, STANDARD);
-    d.querySelectorAll("input[type=range]").forEach((r) => {
-      r.value = zustand.annahmen[r.dataset.k];
-      r.dispatchEvent(new Event("input"));
-    });
+    Object.assign(z.annahmen, STANDARD);
+    d.querySelectorAll("input[type=range]").forEach((r) => { r.value = z.annahmen[r.dataset.k]; r.dispatchEvent(new Event("input")); });
   });
-  oeffner.addEventListener("click", () => d.showModal());
-}
-
-// ------------------------------------------------------------------ Karte
-
-const METRIK = {
-  faktor: { titel: "Kaufpreisfaktor", einheit: "Jahresmieten", d: 1, wert: (p) => (p?.wohnung?.kauf && p?.wohnung?.miete ? p.wohnung.kauf / (p.wohnung.miete * 12) : null), hilfe: "dunkler: Kaufen im Verhältnis zur Miete teurer" },
-  kauf: { titel: "Kaufpreis Wohnung", einheit: "€/m²", d: 0, wert: (p) => p?.wohnung?.kauf ?? null },
-  miete: { titel: "Miete Wohnung", einheit: "€/m²", d: 1, wert: (p) => p?.wohnung?.miete ?? null },
-  efh: { titel: "Vorstadt-Anteil", einheit: "%", d: 0, quelle: "profil", wert: (_, s) => s?.efh ?? null, hilfe: "Anteil der Wohnungen in Ein- und Zweifamilienhäusern" },
-};
-
-function brueche(werte, n) {
-  const s = werte.filter((x) => x != null).sort((a, b) => a - b);
-  return Array.from({ length: n - 1 }, (_, i) => s[Math.floor(((i + 1) / n) * s.length)]);
-}
-
-function baueKarte(behaelter, { stadtteile, profil, preise, schulen, bahn, einst, zustand, wurzel }) {
-  const heimat = einst.heimat;
-  const karte = new maplibregl.Map({
-    container: behaelter, style: "https://tiles.openfreemap.org/styles/positron",
-    center: [9.97, 53.585], zoom: 11, minZoom: 9.5, maxZoom: 17, attributionControl: { compact: true }, cooperativeGestures: false,
-  });
-  karte.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
-
-  for (const f of stadtteile.features) {
-    const n = f.properties.name;
-    for (const [k, m] of Object.entries(METRIK)) {
-      const w = m.wert(preise.werte[n], profil.werte[n]);
-      if (w != null) f.properties[k] = w;
-    }
-  }
-
-  const ebenen = document.createElement("details");
-  ebenen.className = "ebenen";
-  ebenen.open = !window.matchMedia("(max-width: 860px)").matches;
-  ebenen.innerHTML = `
-    <summary>Karte anpassen</summary>
-    <div class="ebenen-inhalt">
-    <label class="sel">Stadtteile einfärben
-      <select id="faerbung">
-        <option value="faktor">Kaufen oder Mieten (Faktor)</option>
-        <option value="kauf">Kaufpreis Wohnung</option>
-        <option value="miete">Miete Wohnung</option>
-        <option value="efh">Vorstadt-Anteil</option>
-        <option value="">aus</option>
-      </select>
-    </label>
-    <label><input type="checkbox" id="e-laerm"> Straßenlärm</label>
-    <label><input type="checkbox" id="e-bahn" checked> U- und S-Bahn</label>
-    <label><input type="checkbox" id="e-schule"> Grundschulen</label>
-    </div>`;
-  behaelter.appendChild(ebenen);
-  const legende = document.createElement("div");
-  legende.className = "legende";
-  behaelter.appendChild(legende);
-  const tipp = document.createElement("div");
-  tipp.className = "tipp"; tipp.hidden = true;
-  behaelter.appendChild(tipp);
-  const tafel = document.createElement("aside");
-  tafel.className = "tafel"; tafel.hidden = true;
-  behaelter.appendChild(tafel);
-
-  let pins = new Map();
-  let bereit = false;
-  const aufgeschoben = [];
-
-  function legendeZeichnen() {
-    const m = METRIK[zustand.faerbung];
-    let h = "";
-    if (m) {
-      const br = brueche(stadtteile.features.map((f) => f.properties[zustand.faerbung]).filter((x) => x != null), BLAU.length);
-      h += `<div class="lg"><b>${m.titel}</b> <span>${m.einheit}</span><div class="skala">${BLAU.map((c) => `<i style="background:${c}"></i>`).join("")}</div><div class="skala-z"><span>${zahl(br[0], m.d)}</span><span>${zahl(br[br.length - 1], m.d)}</span></div>${m.hilfe ? `<small>${m.hilfe}</small>` : ""}</div>`;
-    }
-    if (document.getElementById("e-laerm").checked) {
-      h += `<div class="lg"><b>Straßenlärm</b> <span>Lden, dB(A)</span><div class="zeilen">${LAERM_LEGENDE.map(([c, t]) => `<span><i style="background:${c}"></i>${t}</span>`).join("")}</div></div>`;
-    }
-    h += `<div class="lg zeilen preise"><span><i class="k guenstig"></i>günstig</span><span><i class="k fair"></i>marktüblich</span><span><i class="k teuer"></i>teuer</span></div><div class="lg zeilen"><span><i class="k voll"></i>Kauf</span><span><i class="k hohl"></i>Miete</span></div>`;
-    legende.innerHTML = h;
-  }
-
-  function faerben() {
-    const k = zustand.faerbung;
-    if (!k) { karte.setLayoutProperty("st-flaeche", "visibility", "none"); legendeZeichnen(); return; }
-    const br = brueche(stadtteile.features.map((f) => f.properties[k]), BLAU.length);
-    const stufen = ["step", ["to-number", ["get", k], 0], BLAU[0]];
-    br.forEach((b, i) => stufen.push(b, BLAU[i + 1]));
-    karte.setPaintProperty("st-flaeche", "fill-color", ["case", ["has", k], stufen, "rgba(0,0,0,0)"]);
-    karte.setLayoutProperty("st-flaeche", "visibility", "visible");
-    legendeZeichnen();
-  }
-
-  function tafelZeigen(n) {
-    const p = preise.werte[n], s = profil.werte[n], ph = preise.werte[heimat], sh = profil.werte[heimat];
-    const fk = (x) => METRIK.faktor.wert(x);
-    const zeile = (t, a, b, d = 0, e = "") => `<tr><th>${t}</th><td>${a == null ? "–" : zahl(a, d) + e}</td>${n === heimat ? "" : `<td>${b == null ? "–" : zahl(b, d) + e}</td>`}</tr>`;
-    tafel.innerHTML = `
-      <div class="tafel-kopf"><h3>${esc(n)}</h3><button aria-label="Schließen">×</button></div>
-      <table>
-        <thead><tr><td></td><th>${esc(n)}</th>${n === heimat ? "" : `<th>${esc(heimat)}</th>`}</tr></thead>
-        <tbody>
-          ${zeile("Kaufpreis €/m²", p?.wohnung?.kauf, ph?.wohnung?.kauf)}
-          ${zeile("Miete €/m²", p?.wohnung?.miete, ph?.wohnung?.miete, 2)}
-          ${zeile("Kaufpreisfaktor", fk(p), fk(ph), 1)}
-          ${zeile("Vorstadt-Anteil", s?.efh, sh?.efh, 0, " %")}
-          ${zeile("Einwohner je ha", s?.dichte, sh?.dichte)}
-          ${zeile("Haushalte mit Kindern", s?.kinder_hh, sh?.kinder_hh, 0, " %")}
-          ${zeile("Ø Wohnung m²", s?.whg_qm, sh?.whg_qm)}
-          ${zeile("Grundschulen", s?.grundschulen, sh?.grundschulen)}
-        </tbody>
-      </table>
-      <p class="klein">Statistik ${profil.jahr}, Preise ${esc(preise.stand)} (Angebotsdaten).</p>`;
-    tafel.hidden = false;
-    tafel.querySelector("button").addEventListener("click", () => { tafel.hidden = true; });
-  }
-
-  // Nicht auf „load“ warten: das kommt erst, wenn alle Kacheln da sind.
-  karte.once("style.load", () => {
-    const erste = karte.getStyle().layers.find((l) => l.type === "symbol")?.id;
-    karte.addSource("stadtteile", { type: "geojson", data: stadtteile });
-    karte.addLayer({ id: "st-flaeche", type: "fill", source: "stadtteile", paint: { "fill-opacity": 0.45 } }, erste);
-    karte.addLayer({ id: "st-linie", type: "line", source: "stadtteile", paint: { "line-color": "#ffffff", "line-width": 1 } }, erste);
-    karte.addLayer({ id: "st-heimat", type: "line", source: "stadtteile", filter: ["==", ["get", "name"], heimat], paint: { "line-color": "#173A5E", "line-width": 2.5 } });
-    karte.addSource("laerm", { type: "raster", tiles: [LAERM_WMS], tileSize: 256, attribution: "Lärmkarte: FHH" });
-    karte.addLayer({ id: "laerm", type: "raster", source: "laerm", layout: { visibility: "none" }, paint: { "raster-opacity": 0.65 } });
-    karte.addSource("bahn", { type: "geojson", data: { type: "FeatureCollection", features: bahn.map((b) => ({ type: "Feature", geometry: { type: "Point", coordinates: [b.lon, b.lat] }, properties: { name: b.name, linien: b.linien.join(" ") } })) } });
-    karte.addLayer({ id: "bahn", type: "circle", source: "bahn", minzoom: 10.5, paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10.5, 2.5, 14, 5], "circle-color": "#ffffff", "circle-stroke-color": "#173A5E", "circle-stroke-width": 1.5 } });
-    karte.addLayer({ id: "bahn-name", type: "symbol", source: "bahn", minzoom: 12.5, layout: { "text-field": ["get", "name"], "text-font": ["Noto Sans Regular"], "text-size": 11, "text-offset": [0, 1.0], "text-anchor": "top", "text-optional": true }, paint: { "text-color": "#173A5E", "text-halo-color": "#ffffff", "text-halo-width": 1.2 } });
-    karte.addSource("schule", { type: "geojson", data: { type: "FeatureCollection", features: schulen.map((s) => ({ type: "Feature", geometry: { type: "Point", coordinates: [s.lon, s.lat] }, properties: { name: s.name, ganztag: s.ganztag || "" } })) } });
-    karte.addLayer({ id: "schule", type: "circle", source: "schule", layout: { visibility: "none" }, paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3, 15, 7], "circle-color": "#D98A00", "circle-stroke-color": "#ffffff", "circle-stroke-width": 1.2 } });
-
-    const umschalten = (cb, ids) => cb.addEventListener("change", () => { ids.forEach((i) => karte.setLayoutProperty(i, "visibility", cb.checked ? "visible" : "none")); legendeZeichnen(); });
-    umschalten(ebenen.querySelector("#e-laerm"), ["laerm"]);
-    umschalten(ebenen.querySelector("#e-bahn"), ["bahn", "bahn-name"]);
-    umschalten(ebenen.querySelector("#e-schule"), ["schule"]);
-    ebenen.querySelector("#faerbung").addEventListener("change", (e) => { zustand.faerbung = e.target.value; faerben(); });
-    faerben();
-
-    karte.on("click", "st-flaeche", (e) => { if (!e.originalEvent.target.closest(".pin")) tafelZeigen(e.features[0].properties.name); });
-    const beiHover = (e, inhalt) => { tipp.hidden = false; tipp.textContent = inhalt; tipp.style.left = `${e.point.x + 12}px`; tipp.style.top = `${e.point.y + 12}px`; karte.getCanvas().style.cursor = "pointer"; };
-    const weg = () => { tipp.hidden = true; karte.getCanvas().style.cursor = ""; };
-    karte.on("mousemove", "st-flaeche", (e) => { const p = e.features[0].properties, m = METRIK[zustand.faerbung]; beiHover(e, m && p[zustand.faerbung] != null ? `${p.name}: ${zahl(Number(p[zustand.faerbung]), m.d)} ${m.einheit}` : p.name); });
-    karte.on("mouseleave", "st-flaeche", weg);
-    karte.on("mousemove", "bahn", (e) => { const p = e.features[0].properties; beiHover(e, `${p.name} ${p.linien}`); });
-    karte.on("mousemove", "schule", (e) => { const p = e.features[0].properties; beiHover(e, `${p.name}${p.ganztag ? " · " + p.ganztag : ""}`); });
-    karte.on("zoom", () => behaelter.classList.toggle("weit", karte.getZoom() < 11.2));
-    behaelter.classList.toggle("weit", karte.getZoom() < 11.2);
-    bereit = true;
-    aufgeschoben.splice(0).forEach((f) => f());
-  });
-
-  function setzePins(liste, beiKlick) {
-    if (!bereit) { aufgeschoben.push(() => setzePins(liste, beiKlick)); return; }
-    pins.forEach((p) => p.marker.remove());
-    pins = new Map();
-    for (const { a, b } of liste) {
-      const [dx, dy] = a.lage === "adresse" || a.lage === "strasse" ? [0, 0] : versatz(a.id);
-      const knopf = document.createElement("button");
-      knopf.className = `pin ${a.typ} ${b.urteil || "ohne"} ${a.lage === "adresse" || a.lage === "strasse" ? "" : "ungefaehr"}`;
-      knopf.textContent = preisKurz(a);
-      knopf.title = `${a.stadtteil}: ${eur(a.preis)}`;
-      knopf.addEventListener("click", (e) => { e.stopPropagation(); beiKlick(a.id); });
-      const marker = new maplibregl.Marker({ element: knopf, anchor: "center" }).setLngLat([a.lon + dx, a.lat + dy]).addTo(karte);
-      pins.set(a.id, { marker, knopf, a });
-    }
-    markiere(zustand.gewaehlt);
-  }
-
-  function markiere(id) {
-    pins.forEach(({ knopf }, k) => { knopf.classList.toggle("aktiv", k === id); if (k === id) knopf.style.zIndex = 5; else knopf.style.zIndex = ""; });
-    const p = pins.get(id);
-    if (p) karte.easeTo({ center: [p.a.lon, p.a.lat], zoom: Math.max(karte.getZoom(), 12.5), duration: 500 });
-  }
-
-  return { setzePins, markiere };
 }

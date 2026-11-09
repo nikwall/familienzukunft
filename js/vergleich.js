@@ -52,10 +52,29 @@ export function referenz(angebot, preise) {
   return { kauf: r.kauf, miete: r.miete, art: r === w[art] ? art : "wohnung" };
 }
 
-export function bewerte(angebot, preise, a = STANDARD) {
+// Die Stadtteil-Schnitte der Quelle liefern das Muster zwischen den Stadtteilen, liegen im Niveau
+// aber unter den aktuellen Angebotspreisen. Die Eichung setzt das Niveau auf das tatsächlich
+// Beobachtete: Der Median-Inserat liegt dann genau auf dem Stadtteil-Vergleichswert.
+const EICH_MINDESTENS = 10;
+
+export function eichung(angebote, preise) {
+  const faktor = (typ) => {
+    const q = angebote.filter((x) => x.typ === typ).map((x) => {
+      const r = referenz(x, preise);
+      return r ? x.preis / x.flaeche / r[typ] : null;
+    }).filter((x) => x).sort((x, y) => x - y);
+    if (q.length < EICH_MINDESTENS) return 1;
+    const m = q.length >> 1;
+    return q.length % 2 ? q[m] : (q[m - 1] + q[m]) / 2;
+  };
+  return { miete: faktor("miete"), kauf: faktor("kauf") };
+}
+
+export function bewerte(angebot, preise, a = STANDARD, eich = { miete: 1, kauf: 1 }) {
   const { typ, preis, flaeche, provisionsfrei } = angebot;
   const qm = preis / flaeche;
-  const ref = referenz(angebot, preise);
+  const quelle = referenz(angebot, preise);
+  const ref = quelle && { ...quelle, kauf: quelle.kauf * eich.kauf, miete: quelle.miete * eich.miete };
   const aus = { qm, ref, abw: null, urteil: null, gegen: null, rate: typ === "kauf" ? monatsrate(preis, a) : null };
   if (!ref) return aus;
 

@@ -36,7 +36,7 @@ async function start() {
 
 // GitHub Pages lässt Browser Dateien zehn Minuten zwischenspeichern, ein normales Neuladen
 // holt Skripte nicht neu. Der Knopf erzwingt das, die Meldung nennt den tatsächlichen Grund.
-const DATEIEN = ["index.html", "js/app.js", "js/wohnen.js", "js/vergleich.js", "css/style.css"];
+const DATEIEN = ["index.html", "js/app.js", "js/wohnen.js", "js/vergleich.js", "js/einordnung.js", "js/karte.js", "js/markt.js", "js/reaktionen.js", "js/format.js", "css/style.css"];
 
 start().catch((e) => {
   console.error(e);

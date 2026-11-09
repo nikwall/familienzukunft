@@ -1,0 +1,26 @@
+[
+  {
+    "id": "scheideweg",
+    "titel": "Nachbarschaft Scheideweg",
+    "kurz": "Scheideweg",
+    "stadtteile": ["Eimsbüttel", "Hoheluft-West", "Hoheluft-Ost", "Harvestehude"]
+  },
+  {
+    "id": "eimsbuettel",
+    "titel": "Greater Eimsbüttel",
+    "kurz": "Gr. Eimsbüttel",
+    "stadtteile": ["Eimsbüttel", "Hoheluft-West", "Hoheluft-Ost", "Harvestehude", "Rotherbaum", "Eppendorf", "Lokstedt", "Stellingen", "Sternschanze", "Altona-Nord"]
+  },
+  {
+    "id": "alster",
+    "titel": "Rund um die Alster",
+    "kurz": "Alster",
+    "stadtteile": ["Harvestehude", "Rotherbaum", "Uhlenhorst", "Winterhude", "Hohenfelde", "St. Georg", "Eppendorf"]
+  },
+  {
+    "id": "hamburg",
+    "titel": "Ganz Hamburg",
+    "kurz": "Hamburg",
+    "stadtteile": null
+  }
+]
