@@ -23,14 +23,7 @@ button { cursor: pointer; }
 :focus-visible { outline: 2px solid var(--guenstig); outline-offset: 2px; }
 [hidden] { display: none !important; }
 
-/* Zugang */
-.zugang { min-height: 100dvh; display: grid; place-content: center; gap: 20px; padding: 24px; text-align: center; }
-.zugang h1 { font: 500 34px/1.1 var(--serife); margin: 0; color: var(--blau); }
-.zugang form { display: grid; gap: 10px; width: min(320px, 86vw); text-align: left; }
-.zugang label { font-size: 13px; color: var(--leise); }
-.zugang input { padding: 11px 12px; border: 1px solid var(--linie); border-radius: var(--rund); background: var(--karte); }
-.zugang button { padding: 11px; border: 0; border-radius: var(--rund); background: var(--blau); color: #fff; font-weight: 600; }
-.meldung { margin: 0; min-height: 20px; color: var(--teuer); font-size: 13px; }
+.fehlerseite { min-height: 100dvh; display: grid; place-content: center; padding: 24px; text-align: center; color: var(--leise); }
 
 /* Kopf und Tabs */
 .kopf { height: var(--kopf); display: flex; align-items: center; gap: 22px; padding: 0 18px; background: var(--karte); border-bottom: 1px solid var(--linie); }

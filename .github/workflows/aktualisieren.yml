@@ -19,7 +19,6 @@ jobs:
       - run: pip install -r pipeline/requirements.txt
       - name: Mails einlesen und Daten erneuern
         env:
-          FZ_ZUGANG: ${{ secrets.FZ_ZUGANG }}
           FZ_IMAP_HOST: ${{ secrets.FZ_IMAP_HOST }}
           FZ_IMAP_USER: ${{ secrets.FZ_IMAP_USER }}
           FZ_IMAP_PASSWORT: ${{ secrets.FZ_IMAP_PASSWORT }}
@@ -28,7 +27,7 @@ jobs:
         run: |
           git config user.name "familienzukunft-bot"
           git config user.email "45004142+nikwall@users.noreply.github.com"
-          git add data/wohnen.enc.json
+          git add data/wohnen.json
           if ! git diff --cached --quiet; then
             git commit -m "Angebote aktualisiert"
             git push

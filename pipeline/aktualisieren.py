@@ -1,10 +1,10 @@
-"""Aktualisiert den verschlüsselten Datenstand der App.
+"""Aktualisiert den Datenstand der App (data/wohnen.json, öffentlich lesbar).
 
     python pipeline/aktualisieren.py              Mails abholen, einlesen, anreichern
     python pipeline/aktualisieren.py --seed x.json  Angebote aus Datei übernehmen
 
-Zugangsdaten kommen aus Umgebungsvariablen (GitHub Secrets):
-    FZ_ZUGANG, FZ_IMAP_HOST, FZ_IMAP_USER, FZ_IMAP_PASSWORT
+Zugangsdaten zum Postfach kommen aus Umgebungsvariablen (GitHub Secrets):
+    FZ_IMAP_HOST, FZ_IMAP_USER, FZ_IMAP_PASSWORT
 """
 from __future__ import annotations
 
@@ -18,11 +18,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from anreichern import anreichern  # noqa: E402
-from krypto import entschluesseln, verschluesseln, zugangscode  # noqa: E402
 from lesen import lies_mail  # noqa: E402
 
 WURZEL = Path(__file__).resolve().parent.parent
-STAND = WURZEL / "data" / "wohnen.enc.json"
+STAND = WURZEL / "data" / "wohnen.json"
 START = WURZEL / ".geheim" / "einstellungen.json"
 PFLICHT = ("typ", "preis", "flaeche")
 INSERAT_GILT_TAGE = 45  # ohne neuen Hinweis gilt ein Inserat danach als weg
@@ -32,9 +31,9 @@ def heute() -> str:
     return dt.date.today().isoformat()
 
 
-def stand_laden(code: str) -> dict:
+def stand_laden() -> dict:
     if STAND.exists():
-        return entschluesseln(json.loads(STAND.read_text(encoding="utf-8")), code)
+        return json.loads(STAND.read_text(encoding="utf-8"))
     einst = json.loads(START.read_text(encoding="utf-8")) if START.exists() else {}
     return {"einstellungen": einst, "angebote": {}, "geocache": {}, "verworfen": {}}
 
@@ -43,13 +42,13 @@ def inhalt(stand: dict) -> str:
     return json.dumps({k: v for k, v in stand.items() if k != "aktualisiert"}, sort_keys=True, ensure_ascii=False)
 
 
-def stand_sichern(stand: dict, code: str, vorher: str) -> None:
+def stand_sichern(stand: dict, vorher: str) -> None:
     """Schreibt nur bei echter Änderung, sonst entstünde bei jedem Lauf ein neuer Commit."""
     if STAND.exists() and inhalt(stand) == vorher:
         print("Keine Änderung.")
         return
     stand["aktualisiert"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")
-    STAND.write_text(json.dumps(verschluesseln(stand, code)), encoding="utf-8")
+    STAND.write_text(json.dumps(stand, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def mails_abholen() -> list[bytes]:
@@ -112,8 +111,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed")
     args = ap.parse_args()
-    code = zugangscode()
-    stand = stand_laden(code)
+    stand = stand_laden()
     vorher = inhalt(stand)
     if args.seed:
         einordnen(stand, json.loads(Path(args.seed).read_text(encoding="utf-8")), "Datei")
@@ -121,7 +119,7 @@ def main() -> None:
         neu = [a for m in mails_abholen() for a in lies_mail(m)]
         einordnen(stand, neu, "Mails")
     ablauf(stand)
-    stand_sichern(stand, code, vorher)
+    stand_sichern(stand, vorher)
     print(f"Stand: {sum(1 for a in stand['angebote'].values() if a['aktiv'])} aktive Angebote.")
 
 

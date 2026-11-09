@@ -7,17 +7,17 @@ Private App mit mehreren Bereichen. Erster Bereich: Wohnen.
 - `index.html`, `css/`, `js/`: die App, ohne Build-Schritt. Neue Tabs kommen in `BEREICHE` in `js/app.js`.
 - `js/vergleich.js`: Umrechnung zwischen Miete und Kauf.
 - `data/hamburg/`: öffentliche Daten (Stadtteile, Statistik, Grundschulen, Schnellbahn, Preise).
-- `data/wohnen.enc.json`: Angebote und Einstellungen, verschlüsselt (AES-256-GCM).
-- `pipeline/`: holt Suchauftrags-Mails ab, liest sie, reichert sie an, verschlüsselt das Ergebnis.
+- `data/wohnen.json`: Angebote und Einstellungen, öffentlich lesbar.
+- `pipeline/`: holt Suchauftrags-Mails ab, liest sie, reichert sie an, schreibt `data/wohnen.json`.
 - `tools/geodaten_holen.py`: erneuert `data/hamburg/`, etwa einmal im Jahr.
-- `.geheim/`: Zugangscode und Startwerte, nie im Repository.
+- `.geheim/`: Startwerte, nicht im Repository.
 
 ## Automatik
 
 Die Portale verbieten automatische Abrufe. Darum kommen die Angebote über die Suchaufträge der
 Portale: Sie landen als Mail in einem eigenen Postfach, GitHub Actions liest es viermal am Tag.
 
-GitHub Secrets: `FZ_ZUGANG`, `FZ_IMAP_HOST`, `FZ_IMAP_USER`, `FZ_IMAP_PASSWORT`.
+GitHub Secrets: `FZ_IMAP_HOST`, `FZ_IMAP_USER`, `FZ_IMAP_PASSWORT`.
 
 ## Lokal starten
 

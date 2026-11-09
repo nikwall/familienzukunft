@@ -1,0 +1,2933 @@
+{
+ "einstellungen": {
+  "stadt": "Hamburg",
+  "heimat": "Hoheluft-West",
+  "ziel": "2028-01-01",
+  "muss": {
+   "flaeche": 80,
+   "zimmer": 3
+  }
+ },
+ "angebote": {
+  "immowelt:1a69037a-29e9-48b5-af93-f662c96e4c20": {
+   "id": "immowelt:1a69037a-29e9-48b5-af93-f662c96e4c20",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/1a69037a-29e9-48b5-af93-f662c96e4c20",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1537.0,
+   "flaeche": 80.5,
+   "zimmer": 3.5,
+   "etage": "1.OG",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22767",
+   "stadtteil_text": "Altona-Altstadt",
+   "strasse": "Thadenstraße 160 b",
+   "baujahr": 2015,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.55661,
+   "lon": 9.95159,
+   "lage": "adresse",
+   "stadtteil": "Altona-Altstadt",
+   "bahn": {
+    "name": "Holstenstraße",
+    "linien": [
+     "S1",
+     "S2",
+     "S3",
+     "S5",
+     "S7"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "Grundschule Thadenstraße",
+    "min": 4,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immowelt:81471df4-f607-4350-8a1a-499233736c22": {
+   "id": "immowelt:81471df4-f607-4350-8a1a-499233736c22",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/81471df4-f607-4350-8a1a-499233736c22",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 611.0,
+   "flaeche": 83.7,
+   "zimmer": 4.0,
+   "etage": "3.OG",
+   "frei_ab": null,
+   "energie": "C",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "21073",
+   "stadtteil_text": "Harburg",
+   "strasse": "Bornemannstraße 12",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.45468,
+   "lon": 9.97774,
+   "lage": "adresse",
+   "stadtteil": "Harburg",
+   "bahn": {
+    "name": "Harburg Rathaus",
+    "linien": [
+     "S3",
+     "S5"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Georg-Kerschensteiner-Grundschule",
+    "min": 4,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immowelt:26nqduf1e3r9": {
+   "id": "immowelt:26nqduf1e3r9",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/26nqduf1e3r9",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1715.0,
+   "flaeche": 82.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": "28.12.2026",
+   "energie": null,
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22769",
+   "stadtteil_text": "Altona-Nord",
+   "strasse": "Eimsbütteler Straße 139",
+   "baujahr": null,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.56948,
+   "lon": 9.94896,
+   "lage": "adresse",
+   "stadtteil": "Altona-Nord",
+   "bahn": {
+    "name": "Emilienstraße",
+    "linien": [
+     "U2"
+    ],
+    "min": 6
+   },
+   "schule": {
+    "name": "Schule Eduardstraße",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immowelt:3b39d9a2-bdcc-434d-aa72-af3dc2f72731": {
+   "id": "immowelt:3b39d9a2-bdcc-434d-aa72-af3dc2f72731",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/3b39d9a2-bdcc-434d-aa72-af3dc2f72731",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2594.0,
+   "flaeche": 115.1,
+   "zimmer": 4.0,
+   "etage": "7/7",
+   "frei_ab": null,
+   "energie": "A",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22297",
+   "stadtteil_text": "Winterhude",
+   "strasse": "Sydneystraße 10",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.6049,
+   "lon": 10.01552,
+   "lage": "adresse",
+   "stadtteil": "Winterhude",
+   "bahn": {
+    "name": "Alsterdorf",
+    "linien": [
+     "U1"
+    ],
+    "min": 5
+   },
+   "schule": {
+    "name": "Carl-Cohn-Schule",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "laerm": 65,
+   "aktiv": true
+  },
+  "immowelt:44362b51-3dcd-4772-98a8-6e707d49080a": {
+   "id": "immowelt:44362b51-3dcd-4772-98a8-6e707d49080a",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/44362b51-3dcd-4772-98a8-6e707d49080a",
+   "typ": "miete",
+   "art": "Terrassenwohnung",
+   "preis": 2390.0,
+   "flaeche": 117.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20539",
+   "stadtteil_text": "Rothenburgsort",
+   "strasse": "Billhorner Kanalstraße 52",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.53829,
+   "lon": 10.03477,
+   "lage": "adresse",
+   "stadtteil": "Rothenburgsort",
+   "bahn": {
+    "name": "Rothenburgsort",
+    "linien": [
+     "S2",
+     "S7"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "Fritz-Köhne-Schule",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "laerm": 55,
+   "aktiv": true
+  },
+  "immowelt:98d2232f-ba4f-4231-8092-5d09a7ec3a35": {
+   "id": "immowelt:98d2232f-ba4f-4231-8092-5d09a7ec3a35",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/98d2232f-ba4f-4231-8092-5d09a7ec3a35",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1899.0,
+   "flaeche": 84.2,
+   "zimmer": 3.0,
+   "etage": "1/7",
+   "frei_ab": null,
+   "energie": "A",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22297",
+   "stadtteil_text": "Winterhude",
+   "strasse": "Sydneystraße 28",
+   "baujahr": 2023,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.60469,
+   "lon": 10.01699,
+   "lage": "adresse",
+   "stadtteil": "Winterhude",
+   "bahn": {
+    "name": "Alsterdorf",
+    "linien": [
+     "U1"
+    ],
+    "min": 7
+   },
+   "schule": {
+    "name": "Carl-Cohn-Schule",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "laerm": 60,
+   "aktiv": true
+  },
+  "immowelt:264msfah1tba": {
+   "id": "immowelt:264msfah1tba",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/264msfah1tba",
+   "typ": "miete",
+   "art": "Terrassenwohnung",
+   "preis": 1900.0,
+   "flaeche": 101.0,
+   "zimmer": 3.0,
+   "etage": "EG/3",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22391",
+   "stadtteil_text": "Wellingsbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.64131,
+   "lon": 10.08033,
+   "lage": "plz",
+   "stadtteil": "Wellingsbüttel",
+   "bahn": {
+    "name": "Wellingsbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 3
+   },
+   "schule": {
+    "name": "Schule Strenge",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:18be8c7e-a224-46d8-aa6b-48348ac67fde": {
+   "id": "immowelt:18be8c7e-a224-46d8-aa6b-48348ac67fde",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/18be8c7e-a224-46d8-aa6b-48348ac67fde",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1545.0,
+   "flaeche": 99.0,
+   "zimmer": 3.0,
+   "etage": "1.OG",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22397",
+   "stadtteil_text": "Duvenstedt",
+   "strasse": "Lohe 60",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.71361,
+   "lon": 10.10908,
+   "lage": "adresse",
+   "stadtteil": "Duvenstedt",
+   "bahn": {
+    "name": "Ohlstedt",
+    "linien": [
+     "U1"
+    ],
+    "min": 46
+   },
+   "schule": {
+    "name": "Schule Duvenstedter Markt",
+    "min": 19,
+    "traeger": "staatlich"
+   },
+   "laerm": 65,
+   "aktiv": true
+  },
+  "immowelt:26iaq2edgchm": {
+   "id": "immowelt:26iaq2edgchm",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/26iaq2edgchm",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1958.0,
+   "flaeche": 89.0,
+   "zimmer": 3.0,
+   "etage": "2/5",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22297",
+   "stadtteil_text": "Barmbek-Nord",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.60727,
+   "lon": 10.01204,
+   "lage": "plz",
+   "stadtteil": "Barmbek-Nord",
+   "bahn": {
+    "name": "Alsterdorf",
+    "linien": [
+     "U1"
+    ],
+    "min": 2
+   },
+   "schule": {
+    "name": "Carl-Cohn-Schule",
+    "min": 11,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:26lxjbbxszst": {
+   "id": "immowelt:26lxjbbxszst",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/26lxjbbxszst",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1580.0,
+   "flaeche": 84.3,
+   "zimmer": 3.0,
+   "etage": "2/4",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22085",
+   "stadtteil_text": "Uhlenhorst",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.57322,
+   "lon": 10.01477,
+   "lage": "plz",
+   "stadtteil": "Uhlenhorst",
+   "bahn": {
+    "name": "Mundsburg",
+    "linien": [
+     "U3"
+    ],
+    "min": 15
+   },
+   "schule": {
+    "name": "Schule auf der Uhlenhorst",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:26ttgjx1aucj": {
+   "id": "immowelt:26ttgjx1aucj",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/26ttgjx1aucj",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1873.0,
+   "flaeche": 98.0,
+   "zimmer": 3.5,
+   "etage": "1/1",
+   "frei_ab": null,
+   "energie": null,
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22589",
+   "stadtteil_text": "Sülldorf",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.5831,
+   "lon": 9.80716,
+   "lage": "plz",
+   "stadtteil": "Sülldorf",
+   "bahn": {
+    "name": "Sülldorf",
+    "linien": [
+     "S1"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Schule Iserbrook",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:1ed26269-5632-46bd-8a17-db28c2f31a58": {
+   "id": "immowelt:1ed26269-5632-46bd-8a17-db28c2f31a58",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/1ed26269-5632-46bd-8a17-db28c2f31a58",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 3960.0,
+   "flaeche": 120.0,
+   "zimmer": 4.0,
+   "etage": "1/3",
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22085",
+   "stadtteil_text": "Uhlenhorst",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.57322,
+   "lon": 10.01477,
+   "lage": "plz",
+   "stadtteil": "Uhlenhorst",
+   "bahn": {
+    "name": "Mundsburg",
+    "linien": [
+     "U3"
+    ],
+    "min": 15
+   },
+   "schule": {
+    "name": "Schule auf der Uhlenhorst",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:993d88b9-5773-47c5-81ce-d634d6209756": {
+   "id": "immowelt:993d88b9-5773-47c5-81ce-d634d6209756",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/993d88b9-5773-47c5-81ce-d634d6209756",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1800.0,
+   "flaeche": 100.0,
+   "zimmer": 3.0,
+   "etage": "2/4",
+   "frei_ab": null,
+   "energie": "F",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22399",
+   "stadtteil_text": "Poppenbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.66478,
+   "lon": 10.07231,
+   "lage": "plz",
+   "stadtteil": "Poppenbüttel",
+   "bahn": {
+    "name": "Poppenbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 33
+   },
+   "schule": {
+    "name": "Grundschule Poppenbüttel",
+    "min": 14,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:ce2c4b76-7c06-44a0-95eb-514707c040a3": {
+   "id": "immowelt:ce2c4b76-7c06-44a0-95eb-514707c040a3",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/ce2c4b76-7c06-44a0-95eb-514707c040a3",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2073.0,
+   "flaeche": 98.0,
+   "zimmer": 3.0,
+   "etage": "4/4",
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22457",
+   "stadtteil_text": "Schnelsen",
+   "strasse": "Wählingsallee 4",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.63186,
+   "lon": 9.92048,
+   "lage": "adresse",
+   "stadtteil": "Schnelsen",
+   "bahn": {
+    "name": "Schnelsen",
+    "linien": [
+     "A1"
+    ],
+    "min": 16
+   },
+   "schule": {
+    "name": "Schule Frohmestraße",
+    "min": 1,
+    "traeger": "staatlich"
+   },
+   "laerm": 65,
+   "aktiv": true
+  },
+  "immowelt:d7ef1d91-d676-4c33-915b-ac9471dbc010": {
+   "id": "immowelt:d7ef1d91-d676-4c33-915b-ac9471dbc010",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/d7ef1d91-d676-4c33-915b-ac9471dbc010",
+   "typ": "miete",
+   "art": "Maisonette",
+   "preis": 3250.0,
+   "flaeche": 131.2,
+   "zimmer": 4.0,
+   "etage": "3/4",
+   "frei_ab": null,
+   "energie": "A+",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22299",
+   "stadtteil_text": "Winterhude",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.59482,
+   "lon": 9.99954,
+   "lage": "plz",
+   "stadtteil": "Winterhude",
+   "bahn": {
+    "name": "Hudtwalckerstraße",
+    "linien": [
+     "U1"
+    ],
+    "min": 4
+   },
+   "schule": {
+    "name": "Schule Alsterdorfer Straße",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:b0088081-aec9-4819-bfa8-7cb26737bb82": {
+   "id": "immowelt:b0088081-aec9-4819-bfa8-7cb26737bb82",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/b0088081-aec9-4819-bfa8-7cb26737bb82",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2470.0,
+   "flaeche": 93.5,
+   "zimmer": 3.0,
+   "etage": "1/4",
+   "frei_ab": null,
+   "energie": "C",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": false,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20251",
+   "stadtteil_text": "Hoheluft-Ost",
+   "strasse": "Falkenried 74 a",
+   "baujahr": 2022,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.58469,
+   "lon": 9.97341,
+   "lage": "adresse",
+   "stadtteil": "Hoheluft-Ost",
+   "bahn": {
+    "name": "Eppendorfer Baum",
+    "linien": [
+     "U3"
+    ],
+    "min": 13
+   },
+   "schule": {
+    "name": "Grund- und Stadtteilschule Eppendorf",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immowelt:26ddde6gxv4u": {
+   "id": "immowelt:26ddde6gxv4u",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/26ddde6gxv4u",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2598.0,
+   "flaeche": 92.0,
+   "zimmer": 3.0,
+   "etage": "1/5",
+   "frei_ab": null,
+   "energie": null,
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22301",
+   "stadtteil_text": "Winterhude",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.58362,
+   "lon": 10.00573,
+   "lage": "plz",
+   "stadtteil": "Winterhude",
+   "bahn": {
+    "name": "Sierichstraße",
+    "linien": [
+     "U3"
+    ],
+    "min": 13
+   },
+   "schule": {
+    "name": "Goldbek-Schule",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:b5a5b034-86d9-48bb-b0b3-0e34871bd69b": {
+   "id": "immowelt:b5a5b034-86d9-48bb-b0b3-0e34871bd69b",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/b5a5b034-86d9-48bb-b0b3-0e34871bd69b",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 4176.0,
+   "flaeche": 182.0,
+   "zimmer": 4.0,
+   "etage": "EG",
+   "frei_ab": null,
+   "energie": "E",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22085",
+   "stadtteil_text": "Uhlenhorst",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.57322,
+   "lon": 10.01477,
+   "lage": "plz",
+   "stadtteil": "Uhlenhorst",
+   "bahn": {
+    "name": "Mundsburg",
+    "linien": [
+     "U3"
+    ],
+    "min": 15
+   },
+   "schule": {
+    "name": "Schule auf der Uhlenhorst",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:0d44fc48-caef-4141-aa2e-bf6a473717ad": {
+   "id": "immowelt:0d44fc48-caef-4141-aa2e-bf6a473717ad",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/0d44fc48-caef-4141-aa2e-bf6a473717ad",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1690.0,
+   "flaeche": 90.5,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": "01.01.2027",
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": true,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22453",
+   "stadtteil_text": "Groß Borstel",
+   "strasse": null,
+   "baujahr": 1970,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.61835,
+   "lon": 9.96558,
+   "lage": "plz",
+   "stadtteil": "Groß Borstel",
+   "bahn": {
+    "name": "Niendorf Markt",
+    "linien": [
+     "U2"
+    ],
+    "min": 15
+   },
+   "schule": {
+    "name": "Schule Burgunderweg",
+    "min": 18,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:683639ab-2373-4d13-bb56-4fda3bee2fe8": {
+   "id": "immowelt:683639ab-2373-4d13-bb56-4fda3bee2fe8",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/683639ab-2373-4d13-bb56-4fda3bee2fe8",
+   "typ": "miete",
+   "art": "Penthouse",
+   "preis": 6000.0,
+   "flaeche": 225.0,
+   "zimmer": 4.0,
+   "etage": "4.OG",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20148",
+   "stadtteil_text": "Rotherbaum",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.56851,
+   "lon": 9.99633,
+   "lage": "plz",
+   "stadtteil": "Rotherbaum",
+   "bahn": {
+    "name": "Hallerstraße",
+    "linien": [
+     "U1"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Schule Turmweg",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:b5abc03c-7798-4453-ab78-f4e463487adb": {
+   "id": "immowelt:b5abc03c-7798-4453-ab78-f4e463487adb",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/b5abc03c-7798-4453-ab78-f4e463487adb",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 3250.0,
+   "flaeche": 116.8,
+   "zimmer": 3.0,
+   "etage": "2/7",
+   "frei_ab": null,
+   "energie": "A",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20457",
+   "stadtteil_text": "HafenCity",
+   "strasse": "Am Strandkai 21",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.53978,
+   "lon": 9.98962,
+   "lage": "adresse",
+   "stadtteil": "HafenCity",
+   "bahn": {
+    "name": "Überseequartier",
+    "linien": [
+     "U4"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "Katharinenschule in der Hafencity",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immowelt:dc4b0578-aed4-4460-a4a6-6146dc134785": {
+   "id": "immowelt:dc4b0578-aed4-4460-a4a6-6146dc134785",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/dc4b0578-aed4-4460-a4a6-6146dc134785",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1500.0,
+   "flaeche": 92.0,
+   "zimmer": 3.0,
+   "etage": "5.OG",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": false,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20359",
+   "stadtteil_text": "St. Pauli",
+   "strasse": "Hopfenstraße 2",
+   "baujahr": 1893,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.54835,
+   "lon": 9.96691,
+   "lage": "adresse",
+   "stadtteil": "St. Pauli",
+   "bahn": {
+    "name": "St.Pauli",
+    "linien": [
+     "U3"
+    ],
+    "min": 5
+   },
+   "schule": {
+    "name": "Grundschule St.Pauli",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "laerm": 55,
+   "aktiv": true
+  },
+  "immowelt:26lntuikytki": {
+   "id": "immowelt:26lntuikytki",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/26lntuikytki",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1280.0,
+   "flaeche": 80.0,
+   "zimmer": 3.0,
+   "etage": "1/3",
+   "frei_ab": null,
+   "energie": "E",
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "21075",
+   "stadtteil_text": "Eißendorf",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.46152,
+   "lon": 9.93336,
+   "lage": "plz",
+   "stadtteil": "Eißendorf",
+   "bahn": {
+    "name": "Heimfeld (TU Hamburg)",
+    "linien": [
+     "S3",
+     "S5"
+    ],
+    "min": 33
+   },
+   "schule": {
+    "name": "Schule In der Alten Forst",
+    "min": 23,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:a2ed1b8f-e31e-4956-aa5e-142ea2a9596c": {
+   "id": "immowelt:a2ed1b8f-e31e-4956-aa5e-142ea2a9596c",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/a2ed1b8f-e31e-4956-aa5e-142ea2a9596c",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1302.0,
+   "flaeche": 93.7,
+   "zimmer": 3.0,
+   "etage": "EG",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22417",
+   "stadtteil_text": "Langenhorn",
+   "strasse": "Im Torfmoos 14",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.67236,
+   "lon": 10.03046,
+   "lage": "adresse",
+   "stadtteil": "Langenhorn",
+   "bahn": {
+    "name": "Kiwittsmoor",
+    "linien": [
+     "U1"
+    ],
+    "min": 16
+   },
+   "schule": {
+    "name": "Grundschule Am Heidberg",
+    "min": 4,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immowelt:f6bd6a21-c284-4316-9ea5-de41dfb788b4": {
+   "id": "immowelt:f6bd6a21-c284-4316-9ea5-de41dfb788b4",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/f6bd6a21-c284-4316-9ea5-de41dfb788b4",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 4906.0,
+   "flaeche": 220.2,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": "15.11.2026",
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20149",
+   "stadtteil_text": "Harvestehude",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.57824,
+   "lon": 9.99251,
+   "lage": "plz",
+   "stadtteil": "Harvestehude",
+   "bahn": {
+    "name": "Klosterstern",
+    "linien": [
+     "U1"
+    ],
+    "min": 8
+   },
+   "schule": {
+    "name": "Grundschule Isestraße",
+    "min": 10,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:df85ae45-aa8b-4087-9b15-4c4a85ca6ad1": {
+   "id": "immowelt:df85ae45-aa8b-4087-9b15-4c4a85ca6ad1",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/df85ae45-aa8b-4087-9b15-4c4a85ca6ad1",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2350.0,
+   "flaeche": 119.0,
+   "zimmer": 5.0,
+   "etage": "1/3",
+   "frei_ab": null,
+   "energie": "A",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22523",
+   "stadtteil_text": "Eidelstedt",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.61346,
+   "lon": 9.89871,
+   "lage": "plz",
+   "stadtteil": "Eidelstedt",
+   "bahn": {
+    "name": "Eidelstedt Zentrum",
+    "linien": [
+     "A1"
+    ],
+    "min": 6
+   },
+   "schule": {
+    "name": "Max-Traeger-Schule",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:12bac50c-8d00-4ccb-bc01-505c072a1918": {
+   "id": "immowelt:12bac50c-8d00-4ccb-bc01-505c072a1918",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/12bac50c-8d00-4ccb-bc01-505c072a1918",
+   "typ": "miete",
+   "art": "Maisonette",
+   "preis": 1200.0,
+   "flaeche": 91.2,
+   "zimmer": 3.5,
+   "etage": "1/1",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22159",
+   "stadtteil_text": "Farmsen-Berne",
+   "strasse": "Bramfelder Weg 89",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.61074,
+   "lon": 10.10806,
+   "lage": "adresse",
+   "stadtteil": "Farmsen-Berne",
+   "bahn": {
+    "name": "Farmsen",
+    "linien": [
+     "U1"
+    ],
+    "min": 12
+   },
+   "schule": {
+    "name": "Schule Surenland",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "laerm": 60,
+   "aktiv": true
+  },
+  "immowelt:26pr59f38adg": {
+   "id": "immowelt:26pr59f38adg",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/26pr59f38adg",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1395.0,
+   "flaeche": 80.0,
+   "zimmer": 3.0,
+   "etage": "4/6",
+   "frei_ab": null,
+   "energie": "C",
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22589",
+   "stadtteil_text": "Iserbrook",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.5831,
+   "lon": 9.80716,
+   "lage": "plz",
+   "stadtteil": "Iserbrook",
+   "bahn": {
+    "name": "Sülldorf",
+    "linien": [
+     "S1"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Schule Iserbrook",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:84843914-3875-4876-afb6-ab92fd8630cb": {
+   "id": "immowelt:84843914-3875-4876-afb6-ab92fd8630cb",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/84843914-3875-4876-afb6-ab92fd8630cb",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1537.0,
+   "flaeche": 96.5,
+   "zimmer": 3.0,
+   "etage": "3.OG",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22523",
+   "stadtteil_text": "Eidelstedt",
+   "strasse": "Rungwisch 1",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.61028,
+   "lon": 9.90574,
+   "lage": "adresse",
+   "stadtteil": "Eidelstedt",
+   "bahn": {
+    "name": "Eidelstedt Zentrum",
+    "linien": [
+     "A1"
+    ],
+    "min": 5
+   },
+   "schule": {
+    "name": "Schule Rungwisch",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "laerm": 65,
+   "aktiv": true
+  },
+  "immowelt:0d0a302c-13a3-4b76-99a7-73387ac978e5": {
+   "id": "immowelt:0d0a302c-13a3-4b76-99a7-73387ac978e5",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/0d0a302c-13a3-4b76-99a7-73387ac978e5",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1510.0,
+   "flaeche": 88.4,
+   "zimmer": 3.5,
+   "etage": "3.OG",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22523",
+   "stadtteil_text": "Eidelstedt",
+   "strasse": "Rungwisch 1",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.61028,
+   "lon": 9.90574,
+   "lage": "adresse",
+   "stadtteil": "Eidelstedt",
+   "bahn": {
+    "name": "Eidelstedt Zentrum",
+    "linien": [
+     "A1"
+    ],
+    "min": 5
+   },
+   "schule": {
+    "name": "Schule Rungwisch",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "laerm": 65,
+   "aktiv": true
+  },
+  "immowelt:261nakqqhi9y": {
+   "id": "immowelt:261nakqqhi9y",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/261nakqqhi9y",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2400.0,
+   "flaeche": 119.0,
+   "zimmer": 5.5,
+   "etage": null,
+   "frei_ab": "sofort",
+   "energie": null,
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22391",
+   "stadtteil_text": "Wellingsbüttel",
+   "strasse": "Rabenhorst 5",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.64116,
+   "lon": 10.08339,
+   "lage": "adresse",
+   "stadtteil": "Wellingsbüttel",
+   "bahn": {
+    "name": "Wellingsbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 1
+   },
+   "schule": {
+    "name": "Schule Strenge",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "laerm": 55,
+   "aktiv": true
+  },
+  "immowelt:24860331-27e6-41cc-9224-a62ea317ccb0": {
+   "id": "immowelt:24860331-27e6-41cc-9224-a62ea317ccb0",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/24860331-27e6-41cc-9224-a62ea317ccb0",
+   "typ": "miete",
+   "art": "Penthouse",
+   "preis": 3590.0,
+   "flaeche": 191.0,
+   "zimmer": 4.0,
+   "etage": "5/5",
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22083",
+   "stadtteil_text": "Barmbek-Süd",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.57923,
+   "lon": 10.03101,
+   "lage": "plz",
+   "stadtteil": "Barmbek-Süd",
+   "bahn": {
+    "name": "Dehnhaide",
+    "linien": [
+     "U3"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Katholische Sophienschule",
+    "min": 4,
+    "traeger": "frei"
+   },
+   "aktiv": true
+  },
+  "immowelt:1cd77af4-46fb-4162-ab77-846d1266d08d": {
+   "id": "immowelt:1cd77af4-46fb-4162-ab77-846d1266d08d",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/1cd77af4-46fb-4162-ab77-846d1266d08d",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1819.0,
+   "flaeche": 86.3,
+   "zimmer": 3.0,
+   "etage": "2/7",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20539",
+   "stadtteil_text": "Rothenburgsort",
+   "strasse": "Billhorner Kanalstraße 56",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.53829,
+   "lon": 10.03477,
+   "lage": "adresse",
+   "stadtteil": "Rothenburgsort",
+   "bahn": {
+    "name": "Rothenburgsort",
+    "linien": [
+     "S2",
+     "S7"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "Fritz-Köhne-Schule",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "laerm": 55,
+   "aktiv": true
+  },
+  "immowelt:a710470c-98ba-425c-b202-9d4a02e9bdb9": {
+   "id": "immowelt:a710470c-98ba-425c-b202-9d4a02e9bdb9",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/a710470c-98ba-425c-b202-9d4a02e9bdb9",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1649.0,
+   "flaeche": 86.8,
+   "zimmer": 3.0,
+   "etage": "1/7",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20539",
+   "stadtteil_text": "Rothenburgsort",
+   "strasse": "Billhorner Kanalstraße 62",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.53738,
+   "lon": 10.03787,
+   "lage": "adresse",
+   "stadtteil": "Rothenburgsort",
+   "bahn": {
+    "name": "Rothenburgsort",
+    "linien": [
+     "S2",
+     "S7"
+    ],
+    "min": 7
+   },
+   "schule": {
+    "name": "Fritz-Köhne-Schule",
+    "min": 4,
+    "traeger": "staatlich"
+   },
+   "laerm": 55,
+   "aktiv": true
+  },
+  "immowelt:f1c8e681-93b0-4e97-b07b-aae1525301db": {
+   "id": "immowelt:f1c8e681-93b0-4e97-b07b-aae1525301db",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/f1c8e681-93b0-4e97-b07b-aae1525301db",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1740.0,
+   "flaeche": 98.0,
+   "zimmer": 4.0,
+   "etage": "EG",
+   "frei_ab": null,
+   "energie": "F",
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22391",
+   "stadtteil_text": "Wellingsbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.64131,
+   "lon": 10.08033,
+   "lage": "plz",
+   "stadtteil": "Wellingsbüttel",
+   "bahn": {
+    "name": "Wellingsbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 3
+   },
+   "schule": {
+    "name": "Schule Strenge",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:2c31630c-ba8f-420d-87dc-41216e434d43": {
+   "id": "immowelt:2c31630c-ba8f-420d-87dc-41216e434d43",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/2c31630c-ba8f-420d-87dc-41216e434d43",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 435000.0,
+   "flaeche": 115.2,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": "F",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22149",
+   "stadtteil_text": "Rahlstedt",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.59018,
+   "lon": 10.16636,
+   "lage": "plz",
+   "stadtteil": "Rahlstedt",
+   "bahn": {
+    "name": "Farmsen",
+    "linien": [
+     "U1"
+    ],
+    "min": 60
+   },
+   "schule": {
+    "name": "Grund- und Stadtteilschule Altrahlstedt",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:90cc3588-8e37-4c11-bbee-31e46ce49635": {
+   "id": "immowelt:90cc3588-8e37-4c11-bbee-31e46ce49635",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/90cc3588-8e37-4c11-bbee-31e46ce49635",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 548000.0,
+   "flaeche": 94.0,
+   "zimmer": 3.0,
+   "etage": "4.OG",
+   "frei_ab": null,
+   "energie": "C",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22307",
+   "stadtteil_text": "Barmbek-Nord",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.59859,
+   "lon": 10.04422,
+   "lage": "plz",
+   "stadtteil": "Barmbek-Nord",
+   "bahn": {
+    "name": "Alte Wöhr (Stadtpark)",
+    "linien": [
+     "S1",
+     "S5"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "Schule Genslerstraße",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:bada8cbc-69a7-4d7d-8c54-f30c00f4d01e": {
+   "id": "immowelt:bada8cbc-69a7-4d7d-8c54-f30c00f4d01e",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/bada8cbc-69a7-4d7d-8c54-f30c00f4d01e",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 995000.0,
+   "flaeche": 116.0,
+   "zimmer": 3.5,
+   "etage": "2/4",
+   "frei_ab": null,
+   "energie": "F",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20251",
+   "stadtteil_text": "Eppendorf",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.59151,
+   "lon": 9.97977,
+   "lage": "plz",
+   "stadtteil": "Eppendorf",
+   "bahn": {
+    "name": "Kellinghusenstraße",
+    "linien": [
+     "U1",
+     "U3"
+    ],
+    "min": 13
+   },
+   "schule": {
+    "name": "Grundschule St. Nikolai",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:dede7243-a352-41b9-b8ba-9bb50fdb84bc": {
+   "id": "immowelt:dede7243-a352-41b9-b8ba-9bb50fdb84bc",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/dede7243-a352-41b9-b8ba-9bb50fdb84bc",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 748000.0,
+   "flaeche": 88.0,
+   "zimmer": 3.0,
+   "etage": "2/3",
+   "frei_ab": null,
+   "energie": "C",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": false,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20251",
+   "stadtteil_text": "Eppendorf",
+   "strasse": "Lokstedter Weg 30",
+   "baujahr": 2007,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.59516,
+   "lon": 9.98616,
+   "lage": "adresse",
+   "stadtteil": "Eppendorf",
+   "bahn": {
+    "name": "Hudtwalckerstraße",
+    "linien": [
+     "U1"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Marie-Beschütz-Schule",
+    "min": 4,
+    "traeger": "staatlich"
+   },
+   "laerm": 70,
+   "aktiv": true
+  },
+  "immowelt:050b2ad9-2228-405d-8b5c-9bd58da91605": {
+   "id": "immowelt:050b2ad9-2228-405d-8b5c-9bd58da91605",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/050b2ad9-2228-405d-8b5c-9bd58da91605",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 1090000.0,
+   "flaeche": 115.9,
+   "zimmer": 4.0,
+   "etage": "2/2",
+   "frei_ab": null,
+   "energie": "A+",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22391",
+   "stadtteil_text": "Wellingsbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.64131,
+   "lon": 10.08033,
+   "lage": "plz",
+   "stadtteil": "Wellingsbüttel",
+   "bahn": {
+    "name": "Wellingsbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 3
+   },
+   "schule": {
+    "name": "Schule Strenge",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:ad52e273-e19d-45a4-a45d-b337255a90a0": {
+   "id": "immowelt:ad52e273-e19d-45a4-a45d-b337255a90a0",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/ad52e273-e19d-45a4-a45d-b337255a90a0",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 790000.0,
+   "flaeche": 85.7,
+   "zimmer": 3.5,
+   "etage": "EG/2",
+   "frei_ab": null,
+   "energie": "A+",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22391",
+   "stadtteil_text": "Wellingsbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.64131,
+   "lon": 10.08033,
+   "lage": "plz",
+   "stadtteil": "Wellingsbüttel",
+   "bahn": {
+    "name": "Wellingsbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 3
+   },
+   "schule": {
+    "name": "Schule Strenge",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:423d06a5-82ca-4cf0-a3a1-16300da0fbbb": {
+   "id": "immowelt:423d06a5-82ca-4cf0-a3a1-16300da0fbbb",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/423d06a5-82ca-4cf0-a3a1-16300da0fbbb",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 499000.0,
+   "flaeche": 100.6,
+   "zimmer": 3.0,
+   "etage": "1.OG",
+   "frei_ab": null,
+   "energie": "F",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22297",
+   "stadtteil_text": "Alsterdorf",
+   "strasse": "Alsterdorfer Straße 331",
+   "baujahr": 1966,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.6111,
+   "lon": 10.01215,
+   "lage": "adresse",
+   "stadtteil": "Alsterdorf",
+   "bahn": {
+    "name": "Alsterdorf",
+    "linien": [
+     "U1"
+    ],
+    "min": 9
+   },
+   "schule": {
+    "name": "Carl-Cohn-Schule",
+    "min": 18,
+    "traeger": "staatlich"
+   },
+   "laerm": 65,
+   "aktiv": true
+  },
+  "immowelt:d3ea6af1-3f34-4077-ba6d-91ff5e7214ba": {
+   "id": "immowelt:d3ea6af1-3f34-4077-ba6d-91ff5e7214ba",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/d3ea6af1-3f34-4077-ba6d-91ff5e7214ba",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 615000.0,
+   "flaeche": 106.7,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": "A",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22397",
+   "stadtteil_text": "Wohldorf-Ohlstedt",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.70391,
+   "lon": 10.12512,
+   "lage": "plz",
+   "stadtteil": "Wohldorf-Ohlstedt",
+   "bahn": {
+    "name": "Ohlstedt",
+    "linien": [
+     "U1"
+    ],
+    "min": 21
+   },
+   "schule": {
+    "name": "Schule am Walde",
+    "min": 17,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:55f30c97-5d74-4d30-99e8-6cf629b1e5ec": {
+   "id": "immowelt:55f30c97-5d74-4d30-99e8-6cf629b1e5ec",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/55f30c97-5d74-4d30-99e8-6cf629b1e5ec",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 329000.0,
+   "flaeche": 86.8,
+   "zimmer": 3.5,
+   "etage": "1/1",
+   "frei_ab": null,
+   "energie": "E",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22043",
+   "stadtteil_text": "Jenfeld",
+   "strasse": "Ratiborweg 100",
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.5701,
+   "lon": 10.13873,
+   "lage": "adresse",
+   "stadtteil": "Jenfeld",
+   "bahn": {
+    "name": "Steinfurther Allee",
+    "linien": [
+     "U2"
+    ],
+    "min": 53
+   },
+   "schule": {
+    "name": "Schule Öjendorfer Damm",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "laerm": 60,
+   "aktiv": true
+  },
+  "immowelt:3c1715b2-2b43-4d60-9771-2d56014bbb6e": {
+   "id": "immowelt:3c1715b2-2b43-4d60-9771-2d56014bbb6e",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/3c1715b2-2b43-4d60-9771-2d56014bbb6e",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 556000.0,
+   "flaeche": 80.6,
+   "zimmer": 3.0,
+   "etage": "1/4",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": false,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22529",
+   "stadtteil_text": "Lokstedt",
+   "strasse": null,
+   "baujahr": 1961,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.59667,
+   "lon": 9.95855,
+   "lage": "plz",
+   "stadtteil": "Lokstedt",
+   "bahn": {
+    "name": "Hagenbecks Tierpark",
+    "linien": [
+     "U2"
+    ],
+    "min": 17
+   },
+   "schule": {
+    "name": "Schule Döhrnstraße",
+    "min": 4,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:31c41f02-6457-4717-8ae3-3b50b55a9d38": {
+   "id": "immowelt:31c41f02-6457-4717-8ae3-3b50b55a9d38",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/31c41f02-6457-4717-8ae3-3b50b55a9d38",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 550000.0,
+   "flaeche": 85.0,
+   "zimmer": 4.0,
+   "etage": "3/3",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20097",
+   "stadtteil_text": "Hammerbrook",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.5466,
+   "lon": 10.01976,
+   "lage": "plz",
+   "stadtteil": "Hammerbrook",
+   "bahn": {
+    "name": "Hammerbrook (City Süd)",
+    "linien": [
+     "S3",
+     "S5"
+    ],
+    "min": 4
+   },
+   "schule": {
+    "name": "Bilinguale Grundschule PHORMS Hamburg",
+    "min": 8,
+    "traeger": "frei"
+   },
+   "aktiv": true
+  },
+  "immowelt:4ead0d75-7301-4ac3-8570-da7c3079fe67": {
+   "id": "immowelt:4ead0d75-7301-4ac3-8570-da7c3079fe67",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/4ead0d75-7301-4ac3-8570-da7c3079fe67",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 270000.0,
+   "flaeche": 80.0,
+   "zimmer": 3.0,
+   "etage": "2/2",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22393",
+   "stadtteil_text": "Sasel",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.64719,
+   "lon": 10.11819,
+   "lage": "plz",
+   "stadtteil": "Sasel",
+   "bahn": {
+    "name": "Poppenbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 28
+   },
+   "schule": {
+    "name": "Schule Redder",
+    "min": 12,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:0a90cd21-1845-438c-90a8-836c52f17820": {
+   "id": "immowelt:0a90cd21-1845-438c-90a8-836c52f17820",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/0a90cd21-1845-438c-90a8-836c52f17820",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 940000.0,
+   "flaeche": 113.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22399",
+   "stadtteil_text": "Poppenbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.66478,
+   "lon": 10.07231,
+   "lage": "plz",
+   "stadtteil": "Poppenbüttel",
+   "bahn": {
+    "name": "Poppenbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 33
+   },
+   "schule": {
+    "name": "Grundschule Poppenbüttel",
+    "min": 14,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:9732a657-0fb3-405f-bcc5-e90e59aab735": {
+   "id": "immowelt:9732a657-0fb3-405f-bcc5-e90e59aab735",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/9732a657-0fb3-405f-bcc5-e90e59aab735",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 986000.0,
+   "flaeche": 121.9,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22587",
+   "stadtteil_text": "Blankenese",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.56338,
+   "lon": 9.79905,
+   "lage": "plz",
+   "stadtteil": "Blankenese",
+   "bahn": {
+    "name": "Blankenese",
+    "linien": [
+     "S1"
+    ],
+    "min": 18
+   },
+   "schule": {
+    "name": "Gorch-Fock-Schule",
+    "min": 3,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:cffc85fb-18e7-45e0-aac1-e1d26f9f048a": {
+   "id": "immowelt:cffc85fb-18e7-45e0-aac1-e1d26f9f048a",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/cffc85fb-18e7-45e0-aac1-e1d26f9f048a",
+   "typ": "kauf",
+   "art": "Studio",
+   "preis": 739000.0,
+   "flaeche": 91.0,
+   "zimmer": 3.0,
+   "etage": "3.OG",
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20359",
+   "stadtteil_text": "St. Pauli",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.5503,
+   "lon": 9.9644,
+   "lage": "plz",
+   "stadtteil": "St. Pauli",
+   "bahn": {
+    "name": "St.Pauli",
+    "linien": [
+     "U3"
+    ],
+    "min": 6
+   },
+   "schule": {
+    "name": "Grundschule St.Pauli",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:28a8830f-52b6-41ab-9b49-6f64c13e0365": {
+   "id": "immowelt:28a8830f-52b6-41ab-9b49-6f64c13e0365",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/28a8830f-52b6-41ab-9b49-6f64c13e0365",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 639000.0,
+   "flaeche": 92.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": true,
+   "balkon": false,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20259",
+   "stadtteil_text": "Eimsbüttel",
+   "strasse": null,
+   "baujahr": null,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.57179,
+   "lon": 9.95825,
+   "lage": "plz",
+   "stadtteil": "Eimsbüttel",
+   "bahn": {
+    "name": "Christuskirche",
+    "linien": [
+     "U2"
+    ],
+    "min": 6
+   },
+   "schule": {
+    "name": "Schule Tornquiststraße",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:ab08f7bf-cc16-4b10-a1ef-0784ced40a64": {
+   "id": "immowelt:ab08f7bf-cc16-4b10-a1ef-0784ced40a64",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/ab08f7bf-cc16-4b10-a1ef-0784ced40a64",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 445000.0,
+   "flaeche": 112.0,
+   "zimmer": 4.0,
+   "etage": "3/6",
+   "frei_ab": null,
+   "energie": "F",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22395",
+   "stadtteil_text": "Poppenbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.67008,
+   "lon": 10.11915,
+   "lage": "plz",
+   "stadtteil": "Poppenbüttel",
+   "bahn": {
+    "name": "Hoisbüttel",
+    "linien": [
+     "U1"
+    ],
+    "min": 34
+   },
+   "schule": {
+    "name": "Schule Bergstedt",
+    "min": 15,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:bdf97ca4-4282-42bc-8659-06804c8d3843": {
+   "id": "immowelt:bdf97ca4-4282-42bc-8659-06804c8d3843",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/bdf97ca4-4282-42bc-8659-06804c8d3843",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 410000.0,
+   "flaeche": 97.0,
+   "zimmer": 4.0,
+   "etage": "EG",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22115",
+   "stadtteil_text": "Billstedt",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.53005,
+   "lon": 10.14907,
+   "lage": "plz",
+   "stadtteil": "Billstedt",
+   "bahn": {
+    "name": "Mümmelmannsberg",
+    "linien": [
+     "U2"
+    ],
+    "min": 3
+   },
+   "schule": {
+    "name": "Grundschule Rahewinkel",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:dd90a078-6e40-4830-bd52-1bb405254c36": {
+   "id": "immowelt:dd90a078-6e40-4830-bd52-1bb405254c36",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/dd90a078-6e40-4830-bd52-1bb405254c36",
+   "typ": "kauf",
+   "art": "Penthouse",
+   "preis": 935000.0,
+   "flaeche": 92.0,
+   "zimmer": 3.0,
+   "etage": "4/4",
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": true,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20251",
+   "stadtteil_text": "Eppendorf",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.59151,
+   "lon": 9.97977,
+   "lage": "plz",
+   "stadtteil": "Eppendorf",
+   "bahn": {
+    "name": "Kellinghusenstraße",
+    "linien": [
+     "U1",
+     "U3"
+    ],
+    "min": 13
+   },
+   "schule": {
+    "name": "Grundschule St. Nikolai",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:d675de09-ebff-4b41-bd2a-533491fcae5e": {
+   "id": "immowelt:d675de09-ebff-4b41-bd2a-533491fcae5e",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/d675de09-ebff-4b41-bd2a-533491fcae5e",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 598500.0,
+   "flaeche": 93.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": "C",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20359",
+   "stadtteil_text": "St. Pauli",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.5503,
+   "lon": 9.9644,
+   "lage": "plz",
+   "stadtteil": "St. Pauli",
+   "bahn": {
+    "name": "St.Pauli",
+    "linien": [
+     "U3"
+    ],
+    "min": 6
+   },
+   "schule": {
+    "name": "Grundschule St.Pauli",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:dfe13c3c-8b9a-4b3f-9333-e2e5123ba4ff": {
+   "id": "immowelt:dfe13c3c-8b9a-4b3f-9333-e2e5123ba4ff",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/dfe13c3c-8b9a-4b3f-9333-e2e5123ba4ff",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 599000.0,
+   "flaeche": 80.0,
+   "zimmer": 3.0,
+   "etage": "4/4",
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": false,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22767",
+   "stadtteil_text": "Altona-Altstadt",
+   "strasse": null,
+   "baujahr": 1880,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.55025,
+   "lon": 9.94704,
+   "lage": "plz",
+   "stadtteil": "Altona-Altstadt",
+   "bahn": {
+    "name": "Königstraße",
+    "linien": [
+     "S1",
+     "S2",
+     "S3",
+     "S5",
+     "S7"
+    ],
+    "min": 5
+   },
+   "schule": {
+    "name": "Ganztagsschule an der Elbe",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:4f42f6ef-99b2-4ba1-9f25-f490d82ea2e8": {
+   "id": "immowelt:4f42f6ef-99b2-4ba1-9f25-f490d82ea2e8",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/4f42f6ef-99b2-4ba1-9f25-f490d82ea2e8",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 690000.0,
+   "flaeche": 97.1,
+   "zimmer": 3.0,
+   "etage": "2/5",
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": false,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22761",
+   "stadtteil_text": "Bahrenfeld",
+   "strasse": null,
+   "baujahr": 2000,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.56767,
+   "lon": 9.91189,
+   "lage": "plz",
+   "stadtteil": "Bahrenfeld",
+   "bahn": {
+    "name": "Bahrenfeld",
+    "linien": [
+     "S1"
+    ],
+    "min": 14
+   },
+   "schule": {
+    "name": "Schule Mendelssohnstraße",
+    "min": 10,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:a3711404-5cce-47de-9ac1-95dfbae75b84": {
+   "id": "immowelt:a3711404-5cce-47de-9ac1-95dfbae75b84",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/a3711404-5cce-47de-9ac1-95dfbae75b84",
+   "typ": "kauf",
+   "art": "Maisonette",
+   "preis": 719000.0,
+   "flaeche": 119.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": "B",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": false,
+   "terrasse": true,
+   "garten": false,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22459",
+   "stadtteil_text": "Niendorf",
+   "strasse": null,
+   "baujahr": 2014,
+   "expose_geprueft": true,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.62648,
+   "lon": 9.93681,
+   "lage": "plz",
+   "stadtteil": "Niendorf",
+   "bahn": {
+    "name": "Joachim-Mähl-Straße",
+    "linien": [
+     "U2"
+    ],
+    "min": 15
+   },
+   "schule": {
+    "name": "Grundschule Bindfeldweg",
+    "min": 12,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:1c61d6e1-ec43-432f-a952-cfd29bc32c5e": {
+   "id": "immowelt:1c61d6e1-ec43-432f-a952-cfd29bc32c5e",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/1c61d6e1-ec43-432f-a952-cfd29bc32c5e",
+   "typ": "kauf",
+   "art": "Penthouse",
+   "preis": 869000.0,
+   "flaeche": 102.0,
+   "zimmer": 3.0,
+   "etage": "4/4",
+   "frei_ab": null,
+   "energie": "D",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20099",
+   "stadtteil_text": "St. Georg",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.55754,
+   "lon": 10.01175,
+   "lage": "plz",
+   "stadtteil": "St. Georg",
+   "bahn": {
+    "name": "Lohmühlenstraße",
+    "linien": [
+     "U1"
+    ],
+    "min": 8
+   },
+   "schule": {
+    "name": "Heinrich-Wolgast-Schule",
+    "min": 2,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:c8398089-ba95-4f8b-a287-ccc7ba1b5248": {
+   "id": "immowelt:c8398089-ba95-4f8b-a287-ccc7ba1b5248",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/c8398089-ba95-4f8b-a287-ccc7ba1b5248",
+   "typ": "kauf",
+   "art": "Maisonette",
+   "preis": 699000.0,
+   "flaeche": 87.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": "C",
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22083",
+   "stadtteil_text": "Barmbek-Süd",
+   "strasse": null,
+   "erstmals": "2026-11-09",
+   "zuletzt": "2026-11-09",
+   "lat": 53.57923,
+   "lon": 10.03101,
+   "lage": "plz",
+   "stadtteil": "Barmbek-Süd",
+   "bahn": {
+    "name": "Dehnhaide",
+    "linien": [
+     "U3"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Katholische Sophienschule",
+    "min": 4,
+    "traeger": "frei"
+   },
+   "aktiv": true
+  }
+ },
+ "geocache": {
+  "Thadenstraße 160 b, 22767 Hamburg": [
+   53.5566081,
+   9.9515931
+  ],
+  "Bornemannstraße 12, 21073 Hamburg": [
+   53.4546773,
+   9.9777374
+  ],
+  "Eimsbütteler Straße 139, 22769 Hamburg": [
+   53.5694817,
+   9.9489552
+  ],
+  "Sydneystraße 10, 22297 Hamburg": [
+   53.6049012,
+   10.0155192
+  ],
+  "Billhorner Kanalstraße 52, 20539 Hamburg": [
+   53.538293,
+   10.034768
+  ],
+  "Sydneystraße 28, 22297 Hamburg": [
+   53.6046893,
+   10.0169901
+  ],
+  "22391 Hamburg": [
+   53.6413106,
+   10.0803294
+  ],
+  "Lohe 60, 22397 Hamburg": [
+   53.7136137,
+   10.1090813
+  ],
+  "22297 Hamburg": [
+   53.607266,
+   10.0120358
+  ],
+  "22085 Hamburg": [
+   53.5732161,
+   10.0147729
+  ],
+  "22589 Hamburg": [
+   53.5830955,
+   9.8071645
+  ],
+  "22399 Hamburg": [
+   53.6647846,
+   10.0723053
+  ],
+  "Wählingsallee 4, 22457 Hamburg": [
+   53.6318553,
+   9.9204837
+  ],
+  "22299 Hamburg": [
+   53.5948169,
+   9.9995423
+  ],
+  "Falkenried 74 a, 20251 Hamburg": [
+   53.5846883,
+   9.9734057
+  ],
+  "22301 Hamburg": [
+   53.5836198,
+   10.005728
+  ],
+  "22453 Hamburg": [
+   53.6183507,
+   9.9655793
+  ],
+  "20148 Hamburg": [
+   53.5685069,
+   9.9963276
+  ],
+  "Am Strandkai 21, 20457 Hamburg": [
+   53.5397845,
+   9.9896208
+  ],
+  "Hopfenstraße 2, 20359 Hamburg": [
+   53.5483526,
+   9.966909
+  ],
+  "21075 Hamburg": [
+   53.461518,
+   9.9333567
+  ],
+  "Im Torfmoos 14, 22417 Hamburg": [
+   53.6723635,
+   10.03046
+  ],
+  "20149 Hamburg": [
+   53.5782363,
+   9.9925122
+  ],
+  "22523 Hamburg": [
+   53.6134589,
+   9.898706
+  ],
+  "Bramfelder Weg 89, 22159 Hamburg": [
+   53.610741,
+   10.108058
+  ],
+  "Rungwisch 1, 22523 Hamburg": [
+   53.6102766,
+   9.9057402
+  ],
+  "Rabenhorst 5, 22391 Hamburg": [
+   53.6411622,
+   10.0833939
+  ],
+  "22083 Hamburg": [
+   53.579234,
+   10.0310082
+  ],
+  "Billhorner Kanalstraße 56, 20539 Hamburg": [
+   53.538293,
+   10.034768
+  ],
+  "Billhorner Kanalstraße 62, 20539 Hamburg": [
+   53.5373843,
+   10.0378693
+  ],
+  "22149 Hamburg": [
+   53.5901841,
+   10.16636
+  ],
+  "22307 Hamburg": [
+   53.5985871,
+   10.0442173
+  ],
+  "20251 Hamburg": [
+   53.591507,
+   9.9797716
+  ],
+  "Lokstedter Weg 30, 20251 Hamburg": [
+   53.5951609,
+   9.9861604
+  ],
+  "Alsterdorfer Straße 331, 22297 Hamburg": [
+   53.6110987,
+   10.0121483
+  ],
+  "22397 Hamburg": [
+   53.7039116,
+   10.1251204
+  ],
+  "Ratiborweg 100, 22043 Hamburg": [
+   53.5701008,
+   10.1387251
+  ],
+  "22529 Hamburg": [
+   53.5966678,
+   9.9585541
+  ],
+  "20097 Hamburg": [
+   53.5466015,
+   10.0197615
+  ],
+  "22393 Hamburg": [
+   53.6471907,
+   10.1181875
+  ],
+  "22587 Hamburg": [
+   53.5633773,
+   9.7990482
+  ],
+  "20359 Hamburg": [
+   53.5503014,
+   9.9644011
+  ],
+  "20259 Hamburg": [
+   53.5717909,
+   9.9582529
+  ],
+  "22395 Hamburg": [
+   53.6700821,
+   10.1191465
+  ],
+  "22115 Hamburg": [
+   53.530052,
+   10.149074
+  ],
+  "22767 Hamburg": [
+   53.5502477,
+   9.9470432
+  ],
+  "22761 Hamburg": [
+   53.5676662,
+   9.9118874
+  ],
+  "22459 Hamburg": [
+   53.6264797,
+   9.9368059
+  ],
+  "20099 Hamburg": [
+   53.5575395,
+   10.0117516
+  ]
+ },
+ "verworfen": {
+  "immowelt:7dc0be68-dfc2-4c98-93b8-4240f09a909a": {
+   "grund": "außerhalb Hamburgs",
+   "tag": "2026-11-09",
+   "url": "https://www.immowelt.de/expose/7dc0be68-dfc2-4c98-93b8-4240f09a909a"
+  },
+  "immowelt:1f33d9a3-6b1e-47ef-a3e3-6bfb3a36ca41": {
+   "grund": "außerhalb Hamburgs",
+   "tag": "2026-11-09",
+   "url": "https://www.immowelt.de/expose/1f33d9a3-6b1e-47ef-a3e3-6bfb3a36ca41"
+  },
+  "immowelt:86851c71-c7a6-40c4-b811-6269ebbc5c91": {
+   "grund": "nur mit WBS",
+   "tag": "2026-11-09",
+   "url": "https://www.immowelt.de/expose/86851c71-c7a6-40c4-b811-6269ebbc5c91"
+  }
+ },
+ "aktualisiert": "2026-11-09T04:12+00:00"
+}

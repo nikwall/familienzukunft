@@ -189,6 +189,5 @@ def lies_mail(roh: bytes) -> list[dict]:
             neu = lies_text(block, quelle, ext, typ=_typ(betreff) or _typ(block))
             alt = gesehen.get(schluessel)
             if alt is None or (neu["preis"] and not alt["preis"]):
-                neu["betreff"] = betreff[:120]
                 gesehen[schluessel] = neu
     return list(gesehen.values())

@@ -1,5 +1,4 @@
-// App-Rahmen: Zugang, Tabs. Neue Bereiche werden in BEREICHE eingetragen.
-import { entschluesseln } from "./krypto.js";
+// App-Rahmen: Tabs. Neue Bereiche werden in BEREICHE eingetragen.
 import { zeigeWohnen } from "./wohnen.js";
 
 const BEREICHE = [
@@ -7,49 +6,6 @@ const BEREICHE = [
 ];
 
 const app = document.getElementById("app");
-const SPEICHER = "fz_zugang";
-
-function gemerkt() {
-  try { return localStorage.getItem(SPEICHER); } catch { return null; }
-}
-function merken(code) {
-  try { localStorage.setItem(SPEICHER, code); } catch { /* privater Modus */ }
-}
-
-function codeAusLink() {
-  const m = location.hash.match(/k=([\w-]+)/);
-  if (m) history.replaceState(null, "", location.pathname + location.search);
-  return m ? m[1] : null;
-}
-
-function zugangsSeite(paket, meldung = "") {
-  app.innerHTML = `
-    <main class="zugang">
-      <h1>Familienzukunft</h1>
-      <form>
-        <label for="code">Zugangscode</label>
-        <input id="code" type="password" autocomplete="current-password" autofocus>
-        <button type="submit">Öffnen</button>
-        <p class="meldung" role="alert">${meldung}</p>
-      </form>
-    </main>`;
-  app.querySelector("form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    versuchen(paket, app.querySelector("#code").value.trim());
-  });
-}
-
-async function versuchen(paket, code) {
-  let stand;
-  try {
-    stand = await entschluesseln(paket, code);
-  } catch {
-    zugangsSeite(paket, "Dieser Code passt nicht.");
-    return;
-  }
-  merken(code);
-  rahmen(stand);
-}
 
 function rahmen(stand) {
   const tage = Math.ceil((new Date(stand.einstellungen.ziel) - new Date()) / 864e5);
@@ -73,14 +29,12 @@ function rahmen(stand) {
 }
 
 async function start() {
-  const r = await fetch("data/wohnen.enc.json", { cache: "no-store" });
-  const paket = await r.json();
-  const code = codeAusLink() || gemerkt();
-  if (code) await versuchen(paket, code);
-  else zugangsSeite(paket);
+  const r = await fetch("data/wohnen.json", { cache: "no-store" });
+  if (!r.ok) throw new Error(`data/wohnen.json: ${r.status}`);
+  rahmen(await r.json());
 }
 
 start().catch((e) => {
-  app.innerHTML = `<main class="zugang"><p>Die Daten konnten nicht geladen werden.</p></main>`;
+  app.innerHTML = `<main class="fehlerseite"><p>Die Daten konnten nicht geladen werden.</p></main>`;
   console.error(e);
 });
