@@ -52,7 +52,8 @@ MAIL_LINKS = [
     ("XING", re.compile(r"xing\.com/jobs/[^\s\"'?#]*?-(\d{6,})")),
 ]
 ABSENDER = re.compile(r"linkedin\.com|stepstone\.de|interamt\.de|academics\.(?:de|com)|indeed\.|xing\.com|bundesbank\.de|"
-                      r"myworkdayjobs\.com|successfactors|lufthansa|airbus|google\.com|ecb\.europa\.eu", re.I)
+                      r"myworkdayjobs\.com|successfactors|lufthansa|airbus|google\.com|ecb\.europa\.eu|inomics\.com|euraxess|"
+                      r"stepstone\.|xing\.de|academics\.", re.I)
 
 REMOTE_VOLL = re.compile(r"100\s*%\s*(?:remote|mobil|home)|vollständig (?:remote|mobil)|komplett (?:remote|mobil)|fully[ -]remote|"
                          r"full[ -]remote|remote[ -]first|ortsunabhängig|deutschlandweit (?:remote|mobil)|bundesweit (?:remote|mobil)|"
