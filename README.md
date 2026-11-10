@@ -21,6 +21,15 @@ Portale: Sie landen als Mail in einem eigenen Postfach, GitHub Actions liest es 
 
 GitHub Secrets: `FZ_IMAP_HOST`, `FZ_IMAP_USER`, `FZ_IMAP_PASSWORT`.
 
+## Morgennachricht
+
+Jeden Morgen gegen 7 Uhr schickt `pipeline/morgen.py` (Workflow `morgen.yml`) eine WhatsApp: neue und
+vom Markt genommene Angebote des Vortags in Nachbarschaft Scheideweg und Greater Eimsbüttel, dazu der Link zur App.
+Versand über CallMeBot. Jede Person schickt dem Bot einmal „I allow callmebot to send me messages“ und
+bekommt einen Schlüssel. Secret `FZ_WHATSAPP`, eine Zeile je Person: `+491701234567 123456`.
+Probelauf ohne Versand: `python pipeline/morgen.py --zeigen`.
+„Vom Markt“ heißt: 45 Tage nicht mehr gemeldet. Die Portale sagen nicht, wann ein Inserat verschwindet.
+
 ## Lokal starten
 
     python -m http.server 8796

@@ -1,0 +1,26 @@
+name: Morgennachricht
+
+on:
+  schedule:
+    # Gegen 7 Uhr in Berlin. GitHub rechnet in UTC: 5 Uhr UTC gilt im Sommer, 6 Uhr UTC im Winter.
+    # Das Skript lässt den Zeitplan aus, der heute nicht passt. Minute 7, weil GitHub volle Stunden oft verschiebt.
+    - cron: "7 5 * * *"
+    - cron: "7 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  senden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Nachricht schicken
+        env:
+          FZ_WHATSAPP: ${{ secrets.FZ_WHATSAPP }}
+          ZEITPLAN: ${{ github.event.schedule }}
+        run: python pipeline/morgen.py
