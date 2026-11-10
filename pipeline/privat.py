@@ -16,6 +16,7 @@ from __future__ import annotations
 import base64
 import datetime as dt
 import email
+import email.utils
 import hashlib
 import html
 import json
@@ -39,7 +40,7 @@ BUND_RSS = "https://www.service.bund.de/SiteGlobals/Functions/RSSFeed/RSSGenerat
 HAMBURG = (53.5511, 9.9937)
 BA_ALLE_STUNDEN = 4
 GILT_TAGE = 45
-LESER = 1  # Version des Mail-Lesers; steigt sie, kommen Mails ohne Treffer noch einmal dran
+LESER = 2  # Version des Mail-Lesers; steigt sie, kommen Mails ohne Treffer noch einmal dran
 _letzte_anfrage = 0.0
 
 # Links in Alert-Mails, die auf genau eine Stelle zeigen
@@ -51,9 +52,15 @@ MAIL_LINKS = [
     ("Indeed", re.compile(r"indeed\.[a-z.]+/(?:rc/clk|viewjob|pagead/clk)\?[^\"'\s]*?jk=([0-9a-f]{10,})")),
     ("XING", re.compile(r"xing\.com/jobs/[^\s\"'?#]*?-(\d{6,})")),
 ]
+# Nur Stellen-Absender; ein bloßes „google.com“ träfe auch die Kontomails von Google.
 ABSENDER = re.compile(r"linkedin\.com|stepstone\.de|interamt\.de|academics\.(?:de|com)|indeed\.|xing\.com|bundesbank\.de|"
-                      r"myworkdayjobs\.com|successfactors|lufthansa|airbus|google\.com|ecb\.europa\.eu|inomics\.com|euraxess|"
-                      r"stepstone\.|xing\.de|academics\.", re.I)
+                      r"myworkdayjobs\.com|successfactors|lufthansa|airbus|careers[\w.-]*@google\.com|ecb\.europa\.eu|"
+                      r"inomics\.com|euraxess|stepstone\.|xing\.de|academics\.", re.I)
+# StepStone verschickt nur Klick-Links, die in einen Auto-Login („Magic Link“) führen. Die werden
+# weder aufgelöst noch gespeichert; alles Nötige steht in der Mail selbst.
+STEPSTONE = re.compile(r"stepstone\.de", re.I)
+GEKUERZT = re.compile(r"\s*(?:\.\.\.|…)\s*$")
+GESCHLECHT = r"\((?:m/w/d|w/m/d|m/f/d|f/m/d|d/m/w|m/w/x|w/m/x|all genders?|gn\*?)\)"
 
 REMOTE_VOLL = re.compile(r"100\s*%\s*(?:remote|mobil|home)|vollständig (?:remote|mobil)|komplett (?:remote|mobil)|fully[ -]remote|"
                          r"full[ -]remote|remote[ -]first|ortsunabhängig|deutschlandweit (?:remote|mobil)|bundesweit (?:remote|mobil)|"
@@ -235,10 +242,111 @@ def _html(m) -> str:
     return ""
 
 
+def _zeile(t: str) -> str:
+    return re.sub(r"\s+", " ", t.replace("⁠", "").replace("\xa0", " ")).strip()
+
+
+def _ss_feld(karte, name: str) -> str | None:
+    """Angabe neben einem StepStone-Symbol, z. B. <img alt="location"> Hamburg."""
+    img = karte.find("img", alt=name)
+    if not img:
+        return None
+    span = img.find_parent("span")
+    nachbar = span.find_next_sibling("span") if span else img.find_next_sibling("span")
+    t = _zeile(nachbar.get_text(" ", strip=True)) if nachbar else ""
+    return t or None
+
+
+def _ss_titel(kurz: str, kopf: str, text: str) -> str:
+    """Kartentitel sind oft gekürzt („Volkswirt im Transfer ...“); der volle steht im Vorspann oder im Text."""
+    if not GEKUERZT.search(kurz):
+        return kurz
+    stamm = GEKUERZT.sub("", kurz)
+    if kopf and not GEKUERZT.search(kopf) and kopf.startswith(stamm):
+        return kopf
+    voll = re.search(re.escape(stamm) + r"[^.!?\n]{0,80}?" + GESCHLECHT, text)
+    if voll:
+        return voll[0]
+    return stamm + " …"
+
+
+def lies_stepstone(suppe: BeautifulSoup, basis: str) -> list[dict]:
+    """StepStone-Mails: je Stelle eine Karte mit Symbolen für Firma, Ort, Vertragsart und Arbeitszeit.
+
+    basis: Versanddatum der Mail; „vor 9 Tagen“ zählt von dort.
+    """
+    karten = []
+    for img in suppe.find_all("img", alt="company"):
+        k = img
+        while k.parent is not None:
+            k = k.parent
+            if k.find("strong") and len(k.find_all("img", alt="company")) == 1 and k.find("img", alt="location"):
+                break
+        if k not in karten:
+            karten.append(k)
+    if not karten:
+        return []
+    voll = suppe.get_text("\n", strip=True)
+    kopf = _zeile(suppe.find("span").get_text(" ", strip=True)) if suppe.find("span") else ""
+    # Bei Mails mit genau einer Stelle steht die ganze Beschreibung darunter.
+    beschreibung = ""
+    if len(karten) == 1:
+        t = re.search(r"Top-Fähigkeiten(.*?)(?:Mitarbeitervorteile|Die vollständige Stellenbeschreibung|$)", voll, re.S)
+        beschreibung = _zeile(t[1]) if t else ""
+    aus = []
+    for k in karten:
+        firma = _ss_feld(k, "company")
+        ort = _ss_feld(k, "location") or ""
+        zeit = _ss_feld(k, "time") or ""
+        vertrag = _ss_feld(k, "contract type") or ""
+        gehalt = _ss_feld(k, "salary")
+        kartentext = _zeile(k.get_text(" ", strip=True))
+        text = beschreibung or kartentext
+        titel = _ss_titel(_zeile(k.find("strong").get_text(" ", strip=True)), kopf if len(karten) == 1 else "", text)
+        orte = [o for o in (_zeile(GEKUERZT.sub("", x)) for x in ort.split(",")) if o]
+        if "Hamburg" not in orte and re.search(r"Standort[^.]{0,250}\bHamburg\b|\bin Hamburg\b", text):
+            orte.append("Hamburg")
+        # „vor 9 Tagen“ steht unter der Karte; aufwärts suchen, solange nur diese eine Stelle umfasst ist.
+        alter, u = 0, k
+        for _ in range(4):
+            if u.parent is None or len(u.parent.find_all("img", alt="company")) > 1:
+                break
+            u = u.parent
+            umgebung = _zeile(u.get_text(" ", strip=True))
+            if t := re.search(r"vor (\d+) Tag", umgebung):
+                alter = int(t[1])
+                break
+            if re.search(r"\bgestern\b", umgebung, re.I):
+                alter = 1
+                break
+        datum = (dt.date.fromisoformat(basis) - dt.timedelta(days=alter)).isoformat()
+        kern = _zeile(re.sub(GESCHLECHT + r"|…", "", titel))
+        schluessel = hashlib.sha1(f"{kern.lower()[:40]}|{(firma or '').lower()}".encode()).hexdigest()[:12]
+        aus.append({
+            "id": f"stepstone:{schluessel}", "quelle": "StepStone", "titel": titel, "firma": firma,
+            "orte": [{"ort": o} for o in orte], "datum": datum,
+            "teilzeit": bool(re.search(r"teilzeit", zeit, re.I)),
+            "vollzeit": bool(re.search(r"vollzeit|\bvo\b", zeit, re.I)) and not re.search(r"teilzeit", zeit, re.I),
+            "homeoffice": bool(re.search(r"homeoffice|remote", zeit, re.I)),
+            "befristet": True if re.search(r"befrist", vertrag, re.I) else (False if re.search(r"feste anstellung|unbefrist", vertrag, re.I) else None),
+            "vertrag": vertrag or None, "gehalt": gehalt,
+            # Kein Link aus der Mail (Auto-Login); die Suche führt zur Anzeige.
+            "url": "https://www.google.com/search?q=" + urllib.parse.quote_plus(f"stepstone {kern} {firma or ''}".strip()),
+            "text": text[:6000],
+        })
+    return aus
+
+
 def lies_alert(roh: bytes) -> list[dict]:
     """Stellen aus einer Alert-Mail: Titel aus dem Linktext, Firma und Ort aus dem Block darum."""
     m = email.message_from_bytes(roh)
     suppe = BeautifulSoup(_html(m), "html.parser")
+    if STEPSTONE.search(m.get("From", "")) or suppe.find("a", href=re.compile(r"click\.stepstone\.de")):
+        try:
+            basis = email.utils.parsedate_to_datetime(m["Date"]).astimezone(ZoneInfo("Europe/Berlin")).date().isoformat()
+        except (TypeError, ValueError):
+            basis = heute()
+        return lies_stepstone(suppe, basis)
     gesehen: dict[str, dict] = {}
     for a in suppe.find_all("a", href=True):
         href = urllib.parse.unquote(html.unescape(a["href"]))
@@ -285,6 +393,8 @@ def einordnen(j: dict, profil: dict, geo: dict) -> None:
         j["raus"] = "Bereich passt nicht"
     elif j.get("firma") and re.search(profil.get("firma_nicht", "^$"), j["firma"], re.I):
         j["raus"] = "Arbeitgeber passt nicht"
+    elif re.search(r"zeitarbeit|arbeitnehmerüberlassung|praktikum|werkstudent|ausbildung|trainee|freiberuf", j.get("vertrag") or "", re.I):
+        j["raus"] = "Vertragsart passt nicht"
     elif not (re.search(profil["rolle"], titel, re.I) and (re.search(profil["fach"], titel, re.I) or oekon.search(text))):
         # Ohne Fach im Titel muss der Text klar ökonomisch oder empirisch sein.
         j["raus"] = "Rolle passt nicht"
