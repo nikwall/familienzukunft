@@ -21231,6 +21231,1614 @@
    },
    "laerm": 0,
    "aktiv": true
+  },
+  "immowelt:dbc7ac57-7477-45e1-8bb9-dcd5f62781f4": {
+   "id": "immowelt:dbc7ac57-7477-45e1-8bb9-dcd5f62781f4",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/dbc7ac57-7477-45e1-8bb9-dcd5f62781f4",
+   "typ": "kauf",
+   "art": null,
+   "preis": 800000.0,
+   "flaeche": 93.56,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Lüneburg",
+   "plz": "21335",
+   "stadtteil_text": "Altstadt",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.24765,
+   "lon": 10.4047,
+   "lage": "stadtteil",
+   "stadtteil": "Altstadt",
+   "bahn": {
+    "name": "Neue Sülze",
+    "linien": [
+     "5019",
+     "5200",
+     "5202",
+     "5405"
+    ],
+    "min": 1,
+    "art": "bus"
+   },
+   "schule": {
+    "name": "St.-Ursula-Grundschule",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:e8c837e6-9263-441f-838d-2ff097375e2e": {
+   "id": "immowelt:e8c837e6-9263-441f-838d-2ff097375e2e",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/e8c837e6-9263-441f-838d-2ff097375e2e",
+   "typ": "kauf",
+   "art": "Penthouse",
+   "preis": 849000.0,
+   "flaeche": 191.32,
+   "zimmer": 6.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22043",
+   "stadtteil_text": "Marienthal",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.56923,
+   "lon": 10.10493,
+   "lage": "plz",
+   "stadtteil": "Marienthal",
+   "bahn": {
+    "name": "Horner Rennbahn",
+    "linien": [
+     "U2",
+     "U4"
+    ],
+    "min": 36
+   },
+   "schule": {
+    "name": "Grundschule Marienthal",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:2699eprqzew6": {
+   "id": "immowelt:2699eprqzew6",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/2699eprqzew6",
+   "typ": "miete",
+   "art": null,
+   "preis": 1410.0,
+   "flaeche": 94.07,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "21031",
+   "stadtteil_text": "Lohbrügge",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.50825,
+   "lon": 10.19666,
+   "lage": "plz",
+   "stadtteil": "Lohbrügge",
+   "bahn": {
+    "name": "Bergedorf",
+    "linien": [
+     "RE1",
+     "S2",
+     "S7"
+    ],
+    "min": 35
+   },
+   "schule": {
+    "name": "Grundschule Mendelstraße",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172514251": {
+   "id": "immoscout24:172514251",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172514251",
+   "typ": "kauf",
+   "art": "Reihenhaus",
+   "preis": 449000.0,
+   "flaeche": 94.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Niendorf",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.62796,
+   "lon": 9.95735,
+   "lage": "stadtteil",
+   "stadtteil": "Niendorf",
+   "bahn": {
+    "name": "Joachim-Mähl-Straße",
+    "linien": [
+     "U2"
+    ],
+    "min": 8
+   },
+   "schule": {
+    "name": "Schule Burgunderweg",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:42f89fe8-5cb8-42af-b4cd-33ef70ccaee0": {
+   "id": "immowelt:42f89fe8-5cb8-42af-b4cd-33ef70ccaee0",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/42f89fe8-5cb8-42af-b4cd-33ef70ccaee0",
+   "typ": "miete",
+   "art": null,
+   "preis": 1430.0,
+   "flaeche": 97.09,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22045",
+   "stadtteil_text": "Jenfeld",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.58302,
+   "lon": 10.12871,
+   "lage": "plz",
+   "stadtteil": "Jenfeld",
+   "bahn": {
+    "name": "Trabrennbahn",
+    "linien": [
+     "U1"
+    ],
+    "min": 39
+   },
+   "schule": {
+    "name": "Grundschule Tonndorf",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:8eb12293-436d-487b-8017-dc8e4f267997": {
+   "id": "immowelt:8eb12293-436d-487b-8017-dc8e4f267997",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/8eb12293-436d-487b-8017-dc8e4f267997",
+   "typ": "kauf",
+   "art": null,
+   "preis": 599000.0,
+   "flaeche": 163.21,
+   "zimmer": 7.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22415",
+   "stadtteil_text": "Langenhorn",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.64751,
+   "lon": 10.00856,
+   "lage": "plz",
+   "stadtteil": "Langenhorn",
+   "bahn": {
+    "name": "Langenhorn Markt",
+    "linien": [
+     "U1"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "Astrid Lindgren Grundschule",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:522bb2e0-42ac-4f47-ad18-587fea6b3703": {
+   "id": "immowelt:522bb2e0-42ac-4f47-ad18-587fea6b3703",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/522bb2e0-42ac-4f47-ad18-587fea6b3703",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 785000.0,
+   "flaeche": 170.0,
+   "zimmer": 7.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22041",
+   "stadtteil_text": "Wandsbek",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.57547,
+   "lon": 10.07881,
+   "lage": "plz",
+   "stadtteil": "Wandsbek",
+   "bahn": {
+    "name": "Wandsbek Markt",
+    "linien": [
+     "U1"
+    ],
+    "min": 15
+   },
+   "schule": {
+    "name": "Katholische Schule St. Joseph - Wandsbek",
+    "min": 4,
+    "traeger": "frei"
+   },
+   "aktiv": true
+  },
+  "immowelt:c20beb69-67d3-4849-bdf0-9e85a67c6038": {
+   "id": "immowelt:c20beb69-67d3-4849-bdf0-9e85a67c6038",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/c20beb69-67d3-4849-bdf0-9e85a67c6038",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 815000.0,
+   "flaeche": 146.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": true,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22359",
+   "stadtteil_text": "Volksdorf",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.6531,
+   "lon": 10.16369,
+   "lage": "plz",
+   "stadtteil": "Volksdorf",
+   "bahn": {
+    "name": "Volksdorf",
+    "linien": [
+     "U1"
+    ],
+    "min": 4
+   },
+   "schule": {
+    "name": "Schule Ahrensburger Weg",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:6189c7ba-c599-4bcf-a8c9-e24ad6fb0f16": {
+   "id": "immowelt:6189c7ba-c599-4bcf-a8c9-e24ad6fb0f16",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/6189c7ba-c599-4bcf-a8c9-e24ad6fb0f16",
+   "typ": "kauf",
+   "art": null,
+   "preis": 298000.0,
+   "flaeche": 83.6,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": true,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22457",
+   "stadtteil_text": "Schnelsen",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.6418,
+   "lon": 9.91784,
+   "lage": "plz",
+   "stadtteil": "Schnelsen",
+   "bahn": {
+    "name": "Burgwedel",
+    "linien": [
+     "A1"
+    ],
+    "min": 14
+   },
+   "schule": {
+    "name": "Schule Anna-Susanna-Stieg",
+    "min": 2,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:2433559a-a57a-4501-8d73-6d926fa5c96e": {
+   "id": "immowelt:2433559a-a57a-4501-8d73-6d926fa5c96e",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/2433559a-a57a-4501-8d73-6d926fa5c96e",
+   "typ": "kauf",
+   "art": null,
+   "preis": 698000.0,
+   "flaeche": 145.0,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22397",
+   "stadtteil_text": "Lemsahl-Mellingstedt",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.70391,
+   "lon": 10.12512,
+   "lage": "plz",
+   "stadtteil": "Lemsahl-Mellingstedt",
+   "bahn": {
+    "name": "Ohlstedt",
+    "linien": [
+     "U1"
+    ],
+    "min": 21
+   },
+   "schule": {
+    "name": "Schule am Walde",
+    "min": 17,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:4e1d08b9-ee88-496b-b8c3-409d03a4705e": {
+   "id": "immowelt:4e1d08b9-ee88-496b-b8c3-409d03a4705e",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/4e1d08b9-ee88-496b-b8c3-409d03a4705e",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 749000.0,
+   "flaeche": 190.0,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "21075",
+   "stadtteil_text": "Eißendorf",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.46152,
+   "lon": 9.93336,
+   "lage": "plz",
+   "stadtteil": "Eißendorf",
+   "bahn": {
+    "name": "Heimfeld (TU Hamburg)",
+    "linien": [
+     "S3",
+     "S5"
+    ],
+    "min": 33
+   },
+   "schule": {
+    "name": "Schule In der Alten Forst",
+    "min": 23,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:19bba83a-6c5f-47d5-af83-31fba39c191a": {
+   "id": "immowelt:19bba83a-6c5f-47d5-af83-31fba39c191a",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/19bba83a-6c5f-47d5-af83-31fba39c191a",
+   "typ": "kauf",
+   "art": null,
+   "preis": 879000.0,
+   "flaeche": 86.6,
+   "zimmer": 3.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": true,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20251",
+   "stadtteil_text": "Hoheluft-Ost",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.59151,
+   "lon": 9.97977,
+   "lage": "plz",
+   "stadtteil": "Hoheluft-Ost",
+   "bahn": {
+    "name": "Kellinghusenstraße",
+    "linien": [
+     "U1",
+     "U3"
+    ],
+    "min": 13
+   },
+   "schule": {
+    "name": "Grundschule St. Nikolai",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:a9d31e9e-ecf9-452c-a548-9ae5ff34264e": {
+   "id": "immowelt:a9d31e9e-ecf9-452c-a548-9ae5ff34264e",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/a9d31e9e-ecf9-452c-a548-9ae5ff34264e",
+   "typ": "kauf",
+   "art": null,
+   "preis": 999000.0,
+   "flaeche": 98.86,
+   "zimmer": 4.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": true,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20251",
+   "stadtteil_text": "Hoheluft-Ost",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.59151,
+   "lon": 9.97977,
+   "lage": "plz",
+   "stadtteil": "Hoheluft-Ost",
+   "bahn": {
+    "name": "Kellinghusenstraße",
+    "linien": [
+     "U1",
+     "U3"
+    ],
+    "min": 13
+   },
+   "schule": {
+    "name": "Grundschule St. Nikolai",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:9d5d0422-29c5-4499-9712-8a88a56291d1": {
+   "id": "immowelt:9d5d0422-29c5-4499-9712-8a88a56291d1",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/9d5d0422-29c5-4499-9712-8a88a56291d1",
+   "typ": "kauf",
+   "art": "Maisonette",
+   "preis": 890000.0,
+   "flaeche": 122.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22359",
+   "stadtteil_text": "Volksdorf",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.6531,
+   "lon": 10.16369,
+   "lage": "plz",
+   "stadtteil": "Volksdorf",
+   "bahn": {
+    "name": "Volksdorf",
+    "linien": [
+     "U1"
+    ],
+    "min": 4
+   },
+   "schule": {
+    "name": "Schule Ahrensburger Weg",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:2f3e3ece-63a0-4a28-b025-8e13adb1f163": {
+   "id": "immowelt:2f3e3ece-63a0-4a28-b025-8e13adb1f163",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/2f3e3ece-63a0-4a28-b025-8e13adb1f163",
+   "typ": "kauf",
+   "art": "Maisonette",
+   "preis": 720000.0,
+   "flaeche": 86.61,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22765",
+   "stadtteil_text": "Ottensen",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.55555,
+   "lon": 9.93497,
+   "lage": "plz",
+   "stadtteil": "Ottensen",
+   "bahn": {
+    "name": "Altona",
+    "linien": [
+     "S1",
+     "S2",
+     "S3",
+     "S5",
+     "S7"
+    ],
+    "min": 6
+   },
+   "schule": {
+    "name": "Bugenhagen-Schule Ottensen, Evangelische Grundschule an der Osterkirche",
+    "min": 3,
+    "traeger": "frei"
+   },
+   "aktiv": true
+  },
+  "immowelt:67ad1922-983c-4940-9b62-cb55b647a561": {
+   "id": "immowelt:67ad1922-983c-4940-9b62-cb55b647a561",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/67ad1922-983c-4940-9b62-cb55b647a561",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 350000.0,
+   "flaeche": 90.66,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22453",
+   "stadtteil_text": "Niendorf",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.61835,
+   "lon": 9.96558,
+   "lage": "plz",
+   "stadtteil": "Niendorf",
+   "bahn": {
+    "name": "Niendorf Markt",
+    "linien": [
+     "U2"
+    ],
+    "min": 15
+   },
+   "schule": {
+    "name": "Schule Burgunderweg",
+    "min": 18,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:b028f929-1dc1-4e70-98d4-1cf9c1fa6712": {
+   "id": "immowelt:b028f929-1dc1-4e70-98d4-1cf9c1fa6712",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/b028f929-1dc1-4e70-98d4-1cf9c1fa6712",
+   "typ": "kauf",
+   "art": "Maisonette",
+   "preis": 544000.0,
+   "flaeche": 111.36,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22045",
+   "stadtteil_text": "Langenhorn",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.58302,
+   "lon": 10.12871,
+   "lage": "plz",
+   "stadtteil": "Langenhorn",
+   "bahn": {
+    "name": "Trabrennbahn",
+    "linien": [
+     "U1"
+    ],
+    "min": 39
+   },
+   "schule": {
+    "name": "Grundschule Tonndorf",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172514346": {
+   "id": "immoscout24:172514346",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172514346",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 670000.0,
+   "flaeche": 102.0,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Jenfeld",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.57584,
+   "lon": 10.13374,
+   "lage": "stadtteil",
+   "stadtteil": "Jenfeld",
+   "bahn": {
+    "name": "Trabrennbahn",
+    "linien": [
+     "U1"
+    ],
+    "min": 53
+   },
+   "schule": {
+    "name": "Schule Jenfelder Straße",
+    "min": 1,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:7bed4ab2-c77b-401d-90cd-134474846a66": {
+   "id": "immowelt:7bed4ab2-c77b-401d-90cd-134474846a66",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/7bed4ab2-c77b-401d-90cd-134474846a66",
+   "typ": "kauf",
+   "art": "Reihenhaus",
+   "preis": 590000.0,
+   "flaeche": 86.15,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22391",
+   "stadtteil_text": "Poppenbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.64131,
+   "lon": 10.08033,
+   "lage": "plz",
+   "stadtteil": "Poppenbüttel",
+   "bahn": {
+    "name": "Wellingsbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 3
+   },
+   "schule": {
+    "name": "Schule Strenge",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:0632532d-fe84-4e4b-9087-0a64bf444de5": {
+   "id": "immowelt:0632532d-fe84-4e4b-9087-0a64bf444de5",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/0632532d-fe84-4e4b-9087-0a64bf444de5",
+   "typ": "kauf",
+   "art": "Reihenhaus",
+   "preis": 400000.0,
+   "flaeche": 115.29,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22359",
+   "stadtteil_text": "Bergstedt",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.6531,
+   "lon": 10.16369,
+   "lage": "plz",
+   "stadtteil": "Bergstedt",
+   "bahn": {
+    "name": "Volksdorf",
+    "linien": [
+     "U1"
+    ],
+    "min": 4
+   },
+   "schule": {
+    "name": "Schule Ahrensburger Weg",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:55075d52-8352-412d-adcc-bd6e27d2b944": {
+   "id": "immowelt:55075d52-8352-412d-adcc-bd6e27d2b944",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/55075d52-8352-412d-adcc-bd6e27d2b944",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 704000.0,
+   "flaeche": 167.57,
+   "zimmer": 6.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22043",
+   "stadtteil_text": "Jenfeld",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.56923,
+   "lon": 10.10493,
+   "lage": "plz",
+   "stadtteil": "Jenfeld",
+   "bahn": {
+    "name": "Horner Rennbahn",
+    "linien": [
+     "U2",
+     "U4"
+    ],
+    "min": 36
+   },
+   "schule": {
+    "name": "Grundschule Marienthal",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172516073": {
+   "id": "immoscout24:172516073",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172516073",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2343.19,
+   "flaeche": 99.71,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Bahrenfeld",
+   "strasse": "Von-Sauer-Straße 16",
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.5659,
+   "lon": 9.90803,
+   "lage": "adresse",
+   "stadtteil": "Bahrenfeld",
+   "bahn": {
+    "name": "Bahrenfeld",
+    "linien": [
+     "S1"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Schule Mendelssohnstraße",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "laerm": 70,
+   "aktiv": true
+  },
+  "immoscout24:172519174": {
+   "id": "immoscout24:172519174",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172519174",
+   "typ": "kauf",
+   "art": "Maisonette",
+   "preis": 830000.0,
+   "flaeche": 136.52,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Bahrenfeld",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.56907,
+   "lon": 9.90558,
+   "lage": "stadtteil",
+   "stadtteil": "Bahrenfeld",
+   "bahn": {
+    "name": "Bahrenfeld",
+    "linien": [
+     "S1"
+    ],
+    "min": 17
+   },
+   "schule": {
+    "name": "Schule Mendelssohnstraße",
+    "min": 10,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172517682": {
+   "id": "immoscout24:172517682",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172517682",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 760000.0,
+   "flaeche": 122.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Schnelsen",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.6374,
+   "lon": 9.91883,
+   "lage": "stadtteil",
+   "stadtteil": "Schnelsen",
+   "bahn": {
+    "name": "Schnelsen",
+    "linien": [
+     "A1"
+    ],
+    "min": 14
+   },
+   "schule": {
+    "name": "Schule Frohmestraße",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172519199": {
+   "id": "immoscout24:172519199",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172519199",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 795000.0,
+   "flaeche": 127.08,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Rissen",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.5847,
+   "lon": 9.75639,
+   "lage": "stadtteil",
+   "stadtteil": "Rissen",
+   "bahn": {
+    "name": "Rissen",
+    "linien": [
+     "S1"
+    ],
+    "min": 3
+   },
+   "schule": {
+    "name": "Schule Marschweg",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172519824": {
+   "id": "immoscout24:172519824",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172519824",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 748.07,
+   "flaeche": 98.43,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Wilhelmsburg",
+   "strasse": "Veringstr. 56",
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.51298,
+   "lon": 9.98727,
+   "lage": "adresse",
+   "stadtteil": "Wilhelmsburg",
+   "bahn": {
+    "name": "Veddel (BallinStadt)",
+    "linien": [
+     "S3",
+     "S5"
+    ],
+    "min": 32
+   },
+   "schule": {
+    "name": "Demokratische Schule FLeKS",
+    "min": 4,
+    "traeger": "frei"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immoscout24:172516535": {
+   "id": "immoscout24:172516535",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172516535",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2285.0,
+   "flaeche": 91.4,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Poppenbüttel",
+   "strasse": "Stormarnplatz 2 a",
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.65107,
+   "lon": 10.09384,
+   "lage": "adresse",
+   "stadtteil": "Poppenbüttel",
+   "bahn": {
+    "name": "Poppenbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 2
+   },
+   "schule": {
+    "name": "Schule Alsterredder",
+    "min": 15,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immoscout24:172494885": {
+   "id": "immoscout24:172494885",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172494885",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1540.0,
+   "flaeche": 80.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Eppendorf",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.59039,
+   "lon": 9.98688,
+   "lage": "stadtteil",
+   "stadtteil": "Eppendorf",
+   "bahn": {
+    "name": "Kellinghusenstraße",
+    "linien": [
+     "U1",
+     "U3"
+    ],
+    "min": 5
+   },
+   "schule": {
+    "name": "Grund- und Stadtteilschule Eppendorf",
+    "min": 3,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172517534": {
+   "id": "immoscout24:172517534",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172517534",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1463.0,
+   "flaeche": 120.0,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Stellingen",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.59678,
+   "lon": 9.92841,
+   "lage": "stadtteil",
+   "stadtteil": "Stellingen",
+   "bahn": {
+    "name": "Stellingen (Arenen)",
+    "linien": [
+     "S2",
+     "S3",
+     "S5"
+    ],
+    "min": 17
+   },
+   "schule": {
+    "name": "Schule Wegenkamp",
+    "min": 12,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172523115": {
+   "id": "immoscout24:172523115",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172523115",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 696000.0,
+   "flaeche": 122.0,
+   "zimmer": 6.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Rahlstedt",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.60388,
+   "lon": 10.15815,
+   "lage": "stadtteil",
+   "stadtteil": "Rahlstedt",
+   "bahn": {
+    "name": "Oldenfelde",
+    "linien": [
+     "U1"
+    ],
+    "min": 40
+   },
+   "schule": {
+    "name": "Grundschule Neurahlstedt",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172519810": {
+   "id": "immoscout24:172519810",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172519810",
+   "typ": "kauf",
+   "art": "Doppelhaus",
+   "preis": 544700.0,
+   "flaeche": 121.58,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Farmsen-Berne",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.61244,
+   "lon": 10.11577,
+   "lage": "stadtteil",
+   "stadtteil": "Farmsen-Berne",
+   "bahn": {
+    "name": "Farmsen",
+    "linien": [
+     "U1"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "August-Hermann-Francke-Schule Farmsen",
+    "min": 5,
+    "traeger": "frei"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172521113": {
+   "id": "immoscout24:172521113",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172521113",
+   "typ": "kauf",
+   "art": "Reihenhaus",
+   "preis": 469000.0,
+   "flaeche": 95.17,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Rahlstedt",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.60388,
+   "lon": 10.15815,
+   "lage": "stadtteil",
+   "stadtteil": "Rahlstedt",
+   "bahn": {
+    "name": "Oldenfelde",
+    "linien": [
+     "U1"
+    ],
+    "min": 40
+   },
+   "schule": {
+    "name": "Grundschule Neurahlstedt",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172521105": {
+   "id": "immoscout24:172521105",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172521105",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 659000.0,
+   "flaeche": 132.75,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Rahlstedt",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.60388,
+   "lon": 10.15815,
+   "lage": "stadtteil",
+   "stadtteil": "Rahlstedt",
+   "bahn": {
+    "name": "Oldenfelde",
+    "linien": [
+     "U1"
+    ],
+    "min": 40
+   },
+   "schule": {
+    "name": "Grundschule Neurahlstedt",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172521090": {
+   "id": "immoscout24:172521090",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172521090",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 709000.0,
+   "flaeche": 132.7,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Rahlstedt",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.60388,
+   "lon": 10.15815,
+   "lage": "stadtteil",
+   "stadtteil": "Rahlstedt",
+   "bahn": {
+    "name": "Oldenfelde",
+    "linien": [
+     "U1"
+    ],
+    "min": 40
+   },
+   "schule": {
+    "name": "Grundschule Neurahlstedt",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172523594": {
+   "id": "immoscout24:172523594",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172523594",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1310.0,
+   "flaeche": 81.86,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Harburg (Ortsteil)",
+   "strasse": "Theodor-Yorck-Straße 17",
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.464,
+   "lon": 9.9873,
+   "lage": "adresse",
+   "stadtteil": "Harburg",
+   "bahn": {
+    "name": "Harburg Rathaus",
+    "linien": [
+     "S3",
+     "S5"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "Schule am Park",
+    "min": 12,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immoscout24:172526167": {
+   "id": "immoscout24:172526167",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172526167",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 770000.0,
+   "flaeche": 83.0,
+   "zimmer": 3.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Harvestehude",
+   "strasse": null,
+   "erstmals": "2026-11-10",
+   "zuletzt": "2026-11-10",
+   "lat": 53.57543,
+   "lon": 9.98044,
+   "lage": "stadtteil",
+   "stadtteil": "Harvestehude",
+   "bahn": {
+    "name": "Hoheluftbrücke",
+    "linien": [
+     "U3"
+    ],
+    "min": 6
+   },
+   "schule": {
+    "name": "Katholische Schule Hochallee",
+    "min": 7,
+    "traeger": "frei"
+   },
+   "aktiv": true
   }
  },
  "geocache": {
@@ -21942,6 +23550,66 @@
   "Zur Jenfelder Au 19g,  Hamburg": [
    53.5790184,
    10.1340549
+  ],
+  "22043 Hamburg": [
+   53.5692255,
+   10.1049277
+  ],
+  "21031 Hamburg": [
+   53.5082506,
+   10.1966631
+  ],
+  "22415 Hamburg": [
+   53.6475061,
+   10.0085581
+  ],
+  "22359 Hamburg": [
+   53.6530976,
+   10.1636902
+  ],
+  "22457 Hamburg": [
+   53.6417972,
+   9.9178447
+  ],
+  "Jenfeld, Hamburg": [
+   53.5758367,
+   10.1337359
+  ],
+  "Von-Sauer-Straße 16,  Hamburg": [
+   53.565899,
+   9.9080261
+  ],
+  "Bahrenfeld, Hamburg": [
+   53.5690699,
+   9.9055827
+  ],
+  "Rissen, Hamburg": [
+   53.5847,
+   9.75639
+  ],
+  "Veringstr. 56,  Hamburg": [
+   53.5129776,
+   9.9872714
+  ],
+  "Stormarnplatz 2 a,  Hamburg": [
+   53.6510708,
+   10.093841
+  ],
+  "Eppendorf, Hamburg": [
+   53.5903912,
+   9.9868771
+  ],
+  "Stellingen, Hamburg": [
+   53.5967771,
+   9.9284099
+  ],
+  "Theodor-Yorck-Straße 17,  Hamburg": [
+   53.4640011,
+   9.9872991
+  ],
+  "Harvestehude, Hamburg": [
+   53.5754331,
+   9.9804402
   ]
  },
  "verworfen": {
@@ -22274,9 +23942,24 @@
    "grund": "Katalog-Neubau",
    "tag": "2026-11-10",
    "url": "https://www.immowelt.de/expose/5d42419f-ad76-4e28-806d-783bf07791ec"
+  },
+  "immowelt:25f8b8ee-8175-45d9-945e-22d197010f06": {
+   "grund": "Katalog-Neubau",
+   "tag": "2026-11-10",
+   "url": "https://www.immowelt.de/expose/25f8b8ee-8175-45d9-945e-22d197010f06"
+  },
+  "immowelt:b2163251-b6b6-45a9-92b8-081f88eeae06": {
+   "grund": "Mehrfamilienhaus",
+   "tag": "2026-11-10",
+   "url": "https://www.immowelt.de/expose/b2163251-b6b6-45a9-92b8-081f88eeae06"
+  },
+  "immoscout24:170336037": {
+   "grund": "Katalog-Neubau",
+   "tag": "2026-11-10",
+   "url": "https://www.immobilienscout24.de/expose/170336037"
   }
  },
- "aktualisiert": "2026-11-10T03:30+00:00",
+ "aktualisiert": "2026-11-10T13:26+00:00",
  "verlauf": {
   "2026-11-09": {
    "scheideweg": {
@@ -22471,8 +24154,8 @@
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 3,
-     "qm": 9310.34,
+     "aktiv": 6,
+     "qm": 9333.16,
      "neu": 0,
      "weg": 0,
      "runter": 0,
@@ -22481,16 +24164,16 @@
    },
    "eimsbuettel": {
     "miete": {
-     "aktiv": 7,
-     "qm": 23.53,
+     "aktiv": 9,
+     "qm": 22.28,
      "neu": 0,
      "weg": 0,
      "runter": 0,
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 8,
-     "qm": 8943.97,
+     "aktiv": 11,
+     "qm": 9310.34,
      "neu": 0,
      "weg": 0,
      "runter": 0,
@@ -22499,7 +24182,7 @@
    },
    "alster": {
     "miete": {
-     "aktiv": 17,
+     "aktiv": 18,
      "qm": 22.54,
      "neu": 0,
      "weg": 0,
@@ -22507,8 +24190,8 @@
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 17,
-     "qm": 10735.83,
+     "aktiv": 18,
+     "qm": 10693.36,
      "neu": 0,
      "weg": 0,
      "runter": 0,
@@ -22517,16 +24200,16 @@
    },
    "hamburg": {
     "miete": {
-     "aktiv": 101,
-     "qm": 18.35,
+     "aktiv": 109,
+     "qm": 18.15,
      "neu": 0,
      "weg": 0,
      "runter": 0,
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 91,
-     "qm": 7000.0,
+     "aktiv": 118,
+     "qm": 6541.56,
      "neu": 0,
      "weg": 0,
      "runter": 0,
@@ -22597,8 +24280,8 @@
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 37,
-     "qm": 5101.71,
+     "aktiv": 38,
+     "qm": 5163.21,
      "neu": 0,
      "weg": 0,
      "runter": 0,
@@ -22633,8 +24316,8 @@
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 88,
-     "qm": 4295.29,
+     "aktiv": 89,
+     "qm": 4340.58,
      "neu": 0,
      "weg": 0,
      "runter": 0,
@@ -22938,7 +24621,107 @@
    "2026-11-10",
    0,
    2
+  ],
+  "a0b7f7345eecf348": [
+   "2026-11-10",
+   1,
+   2
+  ],
+  "da3b31790784ae0d": [
+   "2026-11-10",
+   2,
+   2
+  ],
+  "41d8aa9d0da1a00f": [
+   "2026-11-10",
+   1,
+   2
+  ],
+  "86bc7f2858b78b40": [
+   "2026-11-10",
+   1,
+   2
+  ],
+  "06d5f0ad2617c8e5": [
+   "2026-11-10",
+   1,
+   2
+  ],
+  "5a4af8794e8d2527": [
+   "2026-11-10",
+   1,
+   2
+  ],
+  "c1c908e1599f959d": [
+   "2026-11-10",
+   0,
+   2
+  ],
+  "18d01fc9258f3651": [
+   "2026-11-10",
+   2,
+   2
+  ],
+  "8ac640420f9464a8": [
+   "2026-11-10",
+   7,
+   2
+  ],
+  "74dd3a6d785b9caf": [
+   "2026-11-10",
+   3,
+   2
+  ],
+  "b83a9e351d945f4e": [
+   "2026-11-10",
+   1,
+   2
+  ],
+  "1c7fb9e8b95e0ce8": [
+   "2026-11-10",
+   3,
+   2
+  ],
+  "2d9d855d6bbb05e0": [
+   "2026-11-10",
+   0,
+   2
+  ],
+  "b541d605f5d7cb1b": [
+   "2026-11-10",
+   1,
+   2
+  ],
+  "5ae0cf3f6b2a31e0": [
+   "2026-11-10",
+   2,
+   2
+  ],
+  "29d4fda200645935": [
+   "2026-11-10",
+   2,
+   2
+  ],
+  "d4ee4536dcbc67e9": [
+   "2026-11-10",
+   4,
+   2
+  ],
+  "302b3f49d1a8a1d1": [
+   "2026-11-10",
+   5,
+   2
+  ],
+  "dadb78ba78c3dbd4": [
+   "2026-11-10",
+   1,
+   2
+  ],
+  "a348d73d016a28bf": [
+   "2026-11-10",
+   1,
+   2
   ]
  },
- "letzte_mail": "2026-11-10T03:27+00:00"
+ "letzte_mail": "2026-11-10T13:25+00:00"
 }
