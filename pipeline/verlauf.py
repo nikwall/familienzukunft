@@ -30,7 +30,8 @@ def _preisaenderungen(a: dict, tag: str) -> tuple[int, int]:
     return runter, hoch
 
 
-def tagesstand(angebote: dict, tag: str, muss: dict) -> dict:
+def tagesstand(angebote: dict, tag: str, muss: dict, bestand_bis: str | None = None) -> dict:
+    """Zählt je Gebiet und Art. Inserate bis `bestand_bis` sind Ausgangsbestand und zählen nicht als neu."""
     aus = {}
     for s in STAEDTE:
         alle = [a for a in angebote.values() if a.get("ort") == s["name"] and a["flaeche"] >= muss["flaeche"] and (a.get("zimmer") or 99) >= muss["zimmer"]]
@@ -44,7 +45,7 @@ def tagesstand(angebote: dict, tag: str, muss: dict) -> dict:
                 zeile[typ] = {
                     "aktiv": len(aktiv),
                     "qm": round(statistics.median(a["preis"] / a["flaeche"] for a in aktiv), 2) if aktiv else None,
-                    "neu": sum(a.get("erstmals") == tag for a in menge),
+                    "neu": sum(a.get("erstmals") == tag and tag > (bestand_bis or "") for a in menge),
                     "weg": sum(a.get("weg_am") == tag for a in menge),
                     "runter": sum(x[0] for x in aenderung),
                     "hoch": sum(x[1] for x in aenderung),

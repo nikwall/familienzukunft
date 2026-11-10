@@ -110,7 +110,8 @@ async function baueStadt(wurzel, stand, stadt, staedte, stadtWechseln, geprueft)
   let karte = null;
   let karteLaedt = null;
   const einst = stand.einstellungen;
-  const ersterTag = Object.keys(stand.verlauf || {}).sort()[0];
+  // Bis zu diesem Tag gilt alles als Ausgangsbestand, nicht als neu (erste Lieferungen der Suchaufträge).
+  const grundTag = stand.einstellungen.bestand_bis ?? Object.keys(stand.verlauf || {}).sort()[0];
   const alle = Object.values(stand.angebote).filter((a) => a.aktiv && a.ort === stadt.name && a.lat != null && a.flaeche >= einst.muss.flaeche && (a.zimmer ?? 99) >= einst.muss.zimmer && !ohneDraussen(a));
   const eich = eichung(alle, preise.werte);
   let bewertet = [];
@@ -209,7 +210,7 @@ async function baueStadt(wurzel, stand, stadt, staedte, stadtWechseln, geprueft)
     const ich = !!(z.name && liked?.has(z.name));
     const nk = r.kommentare.get(a.id)?.length ?? 0;
     const offen = z.offen === a.id;
-    const neu = a.erstmals !== ersterTag && (new Date() - new Date(a.erstmals)) / 864e5 <= NEU_TAGE;
+    const neu = a.erstmals > grundTag && (new Date() - new Date(a.erstmals)) / 864e5 <= NEU_TAGE;
     const dr = draussen(a);
     const merkmale = [esc(a.stadtteil || stadt.name), `${zahl(a.flaeche, a.flaeche % 1 ? 1 : 0)} m²`, `${zahl(a.zimmer, a.zimmer % 1 ? 1 : 0)} Zi.`];
     if (dr) merkmale.push(dr);

@@ -172,7 +172,8 @@ def main() -> None:
     else:
         einordnen(stand, mails_abholen(stand), "Mails")
     ablauf(stand)
-    stand.setdefault("verlauf", {})[heute()] = tagesstand(stand["angebote"], heute(), stand["einstellungen"]["muss"])
+    einst = stand["einstellungen"]
+    stand.setdefault("verlauf", {})[heute()] = tagesstand(stand["angebote"], heute(), einst["muss"], einst.get("bestand_bis"))
     stand_sichern(stand, vorher)
     print(f"Stand: {sum(1 for a in stand['angebote'].values() if a['aktiv'])} aktive Angebote.")
 
