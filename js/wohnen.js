@@ -257,7 +257,7 @@ async function baueStadt(wurzel, stand, stadt, staedte, stadtWechseln, geprueft)
       <dl>${zeilen.join("")}</dl>
       ${weitere.length ? `<ul class="weitere">${weitere.join("")}</ul>` : ""}
       <p class="klein">${fakten.join(" · ")}</p>
-      <a class="zum-inserat" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">Zum Inserat</a>
+      ${a.url ? `<a class="zum-inserat" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">Zum Inserat</a>` : ""}
       ${kommentare(a)}`;
   }
 

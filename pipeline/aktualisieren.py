@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import email
+import hashlib
 import imaplib
 import json
 import os
@@ -21,7 +22,7 @@ from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).parent))
 from anreichern import ORTE, anreichern  # noqa: E402
-from lesen import lies_mail  # noqa: E402
+from lesen import URL, aufloesen, lies_mail  # noqa: E402
 from verlauf import tagesstand  # noqa: E402
 
 WURZEL = Path(__file__).resolve().parent.parent
@@ -30,6 +31,8 @@ START = WURZEL / ".geheim" / "einstellungen.json"
 PFLICHT = ("typ", "preis", "flaeche")
 INSERAT_GILT_TAGE = 45  # ohne neuen Hinweis gilt ein Inserat danach als weg
 ZIMMER_HOECHSTENS = 12  # darüber sind es praktisch nur Zinshäuser
+LESER = 2  # Version des Einlesens: Steigt sie, werden Mails ohne Treffer noch einmal gelesen
+MAILS_TAGE = 14  # so weit zurück schaut jeder Lauf ins Postfach
 
 
 def heute_datum() -> dt.date:
@@ -66,29 +69,46 @@ def absender_domain(roh: bytes) -> str:
 
 
 def mails_abholen(stand: dict) -> list[dict]:
-    """Holt ungelesene Mails. Als gelesen gilt nur, was ein Angebot enthielt.
+    """Holt die Mails der letzten zwei Wochen, jede nur einmal.
 
-    Mails ohne erkanntes Angebot (Bestätigungen, geändertes Portal-Layout) bleiben ungelesen,
-    bis jemand sie ansieht. Das Protokoll ist öffentlich, es nennt nur Absender-Domain und Zahlen.
+    Das Postfach wird nur gelesen, nie verändert: Ihr dürft die Mails selbst öffnen.
+    Welche Mail schon verarbeitet ist, steht als Prüfsumme ihrer Message-ID in `stand["mails"]`.
+    Mails ohne erkanntes Angebot kommen wieder dran, sobald das Einlesen verbessert wurde (LESER).
+    Das Protokoll ist öffentlich, es nennt nur Absender-Domain und Zahlen.
     """
     host, nutzer, pw = (os.environ.get(k, "") for k in ("FZ_IMAP_HOST", "FZ_IMAP_USER", "FZ_IMAP_PASSWORT"))
     if not (host and nutzer and pw):
         print("Kein Postfach eingerichtet, überspringe Mails.")
         return []
+    erledigt = stand.setdefault("mails", {})
     aus: list[dict] = []
-    seit = (heute_datum() - dt.timedelta(days=14)).strftime("%d-%b-%Y")
+    seit = (heute_datum() - dt.timedelta(days=MAILS_TAGE)).strftime("%d-%b-%Y")
     with imaplib.IMAP4_SSL(host) as imap:
         imap.login(nutzer, pw)
-        imap.select("INBOX")
-        _, ids = imap.search(None, f'(UNSEEN SINCE "{seit}")')
+        imap.select("INBOX", readonly=True)
+        _, ids = imap.search(None, f'(SINCE "{seit}")')
         for i in ids[0].split():
+            _, kopf = imap.fetch(i, "(BODY.PEEK[HEADER.FIELDS (MESSAGE-ID)])")
+            mid = (kopf[0][1] or b"").decode(errors="replace").split(":", 1)[-1].strip() or i.decode()
+            schluessel = hashlib.sha1(mid.encode()).hexdigest()[:16]
+            alt = erledigt.get(schluessel)
+            if alt and (alt[1] > 0 or alt[2] >= LESER):
+                continue
             _, teile = imap.fetch(i, "(BODY.PEEK[])")
             roh = teile[0][1]
             angebote = lies_mail(roh)
+            for a in angebote:
+                # Klick-Links tragen ein Merkmal des Postfachs; öffentlich gespeichert wird nur die Inseratsadresse.
+                for klick in a.pop("klick", []):
+                    if nummer := aufloesen(klick):
+                        a["id"], a["url"] = f"immowelt:{nummer}", URL["immowelt"].format(nummer)
+                        break
             print(f"Mail von {absender_domain(roh)}: {len(angebote)} Angebot(e)")
-            if angebote:
-                imap.store(i, "+FLAGS", "\\Seen")
-                aus += angebote
+            erledigt[schluessel] = [heute(), len(angebote), LESER]
+            aus += angebote
+    grenze = (heute_datum() - dt.timedelta(days=30)).isoformat()
+    for k in [k for k, v in erledigt.items() if v[0] < grenze]:
+        del erledigt[k]
     if aus:
         stand["letzte_mail"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")
     return aus
