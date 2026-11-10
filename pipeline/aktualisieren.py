@@ -23,6 +23,7 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, str(Path(__file__).parent))
 from anreichern import ORTE, anreichern  # noqa: E402
 from lesen import URL, aufloesen, lies_mail  # noqa: E402
+import privat  # noqa: E402
 from verlauf import tagesstand  # noqa: E402
 
 WURZEL = Path(__file__).resolve().parent.parent
@@ -68,7 +69,7 @@ def absender_domain(roh: bytes) -> str:
     return m[1].lower() if m else "unbekannt"
 
 
-def mails_abholen(stand: dict) -> list[dict]:
+def mails_abholen(stand: dict, privat_mails: list | None = None) -> list[dict]:
     """Holt die Mails der letzten zwei Wochen, jede nur einmal.
 
     Das Postfach wird nur gelesen, nie verändert: Ihr dürft die Mails selbst öffnen.
@@ -81,6 +82,7 @@ def mails_abholen(stand: dict) -> list[dict]:
         print("Kein Postfach eingerichtet, überspringe Mails.")
         return []
     erledigt = stand.setdefault("mails", {})
+    privat_bekannt = privat.bekannte_mails() if privat_mails is not None else set()
     aus: list[dict] = []
     seit = (heute_datum() - dt.timedelta(days=MAILS_TAGE)).strftime("%d-%b-%Y")
     with imaplib.IMAP4_SSL(host) as imap:
@@ -88,14 +90,25 @@ def mails_abholen(stand: dict) -> list[dict]:
         imap.select("INBOX", readonly=True)
         _, ids = imap.search(None, f'(SINCE "{seit}")')
         for i in ids[0].split():
-            _, kopf = imap.fetch(i, "(BODY.PEEK[HEADER.FIELDS (MESSAGE-ID)])")
-            mid = (kopf[0][1] or b"").decode(errors="replace").split(":", 1)[-1].strip() or i.decode()
+            _, kopf = imap.fetch(i, "(BODY.PEEK[HEADER.FIELDS (MESSAGE-ID FROM)])")
+            kopfzeilen = email.message_from_bytes(kopf[0][1] or b"")
+            mid = (kopfzeilen.get("Message-ID") or "").strip() or i.decode()
             schluessel = hashlib.sha1(mid.encode()).hexdigest()[:16]
+            # Alert-Mails für den privaten Bereich: eigene Buchführung, nichts im öffentlichen Protokoll
+            if privat_mails is not None and privat.ABSENDER.search(kopfzeilen.get("From", "")):
+                if schluessel not in privat_bekannt:
+                    _, teile = imap.fetch(i, "(BODY.PEEK[])")
+                    privat_mails.append((schluessel, teile[0][1]))
+                continue
             alt = erledigt.get(schluessel)
             if alt and (alt[1] > 0 or alt[2] >= LESER):
                 continue
             _, teile = imap.fetch(i, "(BODY.PEEK[])")
             roh = teile[0][1]
+            if privat_mails is not None and privat.ist_privat_mail(roh):
+                if schluessel not in privat_bekannt:
+                    privat_mails.append((schluessel, roh))
+                continue
             angebote = lies_mail(roh)
             for a in angebote:
                 # Klick-Links tragen ein Merkmal des Postfachs; öffentlich gespeichert wird nur die Inseratsadresse.
@@ -170,7 +183,12 @@ def main() -> None:
     if args.seed:
         einordnen(stand, json.loads(Path(args.seed).read_text(encoding="utf-8")), "Datei")
     else:
-        einordnen(stand, mails_abholen(stand), "Mails")
+        privat_mails: list = []
+        einordnen(stand, mails_abholen(stand, privat_mails), "Mails")
+        try:
+            privat.lauf(privat_mails)
+        except Exception as e:  # der private Bereich darf den Rest nie aufhalten
+            print(f"Privater Bereich: Fehler ({type(e).__name__}).")
     ablauf(stand)
     einst = stand["einstellungen"]
     stand.setdefault("verlauf", {})[heute()] = tagesstand(stand["angebote"], heute(), einst["muss"], einst.get("bestand_bis"))

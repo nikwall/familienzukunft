@@ -1,11 +1,14 @@
 // App-Rahmen: Tabs. Neue Bereiche werden in BEREICHE eingetragen.
 import { zeigeWohnen } from "./wohnen.js";
 import { zeigeVorschule } from "./vorschule.js";
+import { privatSchluessel, privatTitel, zeigePrivat } from "./privat.js";
 
 const BEREICHE = [
   { id: "wohnen", titel: "Wohnen", zeigen: zeigeWohnen },
   { id: "vorschule", titel: "Vorschule", zeigen: zeigeVorschule },
 ];
+// Der private Bereich erscheint nur auf Geräten, die den persönlichen Link einmal geöffnet haben.
+if (privatSchluessel()) BEREICHE.push({ id: "privat", titel: privatTitel(), zeigen: zeigePrivat });
 
 const app = document.getElementById("app");
 
@@ -13,8 +16,8 @@ function rahmen(stand) {
   const tage = Math.ceil((new Date(stand.einstellungen.ziel) - new Date()) / 864e5);
   const ziel = new Date(stand.einstellungen.ziel).toLocaleDateString("de-DE");
   app.innerHTML = `
-    <header class="kopf">
-      <span class="marke"><img src="wappen.svg" alt="" width="28" height="34">vinifeli</span>
+    <header class="kopf${BEREICHE.length > 2 ? " drei" : ""}">
+      <span class="marke"><img src="wappen.svg" alt="" width="28" height="34"><span class="marke-text">vinifeli</span></span>
       <nav class="tabs" aria-label="Bereiche">
         ${BEREICHE.map((b) => `<button class="tab" data-id="${b.id}" aria-current="false">${b.titel}</button>`).join("")}
       </nav>
@@ -49,7 +52,7 @@ async function start() {
 
 // GitHub Pages lässt Browser Dateien zehn Minuten zwischenspeichern, ein normales Neuladen
 // holt Skripte nicht neu. Der Knopf erzwingt das, die Meldung nennt den tatsächlichen Grund.
-const DATEIEN = ["index.html", "js/app.js", "js/wohnen.js", "js/vorschule.js", "js/vergleich.js", "js/einordnung.js", "js/karte.js", "js/kartenbasis.js", "js/markt.js", "js/reaktionen.js", "js/format.js", "css/style.css"];
+const DATEIEN = ["index.html", "js/app.js", "js/wohnen.js", "js/vorschule.js", "js/privat.js", "js/vergleich.js", "js/einordnung.js", "js/karte.js", "js/kartenbasis.js", "js/markt.js", "js/reaktionen.js", "js/format.js", "css/style.css"];
 
 start().catch((e) => {
   console.error(e);
