@@ -24870,6 +24870,272 @@
     "traeger": "staatlich"
    },
    "aktiv": true
+  },
+  "immowelt:89a7313a-d03f-4dca-bd5a-d050eb389dbf": {
+   "id": "immowelt:89a7313a-d03f-4dca-bd5a-d050eb389dbf",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/89a7313a-d03f-4dca-bd5a-d050eb389dbf",
+   "typ": "kauf",
+   "art": null,
+   "preis": 285000.0,
+   "flaeche": 90.5,
+   "zimmer": 3.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Würzburg",
+   "plz": "97076",
+   "stadtteil_text": "Lengfeld",
+   "strasse": null,
+   "erstmals": "2026-11-11",
+   "zuletzt": "2026-11-11",
+   "lat": 49.80673,
+   "lon": 9.99451,
+   "lage": "stadtteil",
+   "stadtteil": "Lengfeld",
+   "bahn": {
+    "name": "Robert Koch Straße / Uniklinikum Bereich B/C",
+    "linien": [
+     "Straba"
+    ],
+    "min": 48
+   },
+   "schule": {
+    "name": "Grundschule Lengfeld",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:23l9nzyl6iqn": {
+   "id": "immowelt:23l9nzyl6iqn",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/23l9nzyl6iqn",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2323.0,
+   "flaeche": 106.9,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "20144",
+   "stadtteil_text": "Harvestehude",
+   "strasse": null,
+   "erstmals": "2026-11-11",
+   "zuletzt": "2026-11-11",
+   "lat": 53.57483,
+   "lon": 9.97749,
+   "lage": "plz",
+   "stadtteil": "Harvestehude",
+   "bahn": {
+    "name": "Hoheluftbrücke",
+    "linien": [
+     "U3"
+    ],
+    "min": 5
+   },
+   "schule": {
+    "name": "Schule Kielortallee",
+    "min": 6,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172539970": {
+   "id": "immoscout24:172539970",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172539970",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1662.0,
+   "flaeche": 111.0,
+   "zimmer": 3.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Uhlenhorst",
+   "strasse": null,
+   "erstmals": "2026-11-11",
+   "zuletzt": "2026-11-11",
+   "lat": 53.57151,
+   "lon": 10.01274,
+   "lage": "stadtteil",
+   "stadtteil": "Uhlenhorst",
+   "bahn": {
+    "name": "Mundsburg",
+    "linien": [
+     "U3"
+    ],
+    "min": 16
+   },
+   "schule": {
+    "name": "Schule auf der Uhlenhorst",
+    "min": 13,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172539238": {
+   "id": "immoscout24:172539238",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172539238",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 864.0,
+   "flaeche": 84.0,
+   "zimmer": 3.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Wilhelmsburg",
+   "strasse": null,
+   "erstmals": "2026-11-11",
+   "zuletzt": "2026-11-11",
+   "lat": 53.49229,
+   "lon": 9.99622,
+   "lage": "stadtteil",
+   "stadtteil": "Wilhelmsburg",
+   "bahn": {
+    "name": "Wilhelmsburg",
+    "linien": [
+     "S3",
+     "S5"
+    ],
+    "min": 17
+   },
+   "schule": {
+    "name": "Grundschule Kirchdorf",
+    "min": 14,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172538980": {
+   "id": "immoscout24:172538980",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172538980",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 798.0,
+   "flaeche": 80.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Barmbek-Nord",
+   "strasse": null,
+   "erstmals": "2026-11-11",
+   "zuletzt": "2026-11-11",
+   "lat": 53.59889,
+   "lon": 10.0481,
+   "lage": "stadtteil",
+   "stadtteil": "Barmbek-Nord",
+   "bahn": {
+    "name": "Habichtstraße",
+    "linien": [
+     "U3"
+    ],
+    "min": 11
+   },
+   "schule": {
+    "name": "Schule Heinrich-Helbing-Straße",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172528775": {
+   "id": "immoscout24:172528775",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172528775",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1400.0,
+   "flaeche": 98.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": true,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Ochsenwerder",
+   "strasse": null,
+   "erstmals": "2026-11-11",
+   "zuletzt": "2026-11-11",
+   "lat": 53.4752,
+   "lon": 10.08108,
+   "lage": "stadtteil",
+   "stadtteil": "Ochsenwerder",
+   "bahn": {
+    "name": "Mittlerer Landweg",
+    "linien": [
+     "S2",
+     "S7"
+    ],
+    "min": 68
+   },
+   "schule": {
+    "name": "Schule Ochsenwerder",
+    "min": 10,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
   }
  },
  "geocache": {
@@ -25697,6 +25963,18 @@
   "Poppenbüttel, Hamburg": [
    53.6564,
    10.0742
+  ],
+  "20144 Hamburg": [
+   53.5748255,
+   9.9774887
+  ],
+  "Barmbek-Nord, Hamburg": [
+   53.5988941,
+   10.0480997
+  ],
+  "Ochsenwerder, Hamburg": [
+   53.4752031,
+   10.0810767
   ]
  },
  "verworfen": {
@@ -26081,7 +26359,7 @@
    "url": "https://www.immowelt.de/expose/9c501ddd-b751-4386-9d30-82175ea181f6"
   }
  },
- "aktualisiert": "2026-11-10T20:36+00:00",
+ "aktualisiert": "2026-11-11T00:54+00:00",
  "verlauf": {
   "2026-11-09": {
    "scheideweg": {
@@ -26387,6 +26665,188 @@
      "aktiv": 78,
      "qm": 3730.55,
      "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_kern": {
+    "miete": {
+     "aktiv": 21,
+     "qm": 11.71,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 38,
+     "qm": 5163.21,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_gruen": {
+    "miete": {
+     "aktiv": 10,
+     "qm": 12.43,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 24,
+     "qm": 5075.23,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_alle": {
+    "miete": {
+     "aktiv": 44,
+     "qm": 11.66,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 90,
+     "qm": 4295.29,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   }
+  },
+  "2026-11-11": {
+   "scheideweg": {
+    "miete": {
+     "aktiv": 3,
+     "qm": 22.28,
+     "neu": 1,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 6,
+     "qm": 9333.16,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "eimsbuettel": {
+    "miete": {
+     "aktiv": 11,
+     "qm": 21.73,
+     "neu": 1,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 11,
+     "qm": 9310.34,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "alster": {
+    "miete": {
+     "aktiv": 21,
+     "qm": 22.28,
+     "neu": 2,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 19,
+     "qm": 10650.89,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "hamburg": {
+    "miete": {
+     "aktiv": 122,
+     "qm": 18.07,
+     "neu": 5,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 151,
+     "qm": 6229.51,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_kern": {
+    "miete": {
+     "aktiv": 29,
+     "qm": 13.0,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 25,
+     "qm": 4677.08,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_familie": {
+    "miete": {
+     "aktiv": 25,
+     "qm": 13.59,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 31,
+     "qm": 3680.3,
+     "neu": 1,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_alle": {
+    "miete": {
+     "aktiv": 71,
+     "qm": 13.0,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 79,
+     "qm": 3680.3,
+     "neu": 1,
      "weg": 0,
      "runter": 0,
      "hoch": 0
@@ -26998,7 +27458,27 @@
    "2026-11-10",
    2,
    2
+  ],
+  "6c10f11d83880561": [
+   "2026-11-11",
+   1,
+   2
+  ],
+  "a2f7976462e05560": [
+   "2026-11-11",
+   1,
+   2
+  ],
+  "0949530056c67df5": [
+   "2026-11-11",
+   3,
+   2
+  ],
+  "327f5660ee4e0128": [
+   "2026-11-11",
+   1,
+   2
   ]
  },
- "letzte_mail": "2026-11-10T20:36+00:00"
+ "letzte_mail": "2026-11-11T00:54+00:00"
 }
