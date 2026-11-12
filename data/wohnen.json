@@ -28200,6 +28200,275 @@
     "traeger": "staatlich"
    },
    "aktiv": true
+  },
+  "immowelt:k90b85f66be60": {
+   "id": "immowelt:k90b85f66be60",
+   "quelle": "immowelt",
+   "url": null,
+   "typ": "kauf",
+   "art": null,
+   "preis": 50000.0,
+   "flaeche": 119.9,
+   "zimmer": 10.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22397",
+   "stadtteil_text": "Duvenstedt",
+   "strasse": null,
+   "erstmals": "2026-11-12",
+   "zuletzt": "2026-11-12",
+   "lat": 53.70391,
+   "lon": 10.12512,
+   "lage": "plz",
+   "stadtteil": "Duvenstedt",
+   "bahn": {
+    "name": "Ohlstedt",
+    "linien": [
+     "U1"
+    ],
+    "min": 21
+   },
+   "schule": {
+    "name": "Schule am Walde",
+    "min": 17,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:b9e6ba17-0bd8-4cc0-adb9-8a87e172bb23": {
+   "id": "immowelt:b9e6ba17-0bd8-4cc0-adb9-8a87e172bb23",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/b9e6ba17-0bd8-4cc0-adb9-8a87e172bb23",
+   "typ": "kauf",
+   "art": null,
+   "preis": 849000.0,
+   "flaeche": 119.9,
+   "zimmer": 10.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22397",
+   "stadtteil_text": "Duvenstedt",
+   "strasse": null,
+   "erstmals": "2026-11-12",
+   "zuletzt": "2026-11-12",
+   "lat": 53.70391,
+   "lon": 10.12512,
+   "lage": "plz",
+   "stadtteil": "Duvenstedt",
+   "bahn": {
+    "name": "Ohlstedt",
+    "linien": [
+     "U1"
+    ],
+    "min": 21
+   },
+   "schule": {
+    "name": "Schule am Walde",
+    "min": 17,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:eafed94a-ae89-48ad-bceb-a38f8725f8c4": {
+   "id": "immowelt:eafed94a-ae89-48ad-bceb-a38f8725f8c4",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/eafed94a-ae89-48ad-bceb-a38f8725f8c4",
+   "typ": "kauf",
+   "art": null,
+   "preis": 469000.0,
+   "flaeche": 102.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": true,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22359",
+   "stadtteil_text": "Volksdorf",
+   "strasse": null,
+   "erstmals": "2026-11-12",
+   "zuletzt": "2026-11-12",
+   "lat": 53.6531,
+   "lon": 10.16369,
+   "lage": "plz",
+   "stadtteil": "Volksdorf",
+   "bahn": {
+    "name": "Volksdorf",
+    "linien": [
+     "U1"
+    ],
+    "min": 4
+   },
+   "schule": {
+    "name": "Schule Ahrensburger Weg",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172568543": {
+   "id": "immoscout24:172568543",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172568543",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 2000.0,
+   "flaeche": 82.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Altona-Nord",
+   "strasse": "Harkortstraße 87",
+   "erstmals": "2026-11-12",
+   "zuletzt": "2026-11-12",
+   "lat": 53.5589,
+   "lon": 9.93885,
+   "lage": "adresse",
+   "stadtteil": "Altona-Nord",
+   "bahn": {
+    "name": "Holstenstraße",
+    "linien": [
+     "S1",
+     "S2",
+     "S3",
+     "S5",
+     "S7"
+    ],
+    "min": 12
+   },
+   "schule": {
+    "name": "Theodor-Haubach-Schule",
+    "min": 3,
+    "traeger": "staatlich"
+   },
+   "laerm": 60,
+   "aktiv": true
+  },
+  "immoscout24:172539313": {
+   "id": "immoscout24:172539313",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172539313",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1396.5,
+   "flaeche": 96.31,
+   "zimmer": 3.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Sasel",
+   "strasse": null,
+   "erstmals": "2026-11-12",
+   "zuletzt": "2026-11-12",
+   "lat": 53.6522,
+   "lon": 10.1169,
+   "lage": "stadtteil",
+   "stadtteil": "Sasel",
+   "bahn": {
+    "name": "Poppenbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 25
+   },
+   "schule": {
+    "name": "Schule Redder",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172568660": {
+   "id": "immoscout24:172568660",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172568660",
+   "typ": "kauf",
+   "art": "Reihenhaus",
+   "preis": 479000.0,
+   "flaeche": 129.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Rahlstedt",
+   "strasse": null,
+   "erstmals": "2026-11-12",
+   "zuletzt": "2026-11-12",
+   "lat": 53.60388,
+   "lon": 10.15815,
+   "lage": "stadtteil",
+   "stadtteil": "Rahlstedt",
+   "bahn": {
+    "name": "Oldenfelde",
+    "linien": [
+     "U1"
+    ],
+    "min": 40
+   },
+   "schule": {
+    "name": "Grundschule Neurahlstedt",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
   }
  },
  "geocache": {
@@ -29145,6 +29414,10 @@
   "Langenhorn, Hamburg": [
    53.6633,
    10.0083
+  ],
+  "Harkortstraße 87,  Hamburg": [
+   53.558898,
+   9.9388491
   ]
  },
  "verworfen": {
@@ -29579,7 +29852,7 @@
    "url": "https://www.immobilienscout24.de/expose/172566480"
   }
  },
- "aktualisiert": "2026-11-11T20:10+00:00",
+ "aktualisiert": "2026-11-12T02:00+00:00",
  "verlauf": {
   "2026-11-09": {
    "scheideweg": {
@@ -30121,6 +30394,188 @@
      "aktiv": 91,
      "qm": 4250.0,
      "neu": 1,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   }
+  },
+  "2026-11-12": {
+   "scheideweg": {
+    "miete": {
+     "aktiv": 4,
+     "qm": 23.64,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 8,
+     "qm": 9333.16,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "eimsbuettel": {
+    "miete": {
+     "aktiv": 14,
+     "qm": 22.01,
+     "neu": 1,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 13,
+     "qm": 9310.34,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "alster": {
+    "miete": {
+     "aktiv": 22,
+     "qm": 22.41,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 22,
+     "qm": 10588.6,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "hamburg": {
+    "miete": {
+     "aktiv": 142,
+     "qm": 18.0,
+     "neu": 2,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 199,
+     "qm": 5829.79,
+     "neu": 4,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_kern": {
+    "miete": {
+     "aktiv": 29,
+     "qm": 13.0,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 27,
+     "qm": 4628.87,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_familie": {
+    "miete": {
+     "aktiv": 26,
+     "qm": 13.3,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 32,
+     "qm": 3575.24,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_alle": {
+    "miete": {
+     "aktiv": 72,
+     "qm": 13.0,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 82,
+     "qm": 3729.6,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_kern": {
+    "miete": {
+     "aktiv": 22,
+     "qm": 11.79,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 38,
+     "qm": 5163.21,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_gruen": {
+    "miete": {
+     "aktiv": 10,
+     "qm": 12.43,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 24,
+     "qm": 5075.23,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_alle": {
+    "miete": {
+     "aktiv": 45,
+     "qm": 11.71,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 91,
+     "qm": 4250.0,
+     "neu": 0,
      "weg": 0,
      "runter": 0,
      "hoch": 0
@@ -30978,7 +31433,27 @@
    "2026-11-11",
    3,
    2
+  ],
+  "87520f2d15ab8a91": [
+   "2026-11-12",
+   2,
+   2
+  ],
+  "0b72b0a4a208ab0d": [
+   "2026-11-12",
+   1,
+   2
+  ],
+  "4587da5d75a803da": [
+   "2026-11-12",
+   2,
+   2
+  ],
+  "163b9c33eae75be9": [
+   "2026-11-12",
+   1,
+   2
   ]
  },
- "letzte_mail": "2026-11-11T20:09+00:00"
+ "letzte_mail": "2026-11-12T01:59+00:00"
 }
