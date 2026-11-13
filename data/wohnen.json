@@ -21212,7 +21212,7 @@
    "stadtteil_text": "Jenfeld",
    "strasse": "Zur Jenfelder Au 19g",
    "erstmals": "2026-11-10",
-   "zuletzt": "2026-11-10",
+   "zuletzt": "2026-11-13",
    "lat": 53.57902,
    "lon": 10.13405,
    "lage": "adresse",
@@ -31985,6 +31985,95 @@
     "traeger": "staatlich"
    },
    "aktiv": true
+  },
+  "immoscout24:172606267": {
+   "id": "immoscout24:172606267",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172606267",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 1250.0,
+   "flaeche": 86.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Schnelsen",
+   "strasse": "Königskinderweg 3",
+   "erstmals": "2026-11-13",
+   "zuletzt": "2026-11-13",
+   "lat": 53.63847,
+   "lon": 9.91972,
+   "lage": "adresse",
+   "stadtteil": "Schnelsen",
+   "bahn": {
+    "name": "Schnelsen",
+    "linien": [
+     "A1"
+    ],
+    "min": 16
+   },
+   "schule": {
+    "name": "Schule Anna-Susanna-Stieg",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "laerm": 60,
+   "aktiv": true
+  },
+  "immoscout24:172607011": {
+   "id": "immoscout24:172607011",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172607011",
+   "typ": "kauf",
+   "art": "Maisonette",
+   "preis": 585000.0,
+   "flaeche": 97.45,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Schnelsen",
+   "strasse": null,
+   "erstmals": "2026-11-13",
+   "zuletzt": "2026-11-13",
+   "lat": 53.6374,
+   "lon": 9.91883,
+   "lage": "stadtteil",
+   "stadtteil": "Schnelsen",
+   "bahn": {
+    "name": "Schnelsen",
+    "linien": [
+     "A1"
+    ],
+    "min": 14
+   },
+   "schule": {
+    "name": "Schule Frohmestraße",
+    "min": 9,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
   }
  },
  "geocache": {
@@ -33023,6 +33112,10 @@
   "20253 Hamburg": [
    53.5794396,
    9.9675487
+  ],
+  "Königskinderweg 3,  Hamburg": [
+   53.6384703,
+   9.9197221
   ]
  },
  "verworfen": {
@@ -33547,7 +33640,7 @@
    "url": "https://www.immowelt.de/expose/6d8f446d-72af-4d63-b179-98a05e50b0dc"
   }
  },
- "aktualisiert": "2026-11-12T21:27+00:00",
+ "aktualisiert": "2026-11-13T02:06+00:00",
  "verlauf": {
   "2026-11-09": {
    "scheideweg": {
@@ -34271,6 +34364,188 @@
      "aktiv": 94,
      "qm": 4247.34,
      "neu": 3,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   }
+  },
+  "2026-11-13": {
+   "scheideweg": {
+    "miete": {
+     "aktiv": 5,
+     "qm": 22.28,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 8,
+     "qm": 9333.16,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "eimsbuettel": {
+    "miete": {
+     "aktiv": 15,
+     "qm": 21.73,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 14,
+     "qm": 9293.73,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "alster": {
+    "miete": {
+     "aktiv": 23,
+     "qm": 22.54,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 23,
+     "qm": 10526.32,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "hamburg": {
+    "miete": {
+     "aktiv": 162,
+     "qm": 17.9,
+     "neu": 1,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 252,
+     "qm": 5590.01,
+     "neu": 1,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_kern": {
+    "miete": {
+     "aktiv": 29,
+     "qm": 13.0,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 28,
+     "qm": 4652.97,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_familie": {
+    "miete": {
+     "aktiv": 26,
+     "qm": 13.3,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 34,
+     "qm": 3680.3,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_alle": {
+    "miete": {
+     "aktiv": 73,
+     "qm": 13.0,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 85,
+     "qm": 3778.91,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_kern": {
+    "miete": {
+     "aktiv": 22,
+     "qm": 11.79,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 40,
+     "qm": 5125.48,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_gruen": {
+    "miete": {
+     "aktiv": 10,
+     "qm": 12.43,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 27,
+     "qm": 5073.53,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_alle": {
+    "miete": {
+     "aktiv": 46,
+     "qm": 11.79,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 94,
+     "qm": 4247.34,
+     "neu": 0,
      "weg": 0,
      "runter": 0,
      "hoch": 0
@@ -35458,7 +35733,17 @@
    "2026-11-12",
    0,
    2
+  ],
+  "1eeead597ab912d0": [
+   "2026-11-13",
+   2,
+   2
+  ],
+  "00db02939773f69b": [
+   "2026-11-13",
+   1,
+   2
   ]
  },
- "letzte_mail": "2026-11-12T21:26+00:00"
+ "letzte_mail": "2026-11-13T02:06+00:00"
 }
