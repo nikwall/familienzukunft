@@ -36373,6 +36373,271 @@
     "traeger": "staatlich"
    },
    "aktiv": true
+  },
+  "immowelt:e73761d0-c1b7-4e79-a7f4-bbee7f3dc380": {
+   "id": "immowelt:e73761d0-c1b7-4e79-a7f4-bbee7f3dc380",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/e73761d0-c1b7-4e79-a7f4-bbee7f3dc380",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 595000.0,
+   "flaeche": 168.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22179",
+   "stadtteil_text": "Bramfeld",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.60611,
+   "lon": 10.08365,
+   "lage": "plz",
+   "stadtteil": "Bramfeld",
+   "bahn": {
+    "name": "Trabrennbahn",
+    "linien": [
+     "U1"
+    ],
+    "min": 25
+   },
+   "schule": {
+    "name": "Grundschule Bramfeld",
+    "min": 3,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:4ec4b1ff-bb65-41b5-8c4d-4fde0298b0a1": {
+   "id": "immowelt:4ec4b1ff-bb65-41b5-8c4d-4fde0298b0a1",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/4ec4b1ff-bb65-41b5-8c4d-4fde0298b0a1",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 679000.0,
+   "flaeche": 140.0,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22549",
+   "stadtteil_text": "Lurup",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.58416,
+   "lon": 9.85466,
+   "lage": "plz",
+   "stadtteil": "Lurup",
+   "bahn": {
+    "name": "Hochkamp",
+    "linien": [
+     "S1"
+    ],
+    "min": 43
+   },
+   "schule": {
+    "name": "Schule Barlsheide",
+    "min": 3,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:26118fbe8pmp": {
+   "id": "immowelt:26118fbe8pmp",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/26118fbe8pmp",
+   "typ": "kauf",
+   "art": null,
+   "preis": 549000.0,
+   "flaeche": 80.4,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22175",
+   "stadtteil_text": "Bramfeld",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.62594,
+   "lon": 10.09903,
+   "lage": "plz",
+   "stadtteil": "Bramfeld",
+   "bahn": {
+    "name": "Wellingsbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 33
+   },
+   "schule": {
+    "name": "Grundschule am Gut",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172604496": {
+   "id": "immoscout24:172604496",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172604496",
+   "typ": "miete",
+   "art": "Wohnung",
+   "preis": 850.0,
+   "flaeche": 84.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Tonndorf",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.5869,
+   "lon": 10.1175,
+   "lage": "stadtteil",
+   "stadtteil": "Tonndorf",
+   "bahn": {
+    "name": "Trabrennbahn",
+    "linien": [
+     "U1"
+    ],
+    "min": 26
+   },
+   "schule": {
+    "name": "Grundschule Tonndorf",
+    "min": 13,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172640769": {
+   "id": "immoscout24:172640769",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172640769",
+   "typ": "miete",
+   "art": "Haus",
+   "preis": 2300.0,
+   "flaeche": 114.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Poppenbüttel",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.6564,
+   "lon": 10.0742,
+   "lage": "stadtteil",
+   "stadtteil": "Poppenbüttel",
+   "bahn": {
+    "name": "Poppenbüttel",
+    "linien": [
+     "S1"
+    ],
+    "min": 22
+   },
+   "schule": {
+    "name": "Grundschule Poppenbüttel",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172640999": {
+   "id": "immoscout24:172640999",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172640999",
+   "typ": "miete",
+   "art": "Penthouse",
+   "preis": 2195.0,
+   "flaeche": 87.71,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": true,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Fuhlsbüttel",
+   "strasse": "Erdkampsweg 39",
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.62873,
+   "lon": 10.02346,
+   "lage": "adresse",
+   "stadtteil": "Fuhlsbüttel",
+   "bahn": {
+    "name": "Fuhlsbüttel",
+    "linien": [
+     "U1"
+    ],
+    "min": 8
+   },
+   "schule": {
+    "name": "Schule Ratsmühlendamm",
+    "min": 5,
+    "traeger": "staatlich"
+   },
+   "laerm": 70,
+   "aktiv": true
   }
  },
  "geocache": {
@@ -37493,7 +37758,19 @@
    53.7019,
    10.1306
   ],
-  "Stöteroggerstraße 70,  Lüneburg": null
+  "Stöteroggerstraße 70,  Lüneburg": null,
+  "22179 Hamburg": [
+   53.6061087,
+   10.0836462
+  ],
+  "Tonndorf, Hamburg": [
+   53.5869,
+   10.1175
+  ],
+  "Erdkampsweg 39,  Hamburg": [
+   53.6287269,
+   10.0234571
+  ]
  },
  "verworfen": {
   "immowelt:7dc0be68-dfc2-4c98-93b8-4240f09a909a": {
@@ -38122,7 +38399,7 @@
    "url": "https://www.immobilienscout24.de/expose/172637574"
   }
  },
- "aktualisiert": "2026-11-13T20:29+00:00",
+ "aktualisiert": "2026-11-14T01:00+00:00",
  "verlauf": {
   "2026-11-09": {
    "scheideweg": {
@@ -39028,6 +39305,188 @@
      "aktiv": 96,
      "qm": 4244.68,
      "neu": 2,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   }
+  },
+  "2026-11-14": {
+   "scheideweg": {
+    "miete": {
+     "aktiv": 5,
+     "qm": 22.28,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 10,
+     "qm": 9333.16,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "eimsbuettel": {
+    "miete": {
+     "aktiv": 16,
+     "qm": 21.32,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 17,
+     "qm": 9277.11,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "alster": {
+    "miete": {
+     "aktiv": 23,
+     "qm": 22.54,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 25,
+     "qm": 10526.32,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "hamburg": {
+    "miete": {
+     "aktiv": 189,
+     "qm": 17.35,
+     "neu": 3,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 315,
+     "qm": 5583.33,
+     "neu": 3,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_kern": {
+    "miete": {
+     "aktiv": 29,
+     "qm": 13.0,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 29,
+     "qm": 4628.87,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_familie": {
+    "miete": {
+     "aktiv": 27,
+     "qm": 13.02,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 34,
+     "qm": 3680.3,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "w_alle": {
+    "miete": {
+     "aktiv": 77,
+     "qm": 12.92,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 89,
+     "qm": 3778.91,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_kern": {
+    "miete": {
+     "aktiv": 22,
+     "qm": 11.79,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 40,
+     "qm": 5125.48,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_gruen": {
+    "miete": {
+     "aktiv": 11,
+     "qm": 12.43,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 27,
+     "qm": 5073.53,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    }
+   },
+   "l_alle": {
+    "miete": {
+     "aktiv": 50,
+     "qm": 11.73,
+     "neu": 0,
+     "weg": 0,
+     "runter": 0,
+     "hoch": 0
+    },
+    "kauf": {
+     "aktiv": 96,
+     "qm": 4244.68,
+     "neu": 0,
      "weg": 0,
      "runter": 0,
      "hoch": 0
@@ -40640,7 +41099,32 @@
    "2026-11-13",
    1,
    2
+  ],
+  "a01bdbbae7fdd4a1": [
+   "2026-11-14",
+   2,
+   2
+  ],
+  "f96dc2fdc6a2bc1c": [
+   "2026-11-14",
+   1,
+   2
+  ],
+  "a92d7e911d602a5c": [
+   "2026-11-14",
+   1,
+   2
+  ],
+  "6f8833049c76e42c": [
+   "2026-11-14",
+   1,
+   2
+  ],
+  "71779501bc1dac2a": [
+   "2026-11-14",
+   1,
+   2
   ]
  },
- "letzte_mail": "2026-11-13T20:28+00:00"
+ "letzte_mail": "2026-11-14T01:00+00:00"
 }
