@@ -38739,6 +38739,406 @@
     "traeger": "staatlich"
    },
    "aktiv": true
+  },
+  "immoscout24:172651480": {
+   "id": "immoscout24:172651480",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172651480",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 595000.0,
+   "flaeche": 191.28,
+   "zimmer": 8.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": true,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Marmstorf",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.43776,
+   "lon": 9.96948,
+   "lage": "stadtteil",
+   "stadtteil": "Marmstorf",
+   "bahn": {
+    "name": "Harburg",
+    "linien": [
+     "S3",
+     "S5"
+    ],
+    "min": 42
+   },
+   "schule": {
+    "name": "Schule Marmstorf",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172639245": {
+   "id": "immoscout24:172639245",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172639245",
+   "typ": "kauf",
+   "art": "Haus",
+   "preis": 935000.0,
+   "flaeche": 167.0,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Bergstedt",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.67343,
+   "lon": 10.12688,
+   "lage": "stadtteil",
+   "stadtteil": "Bergstedt",
+   "bahn": {
+    "name": "Hoisbüttel",
+    "linien": [
+     "U1"
+    ],
+    "min": 24
+   },
+   "schule": {
+    "name": "Schule Bergstedt",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172638766": {
+   "id": "immoscout24:172638766",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172638766",
+   "typ": "kauf",
+   "art": "Doppelhaus",
+   "preis": 567000.0,
+   "flaeche": 121.0,
+   "zimmer": 4.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Bergstedt",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.67343,
+   "lon": 10.12688,
+   "lage": "stadtteil",
+   "stadtteil": "Bergstedt",
+   "bahn": {
+    "name": "Hoisbüttel",
+    "linien": [
+     "U1"
+    ],
+    "min": 24
+   },
+   "schule": {
+    "name": "Schule Bergstedt",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172649630": {
+   "id": "immoscout24:172649630",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172649630",
+   "typ": "kauf",
+   "art": "Doppelhaus",
+   "preis": 785000.0,
+   "flaeche": 136.13,
+   "zimmer": 5.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Farmsen-Berne",
+   "strasse": "Meiendorfer Mühlenweg 122a",
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.63763,
+   "lon": 10.13708,
+   "lage": "adresse",
+   "stadtteil": "Farmsen-Berne",
+   "bahn": {
+    "name": "Berne",
+    "linien": [
+     "U1"
+    ],
+    "min": 19
+   },
+   "schule": {
+    "name": "August-Hermann-Francke-Schule Berne",
+    "min": 16,
+    "traeger": "frei"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immoscout24:172532446": {
+   "id": "immoscout24:172532446",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172532446",
+   "typ": "kauf",
+   "art": "Wohnung",
+   "preis": 510000.0,
+   "flaeche": 85.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": true,
+   "provisionsfrei": true,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Lokstedt",
+   "strasse": "Von-Eicken-Straße 13a",
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.58668,
+   "lon": 9.95299,
+   "lage": "adresse",
+   "stadtteil": "Lokstedt",
+   "bahn": {
+    "name": "Lutterothstraße",
+    "linien": [
+     "U2"
+    ],
+    "min": 10
+   },
+   "schule": {
+    "name": "Schule Vizelinstraße",
+    "min": 4,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immoscout24:172654105": {
+   "id": "immoscout24:172654105",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172654105",
+   "typ": "kauf",
+   "art": "Doppelhaus",
+   "preis": 348000.0,
+   "flaeche": 118.0,
+   "zimmer": 6.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Würzburg",
+   "plz": null,
+   "stadtteil_text": "Versbach",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 49.8265,
+   "lon": 9.96167,
+   "lage": "stadtteil",
+   "stadtteil": "Versbach",
+   "bahn": {
+    "name": "Robert Koch Straße / Uniklinikum Bereich B/C",
+    "linien": [
+     "Straba"
+    ],
+    "min": 45
+   },
+   "schule": {
+    "name": "Grundschule Versbach",
+    "min": 8,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immoscout24:172653599": {
+   "id": "immoscout24:172653599",
+   "quelle": "immoscout24",
+   "url": "https://www.immobilienscout24.de/expose/172653599",
+   "typ": "kauf",
+   "art": "Maisonette",
+   "preis": 449000.0,
+   "flaeche": 98.0,
+   "zimmer": 3.5,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": true,
+   "terrasse": null,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": null,
+   "stadtteil_text": "Bramfeld",
+   "strasse": "Benzstraße 19",
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.59955,
+   "lon": 10.05876,
+   "lage": "adresse",
+   "stadtteil": "Bramfeld",
+   "bahn": {
+    "name": "Habichtstraße",
+    "linien": [
+     "U3"
+    ],
+    "min": 13
+   },
+   "schule": {
+    "name": "Schule Heinrich-Helbing-Straße",
+    "min": 3,
+    "traeger": "staatlich"
+   },
+   "laerm": 0,
+   "aktiv": true
+  },
+  "immowelt:e329160c-dff6-41d9-9a79-d75f48098d8c": {
+   "id": "immowelt:e329160c-dff6-41d9-9a79-d75f48098d8c",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/e329160c-dff6-41d9-9a79-d75f48098d8c",
+   "typ": "kauf",
+   "art": "Penthouse",
+   "preis": 348000.0,
+   "flaeche": 102.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22149",
+   "stadtteil_text": "Rahlstedt",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.59018,
+   "lon": 10.16636,
+   "lage": "plz",
+   "stadtteil": "Rahlstedt",
+   "bahn": {
+    "name": "Farmsen",
+    "linien": [
+     "U1"
+    ],
+    "min": 60
+   },
+   "schule": {
+    "name": "Grund- und Stadtteilschule Altrahlstedt",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
+  },
+  "immowelt:f4a37222-cea9-469c-b635-cb2a37e59ca8": {
+   "id": "immowelt:f4a37222-cea9-469c-b635-cb2a37e59ca8",
+   "quelle": "immowelt",
+   "url": "https://www.immowelt.de/expose/f4a37222-cea9-469c-b635-cb2a37e59ca8",
+   "typ": "kauf",
+   "art": "Penthouse",
+   "preis": 990000.0,
+   "flaeche": 127.0,
+   "zimmer": 3.0,
+   "etage": null,
+   "frei_ab": null,
+   "energie": null,
+   "privat": false,
+   "provisionsfrei": false,
+   "neubau": false,
+   "kapitalanlage": false,
+   "balkon": null,
+   "terrasse": true,
+   "garten": null,
+   "ausschluss": null,
+   "ort": "Hamburg",
+   "plz": "22089",
+   "stadtteil_text": "Eilbek",
+   "strasse": null,
+   "erstmals": "2026-11-14",
+   "zuletzt": "2026-11-14",
+   "lat": 53.56788,
+   "lon": 10.04799,
+   "lage": "plz",
+   "stadtteil": "Eilbek",
+   "bahn": {
+    "name": "Ritterstraße",
+    "linien": [
+     "U1"
+    ],
+    "min": 2
+   },
+   "schule": {
+    "name": "Schule Hasselbrook",
+    "min": 7,
+    "traeger": "staatlich"
+   },
+   "aktiv": true
   }
  },
  "geocache": {
@@ -39899,6 +40299,18 @@
   "Barckhausenstraße 5,  Lüneburg": [
    53.2435827,
    10.4097003
+  ],
+  "Meiendorfer Mühlenweg 122a,  Hamburg": [
+   53.6376266,
+   10.1370843
+  ],
+  "Von-Eicken-Straße 13a,  Hamburg": [
+   53.5866762,
+   9.9529878
+  ],
+  "Benzstraße 19,  Hamburg": [
+   53.5995487,
+   10.0587636
   ]
  },
  "verworfen": {
@@ -40531,9 +40943,19 @@
    "grund": "außerhalb der Suchgebiete",
    "tag": "2026-11-14",
    "url": "https://www.immowelt.de/expose/c3727104-86c5-4e3f-9754-a121b31a6b6b"
+  },
+  "immoscout24:172650365": {
+   "grund": "außerhalb der Suchgebiete",
+   "tag": "2026-11-14",
+   "url": "https://www.immobilienscout24.de/expose/172650365"
+  },
+  "immoscout24:172650635": {
+   "grund": "außerhalb der Suchgebiete",
+   "tag": "2026-11-14",
+   "url": "https://www.immobilienscout24.de/expose/172650635"
   }
  },
- "aktualisiert": "2026-11-14T12:06+00:00",
+ "aktualisiert": "2026-11-14T17:58+00:00",
  "verlauf": {
   "2026-11-09": {
    "scheideweg": {
@@ -41474,9 +41896,9 @@
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 21,
-     "qm": 8577.59,
-     "neu": 4,
+     "aktiv": 22,
+     "qm": 8538.79,
+     "neu": 5,
      "weg": 0,
      "runter": 0,
      "hoch": 0
@@ -41510,9 +41932,9 @@
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 348,
-     "qm": 5602.42,
-     "neu": 36,
+     "aktiv": 356,
+     "qm": 5599.4,
+     "neu": 44,
      "weg": 0,
      "runter": 0,
      "hoch": 0
@@ -41546,9 +41968,9 @@
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 36,
-     "qm": 3697.29,
-     "neu": 2,
+     "aktiv": 37,
+     "qm": 3680.3,
+     "neu": 3,
      "weg": 0,
      "runter": 0,
      "hoch": 0
@@ -41564,9 +41986,9 @@
      "hoch": 0
     },
     "kauf": {
-     "aktiv": 92,
+     "aktiv": 93,
      "qm": 3778.91,
-     "neu": 3,
+     "neu": 4,
      "weg": 0,
      "runter": 0,
      "hoch": 0
@@ -43443,7 +43865,47 @@
    "2026-11-14",
    4,
    2
+  ],
+  "eaae422ed73d051e": [
+   "2026-11-14",
+   5,
+   2
+  ],
+  "d20ff0b6eee3427b": [
+   "2026-11-14",
+   2,
+   2
+  ],
+  "88c9daece771c62e": [
+   "2026-11-14",
+   0,
+   2
+  ],
+  "9a0b8f2ef0ce42b9": [
+   "2026-11-14",
+   1,
+   2
+  ],
+  "240fcae1b6b2aefb": [
+   "2026-11-14",
+   1,
+   2
+  ],
+  "c722277c9afab82d": [
+   "2026-11-14",
+   2,
+   2
+  ],
+  "ffdc64fc1b65f4b3": [
+   "2026-11-14",
+   0,
+   2
+  ],
+  "fa2ed196c2dd34fd": [
+   "2026-11-14",
+   0,
+   2
   ]
  },
- "letzte_mail": "2026-11-14T12:05+00:00"
+ "letzte_mail": "2026-11-14T17:57+00:00"
 }
